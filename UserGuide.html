@@ -14,15 +14,12 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></li>
-<li><a href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></li>
-<li><a href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></li>
-<li><a href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.9. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#change-tab-code-tab-code">3.2. Change tab : <code>tab</code></a></li>
+<li><a href="#calender">3.3. Calender</a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.4. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.5. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.6. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.7. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -123,10 +120,32 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">3.2. Adding a person: <code>add</code></a></h3>
+<h3 id="change-tab-code-tab-code"><a class="link" href="#change-tab-code-tab-code">3.2. Change tab : <code>tab</code></a></h3>
 <div class="paragraph">
-<p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+<p>Change tab to any of the available ones.<br>
+Format: <code>tab TAB_DESTINATION</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>tab calendar</code></p>
+</li>
+<li>
+<p><code>tab student profile</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="calender"><a class="link" href="#calender">3.3. Calender</a></h3>
+<div class="sect3">
+<h4 id="adding-task-code-add-code"><a class="link" href="#adding-task-code-add-code">3.3.1. Adding task: <code>add</code></a></h4>
+<div class="paragraph">
+<p>Adds a task to one or more time slots.<br>
+Format: <code>add DESCRIPTION /at TIME, &#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -135,7 +154,7 @@ Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;<
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-A person can have any number of tags (including 0)
+A task can have more than one time slots.
 </td>
 </tr>
 </table>
@@ -146,45 +165,84 @@ A person can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
+<p><code>add CS2103T Lecture /at 20/9/2019 16:00,  4/10/2019 16:00</code></p>
 </li>
 <li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+<p><code>add MA1521 Lecture /at 02/11/2020 14:00</code></p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">3.3. Listing all persons : <code>list</code></a></h3>
+<div class="sect3">
+<h4 id="updating-task-code-update-code"><a class="link" href="#updating-task-code-update-code">3.3.2. Updating task: <code>update</code></a></h4>
 <div class="paragraph">
-<p>Shows a list of all persons in the address book.<br>
-Format: <code>list</code></p>
+<p>Update task information.<br>
+Format: <code>update INDEX ATTRIBUTE UPDATE_INFO</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>update 2 time 10/10/2019 18:00</code></p>
+</li>
+</ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">3.4. Editing a person : <code>edit</code></a></h3>
+<div class="sect3">
+<h4 id="deleting-task-code-delete-code"><a class="link" href="#deleting-task-code-delete-code">3.3.3. Deleting task: <code>delete</code></a></h4>
 <div class="paragraph">
-<p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+<p>Deletes selected task.<br>
+Format: <code>delete INDEX &#8230;&#8203;</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can delete more than one tasks at a time.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 1 3 6</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="finding-tasks-code-find-code"><a class="link" href="#finding-tasks-code-find-code">3.3.4. Finding tasks: <code>find</code></a></h4>
+<div class="paragraph">
+<p>Find specific task.<br>
+Format: <code>find VARAIBLE</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Edits the person at the specified <code>INDEX</code>. The index refers to the index number shown in the displayed person list. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>VARIABLE can be either <code>INDEX</code>, <code>KEYWORD</code> or <code>TIME</code>.</p>
 </li>
 <li>
-<p>At least one of the optional fields must be provided.</p>
+<p>The VARIABLE is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
 </li>
 <li>
-<p>Existing values will be updated to the input values.</p>
+<p>Only full words will be matched. e.g. <code>Han</code> will not match <code>Hans</code></p>
 </li>
 <li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
+<p>Can find using more than one keyword at a time.</p>
 </li>
 <li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
+<p>Only can search by one of the 3 types of variables at any one time.</p>
 </li>
 </ul>
 </div>
@@ -196,40 +254,35 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <div class="ulist">
 <ul>
 <li>
-<p><code>edit 1 p/91234567 e/johndoe@example.com</code><br>
-Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
+<p><code>find 3</code> [INDEX]</p>
 </li>
 <li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+<p><code>find CS2103T, Lecture</code> [KEYWORD]</p>
+</li>
+<li>
+<p><code>find 1400</code> [TIME]</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">3.5. Locating persons by name: <code>find</code></a></h3>
+<div class="sect3">
+<h4 id="marking-tasks-code-mark-code"><a class="link" href="#marking-tasks-code-mark-code">3.3.5. Marking Tasks: <code>mark</code></a></h4>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+<p>Mark tasks that needs to be reminded.<br>
+<code>Format: `mark VARIABLE</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+<p>VARIABLE can be either <code>INDEX</code> or <code>KEYWORD</code>.</p>
 </li>
 <li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+<p>The VARIABLE is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
 </li>
 <li>
-<p>Only the name is searched.</p>
-</li>
-<li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
-</li>
-<li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+<p>Can find using more than one <code>KEYWORD</code> or <code>INDEX</code> at a time.</p>
 </li>
 </ul>
 </div>
@@ -241,38 +294,23 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find John</code><br>
-Returns <code>john</code> and <code>John Doe</code></p>
+<p><code>mark 2 3 4</code><br>
+Marks tasks 2, 3 and 4.</p>
 </li>
 <li>
-<p><code>find Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+<p><code>mark CS2103T, Tutorial</code><br>
+Marks tasks that contains the keyword CS2103T or Tutorial.</p>
 </li>
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">3.6. Deleting a person : <code>delete</code></a></h3>
+<div class="sect3">
+<h4 id="setting-reminder-details-code-reminder-code"><a class="link" href="#setting-reminder-details-code-reminder-code">3.3.6. Setting Reminder Details  : <code>reminder</code></a></h4>
+<div class="sect4">
+<h5 id="reminder-status-on-off"><a class="link" href="#reminder-status-on-off">Reminder Status On/Off</a></h5>
 <div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the displayed person list.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
+<p>Switches reminder status between on and off.<br>
+Format: <code>reminder INDEX STATUS</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -280,41 +318,60 @@ Format: <code>delete INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in the address book.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>delete 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
+<p><code>reminder 5 on</code></p>
 </li>
 </ul>
 </div>
 </div>
+<div class="sect4">
+<h5 id="setting-reminder-time"><a class="link" href="#setting-reminder-time">Setting Reminder Time</a></h5>
+<div class="paragraph">
+<p>Sets how many minutes before the marked tasks will be reminded.<br>
+Format: <code>reminder INDEX INTEGER(in minutes)</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>reminder 3 45</code></p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>MORE TO BE ADDED&#8230;&#8203;</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.4. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.5. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.9. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.6. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.10. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.7. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -363,4 +420,4 @@ e.g. <code>find James Jake</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-04 11:49:30 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-10 15:52:48 UTC</div></div></div></body></html>
