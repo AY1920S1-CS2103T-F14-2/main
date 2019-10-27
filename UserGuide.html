@@ -17,10 +17,11 @@
 <li><a href="#change-tab-code-tab-code">3.2. Change tab : <code>tab</code></a></li>
 <li><a href="#calender">3.3. Calender</a></li>
 <li><a href="#earnings">3.4. Earnings</a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.5. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.6. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.7. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.8. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#notes">3.5. Notes</a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.6. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.7. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.8. Saving the data</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.9. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -70,7 +71,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>help</code></strong> : gives you a list of commands that are available.</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>CS2103T Lecture /at 20/9/2019 16:00</code> : adds a module named CS2103T that is on 20th September 2019 4pm.</p>
+<p><strong><code>add</code></strong><code>CS2103T Lecture /at 20/9/2019 16:00</code> : adds a classId named CS2103T that is on 20th September 2019 4pm.</p>
 </li>
 <li>
 <p><strong><code>claimed earnings</code></strong><code>02/07/2022 CS2100</code> : marks that you have claimed this earnings.</p>
@@ -397,10 +398,10 @@ Format: <code>switch STATUS</code></p>
 <div class="sect2">
 <h3 id="earnings"><a class="link" href="#earnings">3.4. Earnings</a></h3>
 <div class="sect3">
-<h4 id="add-earnings-code-addearnings-code"><a class="link" href="#add-earnings-code-addearnings-code">3.4.1. Add Earnings: <code>addEarnings</code></a></h4>
+<h4 id="add-earnings-code-add_earnings-code"><a class="link" href="#add-earnings-code-add_earnings-code">3.4.1. Add Earnings: <code>add_earnings</code></a></h4>
 <div class="paragraph">
 <p>Adds Earnings to the list of earnings.<br>
-Format: <code>addEarnings d/DATE mod/MODULE amt/AMOUNT</code></p>
+Format: <code>add_earnings d/DATE c/CLASSID amt/AMOUNT</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -408,16 +409,16 @@ Format: <code>addEarnings d/DATE mod/MODULE amt/AMOUNT</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>addEarnings d/19/09/2019 mod/CS2103T amt/50.70</code></p>
+<p><code>add_earnings d/19/09/2019 c/CS2103T amt/50.70</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="update-earnings-code-updateearnings-code"><a class="link" href="#update-earnings-code-updateearnings-code">3.4.2. Update Earnings: <code>updateEarnings</code></a></h4>
+<h4 id="update-earnings-code-update_earnings-code"><a class="link" href="#update-earnings-code-update_earnings-code">3.4.2. Update Earnings: <code>update_earnings</code></a></h4>
 <div class="paragraph">
 <p>Update Earnings in the list of earnings.<br>
-Format: <code>updateEarnings d/DATE mod/MODULE amt/(NEW_AMOUNT)</code></p>
+Format: <code>update_earnings d/DATE c/CLASSID amt/(NEW_AMOUNT)</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -425,16 +426,16 @@ Format: <code>updateEarnings d/DATE mod/MODULE amt/(NEW_AMOUNT)</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>updateEarnings d/14/04/2020 mod/CS2103T amt/63.20</code></p>
+<p><code>update_earnings d/14/04/2020 C/CS2103T amt/63.20</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-earnings-code-deleteearnings-code"><a class="link" href="#delete-earnings-code-deleteearnings-code">3.4.3. Delete Earnings: <code>deleteEarnings</code></a></h4>
+<h4 id="delete-earnings-code-delete_earnings-code"><a class="link" href="#delete-earnings-code-delete_earnings-code">3.4.3. Delete Earnings: <code>delete_earnings</code></a></h4>
 <div class="paragraph">
 <p>Delete Earnings in the list of earnings.<br>
-Format: <code>deleteEarnings d/DATE mod/MODULE</code></p>
+Format: <code>delete_earnings d/DATE c/CLASSID</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -442,35 +443,146 @@ Format: <code>deleteEarnings d/DATE mod/MODULE</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>deleteEarnings d/24/04/2020 mod/CS2103T</code></p>
+<p><code>delete_earnings d/24/04/2020 c/CS2103T</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="find-earnings-code-find_earnings-code"><a class="link" href="#find-earnings-code-find_earnings-code">3.4.4. Find Earnings: <code>find_earnings</code></a></h4>
+<div class="paragraph">
+<p>Find Earnings in the list of earnings.<br>
+Format: <code>find_earnings k/keywords, &#8230;&#8203;</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find_earnings k/CS2103T, k/CS1231</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="claim-earnings-code-claim_earnings-code"><a class="link" href="#claim-earnings-code-claim_earnings-code">3.4.5. Claim Earnings: <code>claim_earnings</code></a></h4>
+<div class="paragraph">
+<p>Tick off that user has claimed Earnings in the list of earnings.<br>
+Format: <code>claim_earnings d/DATE c/CLASSID</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>claim_earnings k/CS2103T, c/CS1231</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="filter-earnings-code-filter_earnings-code"><a class="link" href="#filter-earnings-code-filter_earnings-code">3.4.6. Filter Earnings: <code>filter_earnings</code></a></h4>
+<div class="paragraph">
+<p>Filters Earnings in the list of earnings based on either classid/date/week/month.<br>
+Format: <code>filter_earnings variable</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>claim_earnings k/CS2103T, c/CS1231</code></p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.5. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="notes"><a class="link" href="#notes">3.5. Notes</a></h3>
+<div class="sect3">
+<h4 id="add-note-code-addnote-code"><a class="link" href="#add-note-code-addnote-code">3.5.1. Add Note: <code>addnote</code></a></h4>
+<div class="paragraph">
+<p>Adds Note to the list of notes.<br>
+Format: <code>addnote mod/MODULE_CODE c/CONTENT</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>addnote mod/CS2103T c/Check for project submission date</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-note-code-update_earnings-code"><a class="link" href="#edit-note-code-update_earnings-code">3.5.2. Edit Note: <code>update_earnings</code></a></h4>
+<div class="paragraph">
+<p>Update Note in the list of notes.<br>
+Format: <code>editnote [index] mod/MODULE_CODE c/CONTENT</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>editnote 1 mod/CS2103T</code></p>
+</li>
+<li>
+<p><code>editnote 1 c/check for meeting time</code></p>
+</li>
+<li>
+<p><code>editnote 1 mod/CS2103 c/update project content</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-note-code-deletenote-code"><a class="link" href="#delete-note-code-deletenote-code">3.5.3. Delete Note: <code>deletenote</code></a></h4>
+<div class="paragraph">
+<p>Delete Note in the list of notes.<br>
+Format: <code>deletenote [index]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>deletenote 1</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.6. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.6. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.7. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.7. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.8. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.8. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.9. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -519,4 +631,4 @@ e.g. <code>find James Jake</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-17 15:06:29 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-27 15:11:54 UTC</div></div></div></body></html>
