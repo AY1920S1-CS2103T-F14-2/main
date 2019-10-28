@@ -18,10 +18,12 @@
 <li><a href="#calender">3.3. Calender</a></li>
 <li><a href="#earnings">3.4. Earnings</a></li>
 <li><a href="#notes">3.5. Notes</a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.6. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.7. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.8. Saving the data</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.9. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#student-list">3.6. Student List</a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.9. Saving the data</a></li>
+<li><a href="#learning-wrong-commands-as-custom-commands">3.10. Learning wrong commands as custom commands</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.11. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -533,28 +535,148 @@ Format: <code>deletenote [index]</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.6. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="student-list"><a class="link" href="#student-list">3.6. Student List</a></h3>
+<div class="sect3">
+<h4 id="add-a-student-add"><a class="link" href="#add-a-student-add">3.6.1. Add a student: 'add'</a></h4>
+<div class="paragraph">
+<p>Adds a student to TutorAid.
+Format: <code>add n/NAME pic/PICUTRE</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add n/Caesar pic/caesar.jpg</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The picture specified must be in either .jpg, .png or .bmp format. It must also be located in the same directory as TutorAid.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="delete-a-student-delete"><a class="link" href="#delete-a-student-delete">3.6.2. Delete a student: 'delete'</a></h4>
+<div class="paragraph">
+<p>Deletes a student from TutorAid.
+Format: <code>delete INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>delete 1</code> (deletes the first student.)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-a-student-edit"><a class="link" href="#edit-a-student-edit">3.6.3. Edit a student: 'edit'</a></h4>
+<div class="paragraph">
+<p>Edits a Student&#8217;s fields.
+Format: <code>edit INDEX n/NAME pic/PICTURE r/RESULT att/ATTENDANCE part/PARTICIPATION c/CLASS</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+User does not have to edit all fields of a Student. He can just edit whatever needs to be changed (see example).
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit 1 r/20 att/10 part/10 c/CS2030</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="list-students-list"><a class="link" href="#list-students-list">3.6.4. List students: 'list'</a></h4>
+<div class="paragraph">
+<p>List all students in TutorAid.
+Format: <code>list</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="find-a-student-find"><a class="link" href="#find-a-student-find">3.6.5. Find a student: 'find'</a></h4>
+<div class="paragraph">
+<p>Find a student matching the supplied name
+Format: <code>find NAME</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find Tom</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.7. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.7. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.8. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.8. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.9. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.9. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="learning-wrong-commands-as-custom-commands"><a class="link" href="#learning-wrong-commands-as-custom-commands">3.10. Learning wrong commands as custom commands</a></h3>
+<div class="paragraph">
+<p>TutorAid is able to learn a wrongly supplied command to do what the user intended to do.<br>
+Format: <code>WRONG_COMMAND</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ad</code> (instead of <code>add</code>) &#8594; TutorAid will prompt the user what they meant. Type <code>add</code> now to be able
+to use <code>ad</code> as an <code>add</code> command in the future.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.11. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -622,4 +744,4 @@ There is no need to save manually.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-28 15:53:59 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-28 16:14:42 UTC</div></div></div></body></html>
