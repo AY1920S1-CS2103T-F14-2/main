@@ -23,12 +23,16 @@
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#earnings-feature">3.1. Earnings Feature</a></li>
-<li><a href="#notes-features">3.2. Notes Features</a></li>
-<li><a href="#reminder-features">3.3. Reminder Features</a></li>
-<li><a href="#learn-wrong-commands-as-custom-commands-feature">3.4. Learn wrong commands as custom commands feature</a></li>
-<li><a href="#proposed-data-encryption">3.5. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.6. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.7. Configuration</a></li>
+<li><a href="#calendar-feature">3.2. Calendar Feature</a></li>
+<li><a href="#add-tasks">3.3. Add Tasks</a></li>
+<li><a href="#calendar-feature-2">3.4. Calendar Feature</a></li>
+<li><a href="#add-tasks-2">3.5. Add Tasks</a></li>
+<li><a href="#notes-features">3.6. Notes Features</a></li>
+<li><a href="#reminder-features">3.7. Reminder Features</a></li>
+<li><a href="#learn-wrong-commands-as-custom-commands-feature">3.8. Learn wrong commands as custom commands feature</a></li>
+<li><a href="#proposed-data-encryption">3.9. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.10. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.11. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -426,9 +430,222 @@ object have been successfully added.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="notes-features"><a class="link" href="#notes-features">3.2. Notes Features</a></h3>
+<h3 id="calendar-feature"><a class="link" href="#calendar-feature">3.2. Calendar Feature</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="add-tasks"><a class="link" href="#add-tasks">3.3. Add Tasks</a></h3>
+<div class="paragraph">
+<p>The <code>add_task</code> command allows for tutors to add their tasks into TutorAid.</p>
+</div>
+<div class="paragraph">
+<p>The format for the <code>add_task</code> command is as follows:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>add_task c/&lt;CLASSID&gt; mark/&lt;MARKING&gt; tt/&lt;TASKTIME&gt; ...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Overview</strong></p>
+</div>
+<div class="paragraph">
+<p>The add claim <code>add_task</code> mechanism is facilitated by <code>AddTaskCommand</code> and <code>AddTaskCommandParser</code>, taking in the
+following input from the user: <code>ClassId</code>, <code>Marking</code>, <code>TaskTime</code> which will construct <code>Task</code> objects.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddTaskSequenceDiagram.png" alt="AddTaskSequenceDiagram">
+</div>
+<div class="title">Figure 10. Add Task Command Sequence Diagram</div>
+</div>
+<div class="paragraph">
+<p>The <code>AddTaskCommand</code> implements <code>Parser</code> with the following operation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>AddTaskCommandParser#parse()</code> - This operation will take in a <code>String</code> input from the user and create
+individual objects based on the prefixes <code>c/</code>, <code>mark/</code> and <code>tt/</code>. The <code>String</code> value after the respective prefixes
+will create the respective objects. A validation check will be done to ensure that the strings that are entered
+by the user is entered correctly. If any of the strings entered are invalid, an error will be shown to the user to
+enter the correct format of the respectives objects.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>classId</code> would use <code>ParserUtil#parseClassId()</code> to ensure that the class id typed in by the user is in the correct format.</p>
+</li>
+<li>
+<p><code>mark</code> would use <code>ParserUtil#parseMarking()</code> to ensure that the Marking entered by the user is in the correct format with only "Y" or "N".</p>
+</li>
+<li>
+<p><code>taskTime</code> would use <code>ParseUtil#parseTaskTimes()</code> to ensure that the TaskTime entered by the user is in the correct format.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>After validation of the individual objects, an <code>Task</code> object would be created with the parameters <code>classId</code>, <code>Marking</code>,
+and <code>taskTime</code>.</p>
+</li>
+<li>
+<p><code>AddTaskCommandParser</code> would then return a <code>AddTaskCommand</code> object with the parameter, <code>Task</code> object.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes a new command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddTaskActivityDiagram.png" alt="AddTaskActivityDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example Scenerio</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: The user enters <code>add_earnings d/04/08/2019 c/CS1231 amt/50.00</code> to add an earning for teaching classes.
+This adds an <code>Earnings</code> object that the user has earned by teaching a CS1231 class on 4th August 2019. The user has
+earned $50.00.</p>
+</li>
+<li>
+<p>Step 2: <code>LogicManager</code> would use <code>AddressBookParser#parse()</code> to parse input from the user.</p>
+</li>
+<li>
+<p>Step 3: <code>AddressBookParser</code> would match the command word given by the user with the correct command. In this example,
+the given command is <code>add_earnings</code>, thus, <code>AddEarningsCommandParser</code> object would be created with the user&#8217;s input.</p>
+</li>
+<li>
+<p>Step 4: <code>AddEarningsCommandParser</code> performs a validation check on each of the respective objects through
+<code>AddEarningsCommandParser#parse()</code>. In this case, it would use <code>ParserUtil#parseDate()</code>, <code>ParserUtil#parseClassId()</code> and
+<code>ParserUtil#parseAmount()</code>. It would then return a <code>AddEarningsCommand</code> object with an <code>Earnings</code> object.</p>
+</li>
+<li>
+<p>Step 5: <code>LogicManager</code> would execute <code>AddEarningsCommand#execute</code>. In this particular method, the <code>Earnings</code> object will be
+check with the rest of the prior <code>Earnings</code> object, to ensure that there is no duplicate <code>Earnings</code> object. If there are no similar
+<code>Earnings</code> object with the same parameters created previously, it would then be added into the earnings list.</p>
+</li>
+<li>
+<p>Step 6: <code>AddEarningsCommand</code> would then return a <code>CommandResult</code> to <code>LogicManager</code>, which would show the user that the new <code>Earnings</code>
+object have been successfully added.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="calendar-feature-2"><a class="link" href="#calendar-feature-2">3.4. Calendar Feature</a></h3>
+
+</div>
+<div class="sect2">
+<h3 id="add-tasks-2"><a class="link" href="#add-tasks-2">3.5. Add Tasks</a></h3>
+<div class="paragraph">
+<p>The <code>add_task</code> command allows for tutors to add their tasks into TutorAid.</p>
+</div>
+<div class="paragraph">
+<p>The format for the <code>add_task</code> command is as follows:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>add_task c/&lt;CLASSID&gt; mark/&lt;MARKING&gt; tt/&lt;TASKTIME&gt; ...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Overview</strong></p>
+</div>
+<div class="paragraph">
+<p>The add claim <code>add_task</code> mechanism is facilitated by <code>AddTaskCommand</code> and <code>AddTaskCommandParser</code>, taking in the
+following input from the user: <code>ClassId</code>, <code>Marking</code>, <code>TaskTime</code> which will construct <code>Task</code> objects.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddTaskSequenceDiagram.png" alt="AddTaskSequenceDiagram">
+</div>
+<div class="title">Figure 11. Add Task Command Sequence Diagram</div>
+</div>
+<div class="paragraph">
+<p>The <code>AddTaskCommand</code> implements <code>Parser</code> with the following operation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>AddTaskCommandParser#parse()</code> - This operation will take in a <code>String</code> input from the user and create
+individual objects based on the prefixes <code>c/</code>, <code>mark/</code> and <code>tt/</code>. The <code>String</code> value after the respective prefixes
+will create the respective objects. A validation check will be done to ensure that the strings that are entered
+by the user is entered correctly. If any of the strings entered are invalid, an error will be shown to the user to
+enter the correct format of the respectives objects.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>classId</code> would use <code>ParserUtil#parseClassId()</code> to ensure that the class id typed in by the user is in the correct format.</p>
+</li>
+<li>
+<p><code>mark</code> would use <code>ParserUtil#parseMarking()</code> to ensure that the Marking entered by the user is in the correct format with only "Y" or "N".</p>
+</li>
+<li>
+<p><code>taskTime</code> would use <code>ParseUtil#parseTaskTimes()</code> to ensure that the TaskTime entered by the user is in the correct format.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>After validation of the individual objects, an <code>Task</code> object would be created with the parameters <code>classId</code>, <code>Marking</code>,
+and <code>taskTime</code>.</p>
+</li>
+<li>
+<p><code>AddTaskCommandParser</code> would then return a <code>AddTaskCommand</code> object with the parameter, <code>Task</code> object.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarizes what happens when a user executes a new command.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddTaskActivityDiagram.png" alt="AddTaskActivityDiagram">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Example Scenerio</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: The user enters <code>add_task c/CS2103T Lecture  mark/Y tt/20/9/2019 13:00, 21/9/2019 16:00 tt/21/9/2019 13:00, 21/9/2019 15:00</code>
+to add an task into the calendar.
+This adds an <code>Task</code> object, which is a module CS2103T that the user need to attempt at 1pm of 20th and 21st September 2019.
+The task is marked so that it would be reminded.</p>
+</li>
+<li>
+<p>Step 2: <code>LogicManager</code> would use <code>AddressBookParser#parse()</code> to parse input from the user.</p>
+</li>
+<li>
+<p>Step 3: <code>AddressBookParser</code> would match the command word given by the user with the correct command. In this example,
+the given command is <code>add_task</code>, thus, <code>AddTaskCommandParser</code> object would be created with the user&#8217;s input.</p>
+</li>
+<li>
+<p>Step 4: <code>AddTaskCommandParser</code> performs a validation check on each of the respective objects through
+<code>AddTaskCommandParser#parse()</code>. In this case, it would use <code>ParserUtil#parseClassId()</code>, <code>ParserUtil#parseMarking()</code>, and
+<code>ParserUtil#parseTaskTimes()</code>. It would then return a <code>AddTaskCommand</code> object with an <code>Task</code> object.</p>
+</li>
+<li>
+<p>Step 5: <code>LogicManager</code> would execute <code>AddTaskCommand#execute</code>. In this particular method, the <code>Task</code> object will be
+check with the rest of the prior <code>Task</code> object, to ensure that there is no duplicate <code>Task</code> object. If there are no similar
+<code>Task</code> object with the same parameters created previously, it would then be added into the task list.</p>
+</li>
+<li>
+<p>Step 6: <code>AddTaskCommand</code> would then return a <code>CommandResult</code> to <code>LogicManager</code>, which would show the user that the new <code>Task</code>
+object have been successfully added.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="notes-features"><a class="link" href="#notes-features">3.6. Notes Features</a></h3>
 <div class="sect3">
-<h4 id="add-notes"><a class="link" href="#add-notes">3.2.1. Add Notes</a></h4>
+<h4 id="add-notes"><a class="link" href="#add-notes">3.6.1. Add Notes</a></h4>
 <div class="paragraph">
 <p>The <code>addnote</code> command allows for tutors to add their notes into TutorAid.</p>
 </div>
@@ -523,9 +740,9 @@ check with the rest of the prior <code>Notes</code> object, to ensure that there
 </div>
 </div>
 <div class="sect2">
-<h3 id="reminder-features"><a class="link" href="#reminder-features">3.3. Reminder Features</a></h3>
+<h3 id="reminder-features"><a class="link" href="#reminder-features">3.7. Reminder Features</a></h3>
 <div class="sect3">
-<h4 id="add-reminder"><a class="link" href="#add-reminder">3.3.1. Add Reminder</a></h4>
+<h4 id="add-reminder"><a class="link" href="#add-reminder">3.7.1. Add Reminder</a></h4>
 <div class="paragraph">
 <p>The <code>addReminder</code> command allows for tutors to add their reminders into TutorAid.</p>
 </div>
@@ -619,9 +836,9 @@ check with the rest of the prior <code>Reminder</code> object, to ensure that th
 </div>
 </div>
 <div class="sect2">
-<h3 id="learn-wrong-commands-as-custom-commands-feature"><a class="link" href="#learn-wrong-commands-as-custom-commands-feature">3.4. Learn wrong commands as custom commands feature</a></h3>
+<h3 id="learn-wrong-commands-as-custom-commands-feature"><a class="link" href="#learn-wrong-commands-as-custom-commands-feature">3.8. Learn wrong commands as custom commands feature</a></h3>
 <div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">3.4.1. Implementation</a></h4>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.8.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The main point of this feature is to learn a user&#8217;s typing habits so as to give them a more seamless experience
 while using TutorAid by adapting to their typing style so that they do not have to memorize
@@ -755,7 +972,7 @@ The lifeline for <code>UnknownCommand</code> should end at the destroy marker (X
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.8.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-data-structure-to-support-the-learning-of-custom-commands"><a class="link" href="#aspect-data-structure-to-support-the-learning-of-custom-commands">Aspect: Data structure to support the learning of custom commands</a></h5>
 <div class="ulist">
@@ -793,20 +1010,20 @@ do not need to waste time populating a TreeMap.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.5. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.9. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.6. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.10. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.7, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.11, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -837,7 +1054,7 @@ do not need to waste time populating a TreeMap.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.7. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.11. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -931,39 +1148,39 @@ do not need to waste time populating a TreeMap.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add a new task</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a new class</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">check the details of the task when I want</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">edit an existing task</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">update task information when I need</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">tutor user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">check the time I spent on preparing tutorial materials</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ask for salary</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add my earnings</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check my earnings when I want to</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check my existing classes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">attend the classes in time</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check the information of my classes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know more about my students' situation</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know what&#8217;s the command format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">key in the correct command</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -1291,4 +1508,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-27 16:56:10 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-28 07:41:09 UTC</div></div></div></body></html>
