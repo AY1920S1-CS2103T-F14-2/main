@@ -315,12 +315,12 @@ Format: <code>list_tasks</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="setting-reminder-details-code-reminder-code"><a class="link" href="#setting-reminder-details-code-reminder-code">3.3.7. Setting Reminder Details  : <code>reminder</code></a></h4>
+<h4 id="setting-reminder-details-code-addreminder-code"><a class="link" href="#setting-reminder-details-code-addreminder-code">3.3.7. Setting Reminder Details  : <code>addReminder</code></a></h4>
 <div class="sect4">
-<h5 id="reminder-status-on-off"><a class="link" href="#reminder-status-on-off">Reminder Status On/Off</a></h5>
+<h5 id="add-reminder"><a class="link" href="#add-reminder">Add Reminder</a></h5>
 <div class="paragraph">
-<p>Switches reminder status between on and off.<br>
-Format: <code>reminder INDEX STATUS</code></p>
+<p>Adds reminders.<br>
+Format: <code>addReminder rd/DESCRIPTION rt/TIME</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -328,16 +328,16 @@ Format: <code>reminder INDEX STATUS</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>reminder 5 on</code></p>
+<p><code>addReminder rd/Cs2103T homework rt/21/9/2019 13:00, 21/9/2019 15:00</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="setting-reminder-time"><a class="link" href="#setting-reminder-time">Setting Reminder Time</a></h5>
+<h5 id="delete-reminder"><a class="link" href="#delete-reminder">Delete Reminder</a></h5>
 <div class="paragraph">
-<p>Sets how many minutes before the marked tasks will be reminded.<br>
-Format: <code>reminder INDEX INTEGER(in minutes)</code></p>
+<p>Removes the reminder.<br>
+Format: <code>reminder INDEX INTEGER</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -345,7 +345,7 @@ Format: <code>reminder INDEX INTEGER(in minutes)</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>reminder 3 45</code></p>
+<p><code>deleteReminder 1</code></p>
 </li>
 </ul>
 </div>
@@ -355,7 +355,7 @@ Format: <code>reminder INDEX INTEGER(in minutes)</code></p>
 <h4 id="user-interface"><a class="link" href="#user-interface">3.3.8. User Interface</a></h4>
 <div class="paragraph">
 <p>View in calendar format.<br>
-Format: <code>show calendar</code></p>
+Format: <code>change_tab tab/FORMAT</code></p>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -363,7 +363,10 @@ Format: <code>show calendar</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>show calendar</code></p>
+<p><code>change_tab tab/calendar</code></p>
+</li>
+<li>
+<p><code>change_tab tab/tasks</code></p>
 </li>
 </ul>
 </div>
@@ -839,4 +842,4 @@ to use <code>ad</code> as an <code>add</code> command in the future.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 15:23:22 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 15:33:26 UTC</div></div></div></body></html>
