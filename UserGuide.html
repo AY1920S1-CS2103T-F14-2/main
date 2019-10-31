@@ -494,7 +494,7 @@ Format: <code>addnote mod/MODULE_CODE c/CONTENT</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-note-code-update_earnings-code"><a class="link" href="#edit-note-code-update_earnings-code">3.5.2. Edit Note: <code>update_earnings</code></a></h4>
+<h4 id="edit-note-code-editnote-code"><a class="link" href="#edit-note-code-editnote-code">3.5.2. Edit Note: <code>editnote</code></a></h4>
 <div class="paragraph">
 <p>Update Note in the list of notes.<br>
 Format: <code>editnote [index] mod/MODULE_CODE c/CONTENT</code></p>
@@ -531,6 +531,30 @@ Format: <code>deletenote [index]</code></p>
 <p><code>deletenote 1</code></p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="find-note-code-findnote-code"><a class="link" href="#find-note-code-findnote-code">3.5.4. Find Note: <code>findnote</code></a></h4>
+<div class="paragraph">
+<p>Delete Note in the list of notes.<br>
+Format: <code>findnote [KEYWORD]</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>findnote CS2103T</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="listing-all-note-code-listnote-code"><a class="link" href="#listing-all-note-code-listnote-code">3.5.5. Listing all note : <code>listnote</code></a></h4>
+<div class="paragraph">
+<p>List all note.<br>
+Format: <code>listnote</code></p>
 </div>
 </div>
 </div>
@@ -621,7 +645,7 @@ Format: <code>list</code></p>
 <div class="sect3">
 <h4 id="find-a-student-find"><a class="link" href="#find-a-student-find">3.6.5. Find a student: 'find'</a></h4>
 <div class="paragraph">
-<p>Find a student matching the supplied name
+<p>Find a student matching the supplied name.
 Format: <code>find NAME</code></p>
 </div>
 <div class="paragraph">
@@ -631,6 +655,74 @@ Format: <code>find NAME</code></p>
 <ul>
 <li>
 <p><code>find Tom</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="assign-students-to-a-class-assign_class"><a class="link" href="#assign-students-to-a-class-assign_class">3.6.6. Assign students to a class: 'assign_class'</a></h4>
+<div class="paragraph">
+<p>Assigns a class to a student or a group of students.
+Format: <code>assign_class INDEXES c/CLASSID</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>assign_class 1,2,3 c/CS2030</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="list-all-students-in-a-class-list_class"><a class="link" href="#list-all-students-in-a-class-list_class">3.6.7. List all students in a class: 'list_class'</a></h4>
+<div class="paragraph">
+<p>Lists all students in supplied class name.
+Format: <code>list_class CLASSID</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list_class CS2030</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mark-attendance-of-students-mark_attendance"><a class="link" href="#mark-attendance-of-students-mark_attendance">3.6.8. Mark attendance of students: 'mark_attendance'</a></h4>
+<div class="paragraph">
+<p>Marks attendance of students currently displayed.
+Format: <code>mark_attendance INDEXES</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>mark_attendance 1,2,3</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="mark-participation-of-students-mark_participation"><a class="link" href="#mark-participation-of-students-mark_participation">3.6.9. Mark participation of students: 'mark_participation'</a></h4>
+<div class="paragraph">
+<p>Marks participation of students currently displayed.
+Format: <code>mark_participation INDEXES</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>mark_participation 1,2,3</code></p>
 </li>
 </ul>
 </div>
@@ -733,7 +825,10 @@ to use <code>ad</code> as an <code>add</code> command in the future.</p>
 <li>
 <p><strong>Note</strong> :<br>
 <code>addnote mod/MODULE_CODE c/CONTENT</code><br>
-<code>editnote [index] mod/MODULE_CODE c/CONTENT</code><br></p>
+<code>editnote [index] mod/MODULE_CODE c/CONTENT</code><br>
+<code>deletenote 1</code><br>
+<code>findnote [KEYWORD]</code><br>
+<code>listnote</code></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear</code></p>
@@ -744,4 +839,4 @@ to use <code>ad</code> as an <code>add</code> command in the future.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 13:47:04 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-10-31 15:23:22 UTC</div></div></div></body></html>
