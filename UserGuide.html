@@ -567,17 +567,7 @@ Format: <code>listnote</code></p>
 <h4 id="add-a-student-add"><a class="link" href="#add-a-student-add">3.6.1. Add a student: 'add'</a></h4>
 <div class="paragraph">
 <p>Adds a student to TutorAid.
-Format: <code>add n/NAME pic/PICUTRE</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add n/Caesar pic/caesar.jpg</code></p>
-</li>
-</ul>
+Format: <code>add n/NAME c/CLASSID</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -586,10 +576,20 @@ Format: <code>add n/NAME pic/PICUTRE</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The picture specified must be in either .jpg, .png or .bmp format. It must also be located in the same directory as TutorAid.
+You can add multiple students at a time by separating their names with a single ','.
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add n/Caesar,James,Todd c/CS2030</code></p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect3">
@@ -663,7 +663,36 @@ Format: <code>find NAME</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="assign-students-to-a-class-assign_class"><a class="link" href="#assign-students-to-a-class-assign_class">3.6.6. Assign students to a class: 'assign_class'</a></h4>
+<h4 id="add-a-picture-to-a-student-set_pic"><a class="link" href="#add-a-picture-to-a-student-set_pic">3.6.6. Add a picture to a student: 'set_pic'</a></h4>
+<div class="paragraph">
+<p>Adds a picture to display next to the student card.
+Format: <code>set_pic INDEX pic/FILENAME</code></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The picture specified must be in either .jpg, .png or .bmp format. It must also be located in the same directory as TutorAid.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>set_pic 2 pic/Tom.jpg</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="assign-students-to-a-class-assign_class"><a class="link" href="#assign-students-to-a-class-assign_class">3.6.7. Assign students to a class: 'assign_class'</a></h4>
 <div class="paragraph">
 <p>Assigns a class to a student or a group of students.
 Format: <code>assign_class INDEXES c/CLASSID</code></p>
@@ -680,7 +709,7 @@ Format: <code>assign_class INDEXES c/CLASSID</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="list-all-students-in-a-class-list_class"><a class="link" href="#list-all-students-in-a-class-list_class">3.6.7. List all students in a class: 'list_class'</a></h4>
+<h4 id="list-all-students-in-a-class-list_class"><a class="link" href="#list-all-students-in-a-class-list_class">3.6.8. List all students in a class: 'list_class'</a></h4>
 <div class="paragraph">
 <p>Lists all students in supplied class name.
 Format: <code>list_class CLASSID</code></p>
@@ -697,7 +726,7 @@ Format: <code>list_class CLASSID</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="mark-attendance-of-students-mark_attendance"><a class="link" href="#mark-attendance-of-students-mark_attendance">3.6.8. Mark attendance of students: 'mark_attendance'</a></h4>
+<h4 id="mark-attendance-of-students-mark_attendance"><a class="link" href="#mark-attendance-of-students-mark_attendance">3.6.9. Mark attendance of students: 'mark_attendance'</a></h4>
 <div class="paragraph">
 <p>Marks attendance of students currently displayed.
 Format: <code>mark_attendance INDEXES</code></p>
@@ -714,7 +743,7 @@ Format: <code>mark_attendance INDEXES</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="mark-participation-of-students-mark_participation"><a class="link" href="#mark-participation-of-students-mark_participation">3.6.9. Mark participation of students: 'mark_participation'</a></h4>
+<h4 id="mark-participation-of-students-mark_participation"><a class="link" href="#mark-participation-of-students-mark_participation">3.6.10. Mark participation of students: 'mark_participation'</a></h4>
 <div class="paragraph">
 <p>Marks participation of students currently displayed.
 Format: <code>mark_participation INDEXES</code></p>
@@ -726,6 +755,90 @@ Format: <code>mark_participation INDEXES</code></p>
 <ul>
 <li>
 <p><code>mark_participation 1,2,3</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-serial-absentees-with-defined-threshold-absentees-coming-in-v2-0"><a class="link" href="#view-serial-absentees-with-defined-threshold-absentees-coming-in-v2-0">3.6.11. View serial absentees with defined threshold: 'absentees' [Coming in v2.0]</a></h4>
+<div class="paragraph">
+<p>Displays list of all students who have not met the set threshold in terms of attendance.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Calculation will be done from start of semester to the current date.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>absentees THRESHOLD_PERCENTAGE</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>absentees 50</code> (Gives a list of students whose attendance fall below 50%)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="check-on-status-of-student-check_status-coming-in-v2-0"><a class="link" href="#check-on-status-of-student-check_status-coming-in-v2-0">3.6.12. Check on status of student: 'check_status' [Coming in v2.0]</a></h4>
+<div class="paragraph">
+<p>Checks on status of students currently displayed in the list by sending them an e-mail enquiring on their status.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To be used in conjunction with <code>absentees</code>. A preset generic email will be sent by TutorAid to the student&#8217;s school email account.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>check_status</code></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="upload-a-picture-of-the-student-upload_pic-coming-in-v2-0"><a class="link" href="#upload-a-picture-of-the-student-upload_pic-coming-in-v2-0">3.6.13. Upload a picture of the student: 'upload_pic' [Coming in v2.0]</a></h4>
+<div class="paragraph">
+<p>Launches a separate window where the user can either choose an image file on his computer or take a picture with his webcam.
+The picture will be assigned to the indicated student and be displayed in TutorAid.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Replaces current picture, if any.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Format: <code>upload_pic INDEX</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>upload_pic 1</code></p>
 </li>
 </ul>
 </div>
@@ -842,4 +955,4 @@ to use <code>ad</code> as an <code>add</code> command in the future.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 06:31:25 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-01 16:27:57 UTC</div></div></div></body></html>
