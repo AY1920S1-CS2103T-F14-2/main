@@ -41,13 +41,13 @@
                 </Menu>
             </MenuBar>
 
-                <StackPane prefHeight="200.0" prefWidth="600.0" style="-fx-background-color: #1A283E;"
+                <StackPane prefHeight="200.0" prefWidth="600.0" style="-fx-background-color: #fff4e4;"
                            VBox.vgrow="NEVER">
                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#F8C33A" height="112.0" stroke="#f7d2e0"
                                strokeType="INSIDE" width="587.0" />
-                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1A283E" height="105.0" stroke="#f7d2e0"
+                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#fff4e4" height="105.0" stroke="#f7d2e0"
                                strokeType="INSIDE" width="580.0" />
-                    <ImageView fitHeight="84.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #F8C33A;">
+                    <ImageView fitHeight="84.0" fitWidth="186.0" pickOnBounds="true" preserveRatio="true" style="-fx-background-color: #fff4e4;">
 
                         <Image url="@../images/address_book_32.png" />
                         <effect>
@@ -56,7 +56,7 @@
                     </ImageView>
                 </StackPane>
 
-                <StackPane prefHeight="200.0" prefWidth="600.0" style="-fx-background-color: #1A283E;"
+                <StackPane prefHeight="200.0" prefWidth="600.0" style="-fx-background-color: #fff4e4;"
                            VBox.vgrow="NEVER">
                     <Text style="-fx-font-family: Serif; -fx-font-size: 80; -fx-text-fill: white; -fx-color: white;-fx-color: #F8C33A" text="TUTORAID">  </Text>
                 </StackPane>
