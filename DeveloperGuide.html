@@ -83,14 +83,14 @@
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The <code>.puml</code> files used to create diagrams in this document can be found in the <a href="https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/">diagrams</a> folder.
+The <code>.puml</code> files used to create diagrams in this document can be found in the <a href="https://github.com/AY1920S1-CS2103T-F14-2/main/docs/diagrams/">diagrams</a> folder.
 Refer to the <a href="UsingPlantUml.html">Using PlantUML guide</a> to learn how to create and edit diagrams.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p><code>Main</code> has two classes called <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
+<p><code>Main</code> has two classes called <a href="https://github.com/AY1920S1-CS2103T-F14-2/main/src/main/java/seedu/address/Main.java"><code>Main</code></a> and <a href="https://github.com/AY1920S1-CS2103T-F14-2/main/src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible for,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -177,13 +177,13 @@ The following class plays an important role at the architecture level:</p>
 <div class="title">Figure 4. Structure of the UI Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-F14-2/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/AY1920S1-CS2103T-F14-2/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/AY1920S1-CS2103T-F14-2/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -209,12 +209,12 @@ The following class plays an important role at the architecture level:</p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
-<a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
+<a href="https://github.com/AY1920S1-CS2103T-F14-2/main/src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p><code>Logic</code> uses the <code>AddressBookParser</code> class to parse the user command.</p>
+<p><code>Logic</code> uses the <code>TutorAidParser</code> class to parse the user command.</p>
 </li>
 <li>
 <p>This results in a <code>Command</code> object which is executed by the <code>LogicManager</code>.</p>
@@ -261,7 +261,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="title">Figure 7. Structure of the Model Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-F14-2/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -292,7 +292,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <div class="title">Figure 8. Structure of the Storage Component</div>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY1920S1-CS2103T-F14-2/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -408,10 +408,10 @@ This adds an <code>Earnings</code> object that the user has earned by teaching a
 earned $50.00.</p>
 </li>
 <li>
-<p>Step 2: <code>LogicManager</code> would use <code>AddressBookParser#parse()</code> to parse input from the user.</p>
+<p>Step 2: <code>LogicManager</code> would use <code>TutorAidParser#parse()</code> to parse input from the user.</p>
 </li>
 <li>
-<p>Step 3: <code>AddressBookParser</code> would match the command word given by the user with the correct command. In this example,
+<p>Step 3: <code>TutorAidParser</code> would match the command word given by the user with the correct command. In this example,
 the given command is <code>add_earnings</code>, thus, <code>AddEarningsCommandParser</code> object would be created with the user&#8217;s input.</p>
 </li>
 <li>
@@ -472,7 +472,7 @@ following input from the user: <code>ClassId</code>, <code>Marking</code>, <code
 individual objects based on the prefixes <code>c/</code>, <code>mark/</code> and <code>tt/</code>. The <code>String</code> value after the respective prefixes
 will create the respective objects. A validation check will be done to ensure that the strings that are entered
 by the user is entered correctly. If any of the strings entered are invalid, an error will be shown to the user to
-enter the correct format of the respectives objects.</p>
+enter the correct format of the respective objects.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -515,10 +515,10 @@ This adds an <code>Earnings</code> object that the user has earned by teaching a
 earned $50.00.</p>
 </li>
 <li>
-<p>Step 2: <code>LogicManager</code> would use <code>AddressBookParser#parse()</code> to parse input from the user.</p>
+<p>Step 2: <code>LogicManager</code> would use <code>TutorAidParser#parse()</code> to parse input from the user.</p>
 </li>
 <li>
-<p>Step 3: <code>AddressBookParser</code> would match the command word given by the user with the correct command. In this example,
+<p>Step 3: <code>TutorAidParser</code> would match the command word given by the user with the correct command. In this example,
 the given command is <code>add_earnings</code>, thus, <code>AddEarningsCommandParser</code> object would be created with the user&#8217;s input.</p>
 </li>
 <li>
@@ -578,7 +578,7 @@ following input from the user: <code>ClassId</code>, <code>Marking</code>, <code
 individual objects based on the prefixes <code>c/</code>, <code>mark/</code> and <code>tt/</code>. The <code>String</code> value after the respective prefixes
 will create the respective objects. A validation check will be done to ensure that the strings that are entered
 by the user is entered correctly. If any of the strings entered are invalid, an error will be shown to the user to
-enter the correct format of the respectives objects.</p>
+enter the correct format of the respective objects.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -622,10 +622,10 @@ This adds an <code>Task</code> object, which is a module CS2103T that the user n
 The task is marked so that it would be reminded.</p>
 </li>
 <li>
-<p>Step 2: <code>LogicManager</code> would use <code>AddressBookParser#parse()</code> to parse input from the user.</p>
+<p>Step 2: <code>LogicManager</code> would use <code>TutorAidParser#parse()</code> to parse input from the user.</p>
 </li>
 <li>
-<p>Step 3: <code>AddressBookParser</code> would match the command word given by the user with the correct command. In this example,
+<p>Step 3: <code>TutorAidParser</code> would match the command word given by the user with the correct command. In this example,
 the given command is <code>add_task</code>, thus, <code>AddTaskCommandParser</code> object would be created with the user&#8217;s input.</p>
 </li>
 <li>
@@ -720,10 +720,10 @@ CSXXXX.</p>
 This adds a <code>Notes</code> object that the user has added to record what needs to be done for the class.</p>
 </li>
 <li>
-<p>Step 2: <code>LogicManager</code> would use <code>AddressBookParser#parse()</code> to parse input from the user.</p>
+<p>Step 2: <code>LogicManager</code> would use <code>TutorAidParser#parse()</code> to parse input from the user.</p>
 </li>
 <li>
-<p>Step 3: <code>AddressBookParser</code> would match the command word given by the user with the correct command. In this example,
+<p>Step 3: <code>TutorAidParser</code> would match the command word given by the user with the correct command. In this example,
 the given command is <code>addnote</code>, thus, <code>AddNotesCommandParser</code> object would be created with the user&#8217;s input.</p>
 </li>
 <li>
@@ -816,10 +816,10 @@ enter the correct format of the respectives objects.</p>
 This adds an <code>Notes</code> object that the user has added to record what needs to be done for the class.</p>
 </li>
 <li>
-<p>Step 2: <code>LogicManager</code> would use <code>AddressBookParser#parse()</code> to parse input from the user.</p>
+<p>Step 2: <code>LogicManager</code> would use <code>TutorAidParser#parse()</code> to parse input from the user.</p>
 </li>
 <li>
-<p>Step 3: <code>AddressBookParser</code> would match the command word given by the user with the correct command. In this example,
+<p>Step 3: <code>TutorAidParser</code> would match the command word given by the user with the correct command. In this example,
 the given command is <code>addReminder</code>, thus, <code>AddReminderParser</code> object would be created with the user&#8217;s input.</p>
 </li>
 <li>
@@ -854,11 +854,11 @@ built in commands.</p>
 the user on whether or not they wish to add this command to the library as a custom command mapped to the action of a built in command.</p>
 </div>
 <div class="paragraph">
-<p>Custom command keywords and their mappings are stored locally in addressbook.json with
+<p>Custom command keywords and their mappings are stored locally in TutorAid.json with
 the help of <code>JsonAdaptedCommand</code>.</p>
 </div>
 <div class="paragraph">
-<p>The whole mechanism is mainly facilitated by <code>AddressBookParser</code> which has been modified to suit our needs. A TreeMap
+<p>The whole mechanism is mainly facilitated by <code>TutorAidParser</code> which has been modified to suit our needs. A TreeMap
 is now being used in the process of parsing commands.</p>
 </div>
 <div class="paragraph">
@@ -868,12 +868,12 @@ an unknown command. New command classes such as <code>UnknownCommand</code>, <co
 <div class="ulist">
 <ul>
 <li>
-<p><code>AddressBookParser#checkCommand()</code>&#8201;&#8212;&#8201;Separate "parser" functions for unknown command operations.
+<p><code>TutorAidParser#checkCommand()</code>&#8201;&#8212;&#8201;Separate "parser" functions for unknown command operations.
 Checks if the command a user wants to map his unknown command to is valid and exists or if the user wishes
 to exit the operation.</p>
 </li>
 <li>
-<p><code>AddressBookParser#initialiseBasicCommands()</code>&#8201;&#8212;&#8201;Initialises the functionality of the <code>AddressBookParser</code> by adding
+<p><code>TutorAidParser#initialiseBasicCommands()</code>&#8201;&#8212;&#8201;Initialises the functionality of the <code>TutorAidParser</code> by adding
 the basic command mappings to its TreeMap.</p>
 </li>
 </ul>
@@ -882,11 +882,11 @@ the basic command mappings to its TreeMap.</p>
 <p>Given below is an example usage scenario and how the learn custom command mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>AddressBookParser</code> will be initialized and all basic
+<p>Step 1. The user launches the application for the first time. The <code>TutorAidParser</code> will be initialized and all basic
 commands and previous existing custom commands will be added to its TreeMap.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user enters "plus" instead of "add". <code>AddressBookParser</code> does a lookup in its TreeMap and in the <code>AddressBookParser#parseCommand(String userInput)</code> function and returns a new <code>UnknownCommand</code> since
+<p>Step 2. The user enters "plus" instead of "add". <code>TutorAidParser</code> does a lookup in its TreeMap and in the <code>TutorAidParser#parseCommand(String userInput)</code> function and returns a new <code>UnknownCommand</code> since
 the TreeMap does not contain the keyword "plus".</p>
 </div>
 <div class="paragraph">
@@ -906,17 +906,17 @@ to true.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. TutorAid prompts the user to type in a valid command to map the unknown command to. The user types in another wrong command that is not recognised. This time, he enters "ad" instead of "add". <code>LogicManager#execute(String userInput, boolean isUnknown)</code> now calls <code>AddressBookParser#checkCommand(String userInput, String prevUnknownCommand)</code> as <code>MainWindow</code> passed in a value of "true" to the execute command.</p>
+<p>Step 4. TutorAid prompts the user to type in a valid command to map the unknown command to. The user types in another wrong command that is not recognised. This time, he enters "ad" instead of "add". <code>LogicManager#execute(String userInput, boolean isUnknown)</code> now calls <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> as <code>MainWindow</code> passed in a value of "true" to the execute command.</p>
 </div>
 <div class="paragraph">
-<p>Step 5. In <code>AddressBookParser#checkCommand(String userInput, String prevUnknownCommand)</code>, the command is still not recognized and another <code>UnknownCommand</code> is returned.
+<p>Step 5. In <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code>, the command is still not recognized and another <code>UnknownCommand</code> is returned.
 Steps 3-5 occurs continuously as long as an unknown command is being supplied or until the user cancels the operation by typing in "cancel".</p>
 </div>
 <div class="paragraph">
-<p>Step 7. The user inputs a valid command. <code>AddressBookParser#checkCommand(String userInput, String prevUnknownCommand)</code> now finds the valid command in the TreeMap. With the latest "prevUnknownCommand" retrieved from the stack, it adds the unknown command and action of the valid command as a key-value pair to the TreeMap and as a new CommandObject to the <code>AddressBook</code> for storage via execution of <code>NewCommand</code> object.</p>
+<p>Step 7. The user inputs a valid command. <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> now finds the valid command in the TreeMap. With the latest "prevUnknownCommand" retrieved from the stack, it adds the unknown command and action of the valid command as a key-value pair to the TreeMap and as a new CommandObject to the <code>TutorAid</code> for storage via execution of <code>NewCommand</code> object.</p>
 </div>
 <div class="paragraph">
-<p>Step 8. <code>NewCommand</code> has a <code>CommandResult</code> with an "unknown" value of false. This will trigger <code>MainWindow#setUnknownFalse()</code> and set the unknown variable in <code>MainWindow</code> to false. Normal commands can then be performed as <code>AddressBookParser#parseCommand(String userInput)</code> will now be called again instead of <code>AddressBookParser#checkCommand(String userInput, String prevUnknownCommand)</code>.</p>
+<p>Step 8. <code>NewCommand</code> has a <code>CommandResult</code> with an "unknown" value of false. This will trigger <code>MainWindow#setUnknownFalse()</code> and set the unknown variable in <code>MainWindow</code> to false. Normal commands can then be performed as <code>TutorAidParser#parseCommand(String userInput)</code> will now be called again instead of <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code>.</p>
 </div>
 <div class="paragraph">
 <p>The following sequence diagrams shows how the learn custom command operation works:</p>
@@ -956,7 +956,7 @@ The lifeline for <code>UnknownCommand</code> should end at the destroy marker (X
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<code>AddressBookParser#checkCommand(String userInput, String prevUnknownCommand)</code> is called instead of the normal <code>AddressBookParser#parseCommand(String userInput)</code> function because the boolean input "isUnknown" in <code>Logic#execute(String userInput, boolean isUnknown)</code> is set to true.
+<code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> is called instead of the normal <code>TutorAidParser#parseCommand(String userInput)</code> function because the boolean input "isUnknown" in <code>Logic#execute(String userInput, boolean isUnknown)</code> is set to true.
 </td>
 </tr>
 </table>
@@ -1507,4 +1507,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-05 05:54:20 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-05 08:56:22 UTC</div></div></div></body></html>
