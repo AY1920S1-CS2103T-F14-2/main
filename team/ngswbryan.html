@@ -70,7 +70,7 @@ The custom shortcut feature required handling command words that are not recogni
 <p>Justification: This feature improves the product significantly because TutorAid has many different features with 37 commands currently and is still growing. It is extremely difficult for the user to remember all these command words without constantly referring to the user guide and will end up keying in command words wrongly based on their own typing habits. Learning these typing habits will help to improve their efficiency in using TutorAid.</p>
 </li>
 <li>
-<p>Implementation: This enhancement alters the flow of command execution in TutorAid. Executing an unknown command that TutorAid does not recognize changes the command execution pathway and sets TutorAid into "learner mode". This is faciliated by the use of a HashMap in the parser which stores a list of all available commands and their actions as key-value pairs(basic commands and previous custom commands loaded from .json file). TutorAid will check against this HashMap to see if the command word exists. If it does not, this command word is saved onto a Stack in the Model component to be retrieved in the next command. If the next command is still unknown, the next command is also added to the Stack. When a valid command that exists in entered, the last unknown command is retrieved from the top on the Stack and is mapped to the action of the aforementioned valid command. This key-value pair is then added to the HashMap and saved into our .json file. TutorAid is then set back into normal mode. The HashMap is also used to generate command suggestions based on the user&#8217;s input.</p>
+<p>Implementation: This enhancement alters the flow of command execution in TutorAid. Executing an unknown command that TutorAid does not recognize changes the command execution pathway and sets TutorAid into "learner mode". This is facilitated by the use of a TreeMap in the parser which stores a list of all available commands and their actions as key-value pairs(basic commands and previous custom commands loaded from .json file). TutorAid will check against this TreeMap to see if the command word exists. If it does not, this command word is saved onto a Stack in the Model component to be retrieved in the next command. If the next command is still unknown, the next command is also added to the Stack. When a valid command that exists in entered, the last unknown command is retrieved from the top on the Stack and is mapped to the action of the aforementioned valid command. This key-value pair is then added to the TreeMap and saved into our .json file. TutorAid is then set back into normal mode. The TreeMap is also used to generate command suggestions based on the user&#8217;s input.</p>
 </li>
 </ul>
 </div>
@@ -94,13 +94,6 @@ The custom shortcut feature required handling command words that are not recogni
 <li>
 <p><strong>Code contributed</strong>: [<a href="https://github.com/AY1920S1-CS2103T-F14-2/main/commits?author=ngswbryan">All commits</a>] [<a href="https://nus-cs2103-ay1920s1.github.io/tp-dashboard/#search=ngswbryan&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2019-09-06&amp;timeframe=commit&amp;mergegroup=false&amp;groupSelect=groupByRepos&amp;breakdown=false">Project Code Dashboard</a>]</p>
 </li>
-</ul>
-</div>
-<div class="paragraph">
-<p>review cde</p>
-</div>
-<div class="ulist">
-<ul>
 <li>
 <p><strong>Other contributions</strong>:</p>
 <div class="ulist">
@@ -180,7 +173,7 @@ The custom shortcut feature required handling command words that are not recogni
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users. (Since undo/redo are simple to understand, there is not much to document here. More details are in the implementation of undo/redo in the Developer Guide)</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -293,6 +286,23 @@ Result of a student can be assigned using this command. e.g. <code>edit 1 r/79</
 <p>List all students in TutorAid.
 Format: <code>list</code></p>
 </div>
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="../images/list.png" alt="list" width="500">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>list</code> command does not take any arguments.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect3">
 <h4 id="find-a-student-find"><a class="link" href="#find-a-student-find">Find a student: 'find'</a></h4>
@@ -380,6 +390,18 @@ Format: <code>list_class CLASSID</code></p>
 <p>Marks attendance of students currently displayed.
 Format: <code>mark_attendance INDEXES</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>mark_attendance</code> increases attendance of all selected students by exactly 1.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -397,6 +419,18 @@ Format: <code>mark_attendance INDEXES</code></p>
 <p>Marks participation of students currently displayed.
 Format: <code>mark_participation INDEXES</code></p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>mark_participation</code> increases participation of all selected students by exactly 1.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -411,7 +445,8 @@ Format: <code>mark_participation INDEXES</code></p>
 <div class="sect3">
 <h4 id="view-serial-absentees-with-defined-threshold-absentees-coming-in-v2-0"><a class="link" href="#view-serial-absentees-with-defined-threshold-absentees-coming-in-v2-0">View serial absentees with defined threshold: 'absentees' [Coming in v2.0]</a></h4>
 <div class="paragraph">
-<p>Displays list of all students who have not met the set threshold in terms of attendance.</p>
+<p>Displays list of all students who have not met the set threshold in terms of attendance.
+Format: <code>absentees THRESHOLD_PERCENTAGE</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -424,9 +459,6 @@ Calculation will be done from start of semester to the current date.
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>Format: <code>absentees THRESHOLD_PERCENTAGE</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -442,7 +474,8 @@ Calculation will be done from start of semester to the current date.
 <div class="sect3">
 <h4 id="check-on-status-of-student-check_status-coming-in-v2-0"><a class="link" href="#check-on-status-of-student-check_status-coming-in-v2-0">Check on status of student: 'check_status' [Coming in v2.0]</a></h4>
 <div class="paragraph">
-<p>Checks on status of students currently displayed in the list by sending them an e-mail enquiring on their status.</p>
+<p>Checks on status of students currently displayed in the list by sending them an e-mail enquiring on their status.
+Format: <code>check_status</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -456,15 +489,13 @@ To be used in conjunction with <code>absentees</code>. A preset generic email wi
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>Format: <code>check_status</code></p>
-</div>
 </div>
 <div class="sect3">
 <h4 id="upload-a-picture-of-the-student-upload_pic-coming-in-v2-0"><a class="link" href="#upload-a-picture-of-the-student-upload_pic-coming-in-v2-0">Upload a picture of the student: 'upload_pic' [Coming in v2.0]</a></h4>
 <div class="paragraph">
 <p>Launches a separate window where the user can either choose an image file on his computer or take a picture with his webcam.
-The picture will be assigned to the indicated student and be displayed in TutorAid.</p>
+The picture will be assigned to the indicated student and be displayed in TutorAid.
+Format: <code>upload_pic INDEX</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -477,9 +508,6 @@ Replaces current picture, if any.
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>Format: <code>upload_pic INDEX</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -497,6 +525,11 @@ Replaces current picture, if any.
 <div class="paragraph">
 <p>Accidentally typing in a wrong/unknown command laucnhes TutorAid into learner mode. You can choose to learn this wrong command to execute an existing
 command by typing in its command word. Alternatively, you can type <code>cancel</code> to revert back to normal operations.</p>
+</div>
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="../images/customCommandError.png" alt="customCommandError" width="500">
+</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -577,7 +610,7 @@ commands and previous existing custom commands will be added to its TreeMap.</p>
 the TreeMap does not contain the keyword "plus".</p>
 </div>
 <div class="paragraph">
-<p>Step 3. The <code>UnknownCommand</code> is executed in <code>LogicManger</code> and "plus" is saved on a Stack in <code>ModelManager</code>. Subsequently, the <code>CommandResult</code> is passed to <code>MainWindow</code> to display the corresponding text on the GUI. The <code>CommandResult</code> triggers <code>CommandResult#isUnknown()</code> and sets the "unknown" variable in <code>MainWindow</code>
+<p>Step 3. The <code>UnknownCommand</code> is executed by <code>Logic</code> and "plus" is saved on a Stack in the <code>Model</code> component. Subsequently, the <code>CommandResult</code> is passed to <code>MainWindow</code> to display the corresponding text on the GUI. The <code>CommandResult</code> triggers <code>CommandResult#isUnknown()</code> and sets the "unknown" variable in <code>MainWindow</code>
 to true.</p>
 </div>
 <div class="admonitionblock note">
@@ -593,7 +626,19 @@ to true.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. TutorAid prompts the user to type in a valid command to map the unknown command to. The user types in another wrong command that is not recognised. This time, he enters "ad" instead of "add". <code>LogicManager#execute(String userInput, boolean isUnknown)</code> now calls <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> as <code>MainWindow</code> passed in a value of "true" to the execute command.</p>
+<p>Step 4. TutorAid prompts the user to type in a valid command to map the unknown command to. The user types in another wrong command that is not recognised. This time, he enters "ad" instead of "add". <code>Logic#execute(String userInput, boolean isUnknown)</code> now calls <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> as <code>MainWindow</code> passes in a value of <code>true</code> to the <code>isUnknown</code> boolean variable of the execute command.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>prevUnknownCommand</code> variable is retrieved from executing a <code>peek()</code> command on the <code>savedCommand</code> stack in <code>Model</code>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Step 5. In <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code>, the command is still not recognized and another <code>UnknownCommand</code> is returned.
@@ -696,4 +741,4 @@ do not need to waste time populating a TreeMap.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 14:36:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 17:18:13 UTC</div></div></div></body></html>

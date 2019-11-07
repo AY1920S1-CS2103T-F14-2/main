@@ -792,7 +792,7 @@ commands and previous existing custom commands will be added to its TreeMap.</p>
 the TreeMap does not contain the keyword "plus".</p>
 </div>
 <div class="paragraph">
-<p>Step 3. The <code>UnknownCommand</code> is executed in <code>LogicManger</code> and "plus" is saved on a Stack in <code>ModelManager</code>. Subsequently, the <code>CommandResult</code> is passed to <code>MainWindow</code> to display the corresponding text on the GUI. The <code>CommandResult</code> triggers <code>CommandResult#isUnknown()</code> and sets the "unknown" variable in <code>MainWindow</code>
+<p>Step 3. The <code>UnknownCommand</code> is executed by <code>Logic</code> and "plus" is saved on a Stack in the <code>Model</code> component. Subsequently, the <code>CommandResult</code> is passed to <code>MainWindow</code> to display the corresponding text on the GUI. The <code>CommandResult</code> triggers <code>CommandResult#isUnknown()</code> and sets the "unknown" variable in <code>MainWindow</code>
 to true.</p>
 </div>
 <div class="admonitionblock note">
@@ -808,7 +808,19 @@ to true.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. TutorAid prompts the user to type in a valid command to map the unknown command to. The user types in another wrong command that is not recognised. This time, he enters "ad" instead of "add". <code>LogicManager#execute(String userInput, boolean isUnknown)</code> now calls <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> as <code>MainWindow</code> passed in a value of "true" to the execute command.</p>
+<p>Step 4. TutorAid prompts the user to type in a valid command to map the unknown command to. The user types in another wrong command that is not recognised. This time, he enters "ad" instead of "add". <code>Logic#execute(String userInput, boolean isUnknown)</code> now calls <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> as <code>MainWindow</code> passes in a value of <code>true</code> to the <code>isUnknown</code> boolean variable of the execute command.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>prevUnknownCommand</code> variable is retrieved from executing a <code>peek()</code> command on the <code>savedCommand</code> stack in <code>Model</code>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Step 5. In <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code>, the command is still not recognized and another <code>UnknownCommand</code> is returned.
@@ -1620,4 +1632,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 14:36:49 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-07 17:18:13 UTC</div></div></div></body></html>
