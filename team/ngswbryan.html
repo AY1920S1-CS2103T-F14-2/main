@@ -12,10 +12,7 @@
 <p>[<a href="https://github.com/ngswbryan">github</a>] [<a href="https://www.linkedin.com/in/bryan-ng-80777b167/">linkedin</a>]</p>
 </div>
 <div class="paragraph">
-<p>Hi! My name is Bryan.</p>
-</div>
-<div class="paragraph">
-<p>I&#8217;m currently a second year SoC (School of Computing) student in NUS majoring in Computer Science.</p>
+<p>Hi! My name is Bryan. I&#8217;m currently a second year SoC (School of Computing) student in NUS majoring in Computer Science.</p>
 </div>
 <div class="paragraph">
 <p>This portfolio page aims to document the contributions I have made in the development of TutorAid, which is a project that my team and I completed for the module CS2103T. This project has definitely been greatly beneficial to my own learning and self-development in becoming a more competent software engineer.</p>
@@ -39,7 +36,7 @@
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/Ui.png" alt="Ui" width="602">
+<img src="../images/Ui.png" alt="Ui" width="500">
 </div>
 <div class="title">Figure 1. A view of TutorAid</div>
 </div>
@@ -60,7 +57,7 @@ The custom shortcut feature required handling command words that are not recogni
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: Added <strong>the learning of wrong commands into custom commands</strong></p>
+<p><strong>Largest enhancement</strong>: Added <strong>the learning of wrong commands into custom commands</strong></p>
 <div class="ulist">
 <ul>
 <li>
@@ -71,22 +68,6 @@ The custom shortcut feature required handling command words that are not recogni
 </li>
 <li>
 <p>Implementation: This enhancement alters the flow of command execution in TutorAid. Executing an unknown command that TutorAid does not recognize changes the command execution pathway and sets TutorAid into "learner mode". This is facilitated by the use of a TreeMap in the parser which stores a list of all available commands and their actions as key-value pairs (basic commands and previous custom commands loaded from .json file). TutorAid will check against this TreeMap to see if the command word exists. If it does not, this command word is saved onto a Stack in the Model component to be retrieved in the next command. If the next command is still unknown, the next command is also added to the Stack. When a valid command that exists in entered, the last unknown command is retrieved from the top on the Stack and is mapped to the action of the aforementioned valid command. This key-value pair is then added to the TreeMap and saved into our .json file. TutorAid is then set back into normal mode. The TreeMap is also used to generate command suggestions based on the user&#8217;s input.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Minor enhancement</strong>: Added <strong>the Student Profile feature</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>What it does: Allows the user to add students and track all their vital statistics. Pictures can be assigned to individual profiles as well.</p>
-</li>
-<li>
-<p>Justification: Since TutorAid is meant to help tutors, having a birds eye view of all their students in all the modules they teach is extremely essential so that they can carry out their job efficiently.</p>
-</li>
-<li>
-<p>Implementation: The person class in AB3 was remodelled to resemble a student (with Results, Attendance, Participation etc). Additional commands were also implemented such as mass attendance and participation marking and filtering by class.</p>
 </li>
 </ul>
 </div>
@@ -187,19 +168,7 @@ Format: <code>edit INDEX n/NAME pic/PICTURE r/RESULT att/ATTENDANCE part/PARTICI
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-User does not have to edit all fields of a Student. He can just edit whatever needs to be changed (see example).
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Result of a student can be assigned using this command. e.g. <code>edit 1 r/79</code>
+User does not have to edit all fields of a Student. He can just edit whatever needs to be changed (see example). As such, result of a student can be assigned using this command. e.g. <code>edit 1 r/79</code>
 </td>
 </tr>
 </table>
@@ -223,7 +192,7 @@ Format: <code>list</code></p>
 </div>
 <div class="imageblock" style="text-align: left">
 <div class="content">
-<img src="../images/list.png" alt="list" width="600">
+<img src="../images/list.png" alt="list" width="500">
 </div>
 </div>
 <div class="admonitionblock note">
@@ -264,23 +233,6 @@ The picture specified must be in either .jpg, .png or .bmp format. It must also 
 <ul>
 <li>
 <p><code>set_pic 2 pic/Tom.jpg</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="assign-students-to-a-class-assign_class"><a class="link" href="#assign-students-to-a-class-assign_class">Assign students to a class: 'assign_class'</a></h4>
-<div class="paragraph">
-<p>Assigns a class to a student or a group of students.
-Format: <code>assign_class INDEXES c/CLASSID</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>assign_class 1,2,3 c/CS2030</code></p>
 </li>
 </ul>
 </div>
@@ -371,7 +323,7 @@ command by typing in its command word. Alternatively, you can type <code>cancel<
 </div>
 <div class="imageblock" style="text-align: left">
 <div class="content">
-<img src="../images/customCommandError.png" alt="customCommandError" width="600">
+<img src="../images/customCommandError.png" alt="customCommandError" width="500">
 </div>
 </div>
 <div class="admonitionblock note">
@@ -591,4 +543,4 @@ do not need to waste time populating a TreeMap.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 10:13:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 10:31:58 UTC</div></div></div></body></html>
