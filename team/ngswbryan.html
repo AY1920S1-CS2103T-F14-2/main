@@ -174,68 +174,6 @@ The custom shortcut feature required handling command words that are not recogni
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="student-list"><a class="link" href="#student-list">Student List</a></h3>
-<div class="sect3">
-<h4 id="add-a-student-add"><a class="link" href="#add-a-student-add">Add a student: 'add'</a></h4>
-<div class="paragraph">
-<p>Adds a student to TutorAid.
-Format: <code>add n/NAME c/CLASSID</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-You can add multiple students at a time by separating their names with a single ','.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Please also note that you can&#8217;t add students with the exact same name in the same class.
-e.g. You can add "Tom" in CS2030 and CS2040 but not 2 "Tom"s in CS2030. If there are students with the same
-first name in the class, please add their last name as well.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>add n/Caesar,James,Todd c/CS2030</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="delete-a-student-delete"><a class="link" href="#delete-a-student-delete">Delete a student: 'delete'</a></h4>
-<div class="paragraph">
-<p>Deletes a student from TutorAid.
-Format: <code>delete INDEX</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code> (deletes the first student.)</p>
-</li>
-</ul>
-</div>
-</div>
 <div class="sect3">
 <h4 id="edit-a-student-edit"><a class="link" href="#edit-a-student-edit">Edit a student: 'edit'</a></h4>
 <div class="paragraph">
@@ -302,23 +240,6 @@ Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="find-a-student-find"><a class="link" href="#find-a-student-find">Find a student: 'find'</a></h4>
-<div class="paragraph">
-<p>Find a student matching the supplied name.
-Format: <code>find NAME</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find Tom</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
 <h4 id="add-a-picture-to-a-student-set_pic"><a class="link" href="#add-a-picture-to-a-student-set_pic">Add a picture to a student: 'set_pic'</a></h4>
 <div class="paragraph">
 <p>Adds a picture to display next to the student card.
@@ -360,81 +281,6 @@ Format: <code>assign_class INDEXES c/CLASSID</code></p>
 <ul>
 <li>
 <p><code>assign_class 1,2,3 c/CS2030</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="list-all-students-in-a-class-list_class"><a class="link" href="#list-all-students-in-a-class-list_class">List all students in a class: 'list_class'</a></h4>
-<div class="paragraph">
-<p>Lists all students in supplied class name.
-Format: <code>list_class CLASSID</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list_class CS2030</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="mark-attendance-of-students-mark_attendance"><a class="link" href="#mark-attendance-of-students-mark_attendance">Mark attendance of students: 'mark_attendance'</a></h4>
-<div class="paragraph">
-<p>Marks attendance of students currently displayed.
-Format: <code>mark_attendance INDEXES</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<code>mark_attendance</code> increases attendance of all selected students by exactly 1.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>mark_attendance 1,2,3</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="mark-participation-of-students-mark_participation"><a class="link" href="#mark-participation-of-students-mark_participation">Mark participation of students: 'mark_participation'</a></h4>
-<div class="paragraph">
-<p>Marks participation of students currently displayed.
-Format: <code>mark_participation INDEXES</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<code>mark_participation</code> increases participation of all selected students by exactly 1.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>mark_participation 1,2,3</code></p>
 </li>
 </ul>
 </div>
@@ -517,7 +363,6 @@ Replaces current picture, if any.
 </ul>
 </div>
 </div>
-</div>
 <div class="sect2">
 <h3 id="learn-wrong-commands"><a class="link" href="#learn-wrong-commands">Learn wrong commands</a></h3>
 <div class="paragraph">
@@ -551,23 +396,6 @@ You can&#8217;t learn a full command (e.g. <code>add n/Caesar c/CS1231</code>). 
 to use <code>ad</code> as an <code>add</code> command in the future.</p>
 </li>
 </ul>
-</div>
-<div class="sect3">
-<h4 id="delete-a-custom-command-deletecustomcommand"><a class="link" href="#delete-a-custom-command-deletecustomcommand">Delete a custom command: 'deleteCustomCommand'</a></h4>
-<div class="paragraph">
-<p>Deletes a custom command you previously added. This custom command will be forgotten by TutorAid and will not be able to be used anymore.
-Format: <code>deleteCustomCommand CUSTOMCOMMAND</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>deleteCustomCommand insertPreviouslyAddedCommandHere</code></p>
-</li>
-</ul>
-</div>
 </div>
 </div>
 </div>
@@ -763,4 +591,4 @@ do not need to waste time populating a TreeMap.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 09:54:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 10:07:40 UTC</div></div></div></body></html>
