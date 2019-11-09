@@ -752,57 +752,40 @@ while using TutorAid by adapting to their typing style so that they do not have 
 built in commands. This is done by having TutorAid trigger in and out of "learner" mode.</p>
 </div>
 <div class="paragraph">
-<p>A <code>CommandResult</code> object now has an added boolean "unknown" instance variable to indicate if the command entered is
-an unknown command. Along with this, TutorAid shifts between "learner" mode and normal mode by the following implementation:</p>
+<p>A <code>CommandResult</code> object now has an added boolean <code>isUnknown</code> instance variable to indicate if the command entered is
+an unknown command. Using this, TutorAid shifts between "learner" mode and normal mode:</p>
 </div>
-<div class="listingblock">
+<div class="imageblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MainWindow</span> <span class="directive">extends</span> UiPart&lt;Stage&gt; {
-    <span class="directive">private</span> <span class="type">boolean</span> unknown;
-
-    <span class="directive">private</span> CommandResult executeCommand(<span class="predefined-type">String</span> commandText) <span class="directive">throws</span> CommandException, <span class="exception">ParseException</span> {
-        <span class="keyword">try</span> {
-            CommandResult commandResult = logic.execute(commandText, <span class="local-variable">this</span>.unknown);
-            <span class="comment">//currently in &quot;learner&quot; mode and a known command is entered. TutorAid goes back to normal mode.</span>
-            <span class="keyword">if</span> (<span class="local-variable">this</span>.unknown) {
-                <span class="keyword">if</span> (!commandResult.isUnknown()) {
-                    <span class="comment">//unknown instance variable set to false</span>
-                    setUnknownFalse();
-                }
-            }
-            <span class="comment">//unknown command entered, TutorAid goes into &quot;learner&quot; mode</span>
-            <span class="keyword">if</span> (commandResult.isUnknown()) {
-                <span class="comment">//unknown instance variable set to true</span>
-                setUnknownTrue();
-                }
-            <span class="comment">//..other logic</span>
-            } <span class="keyword">catch</span> (CommandException | <span class="exception">ParseException</span> e) {
-            <span class="comment">//..catch logic</span>
-            }
-    }
-}</code></pre>
+<img src="images/changeLearner.png" alt="changeLearner" width="800">
 </div>
+<div class="title">Figure 12. How TutorAid goes from normal to "learner" mode</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/changeNormal.png" alt="changeNormal" width="800">
+</div>
+<div class="title">Figure 13. How TutorAid goes from "learner" to normal mode</div>
+</div>
+<div class="paragraph">
+<p>The effect of being in "learner" mode results in the <code>TutorAidParser</code> using different methods to parse the command. This will be elaborated on in the sample use scenario below.</p>
 </div>
 <div class="paragraph">
 <p>While in "learner" mode, TutorAid can map wrong commands to the actions of known commands. These wrong/custom command keywords and their mappings are stored locally in TutorAid.json with
 the help of <code>JsonAdaptedCommand</code>.</p>
 </div>
 <div class="paragraph">
-<p>The whole mechanism is largely facilitated by <code>TutorAidParser</code> as well which has been modified to suit our needs. A TreeMap
-is now being used in the process of parsing commands.</p>
-</div>
-<div class="paragraph">
-<p>New command classes such as <code>UnknownCommand</code>, <code>NewCommand</code> and <code>CancelCommand</code> were also created.</p>
+<p>A TreeMap is now being used in the process of parsing commands. New command classes such as <code>UnknownCommand</code>, <code>NewCommand</code> and <code>CancelCommand</code> were also created.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>TutorAidParser#checkCommand()</code>&#8201;&#8212;&#8201;Separate "parser" functions for unknown command operations.
+<p><code>TutorAidParser#checkCommand</code>&#8201;&#8212;&#8201;Separate "parser" functions for unknown command operations.
 Checks if the command a user wants to map his unknown command to is valid and exists or if the user wishes
 to exit the operation.</p>
 </li>
 <li>
-<p><code>TutorAidParser#initialiseBasicCommands()</code>&#8201;&#8212;&#8201;Initialises the functionality of the <code>TutorAidParser</code> by adding
+<p><code>TutorAidParser#initialiseBasicCommands</code>&#8201;&#8212;&#8201;Initialises the functionality of the <code>TutorAidParser</code> by adding
 the basic command mappings to its TreeMap.</p>
 </li>
 </ul>
@@ -812,19 +795,17 @@ the basic command mappings to its TreeMap.</p>
 </div>
 <div class="paragraph">
 <p>Step 1. The user launches the application for the first time. The <code>TutorAidParser</code> will be initialized and all basic
-commands and previous existing custom commands will be added to its TreeMap.</p>
+commands and previous existing custom commands will be added to its TreeMap via <code>TutorAidParser#initialiseBasicCommands</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user enters "plus" instead of "add". <code>TutorAidParser</code> does a lookup in its TreeMap and in the <code>TutorAidParser#parseCommand(String userInput)</code> function and returns a new <code>UnknownCommand</code> since
+<p>Step 2. The user enters "plus" instead of "add". <code>TutorAidParser</code> does a lookup in its TreeMap in the <code>TutorAidParser#parseCommand(String userInput)</code> method and returns a new <code>UnknownCommand</code> since
 the TreeMap does not contain the keyword "plus".</p>
 </div>
 <div class="paragraph">
-<p>Step 3. The <code>UnknownCommand</code> is executed by <code>Logic</code> and "plus" is saved on <code>savedCommand</code> in the <code>Model</code> component. Subsequently, the <code>CommandResult</code> is passed to <code>MainWindow</code> to display the corresponding text on the GUI. The <code>CommandResult</code> triggers <code>MainWindow#setUnknownTrue()</code> and sets TutorAid into "learner" mode via the earlier explained implementation.</p>
+<p>Step 3. The <code>UnknownCommand</code> is executed by <code>Logic</code> and "plus" is saved on <code>savedCommand</code> in the <code>Model</code> component. Subsequently, the <code>CommandResult</code> is passed to <code>MainWindow</code> to display the corresponding text on the GUI. This <code>CommandResult</code> triggers TutorAid into "learner" mode via the earlier explained implementation.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/customStarting.png" alt="customStarting" width="800">
-</div>
+<div class="paragraph">
+<p>Step 4. TutorAid prompts the user to type in a valid command to map the unknown command to. The user types in another wrong command that is not recognised. This time, he enters "ad" instead of "add". Since TutorAid is in "learner" mode, the method <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> is now called instead of <code>TutorAidParser#parseCommand(String userInput)</code>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -833,14 +814,11 @@ the TreeMap does not contain the keyword "plus".</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<code>Logic#execute(String userInput)</code> has been changed to <code>Logic#execute(String userInput, boolean isUnknown)</code> to account for different execution pathways of unknown and known commands.
+Logic#execute(String userInput) has been changed to Logic#execute(String userInput, boolean isUnknown) to account for different execution pathways when in normal and "learner" mode.
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>Step 4. TutorAid prompts the user to type in a valid command to map the unknown command to. The user types in another wrong command that is not recognised. This time, he enters "ad" instead of "add". Since <code>isUnknown</code> is now passed into <code>Logic#execute(String userInput, boolean isUnknown)</code> with a value of <code>true</code>, the method <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> is now called instead of <code>TutorAidParser#parseCommand(String userInput)</code>.</p>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -848,7 +826,7 @@ the TreeMap does not contain the keyword "plus".</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<code>prevUnknownCommand</code> variable is retrieved from executing a <code>peek()</code> command on the <code>savedCommand</code> stack in <code>Model</code>
+<code>prevUnknownCommand</code> variable is retrieved from executing a <code>peek()</code> command on the <code>savedCommand</code> stack in <code>Model</code>.
 </td>
 </tr>
 </table>
@@ -857,21 +835,11 @@ the TreeMap does not contain the keyword "plus".</p>
 <p>Step 5. In <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code>, the command is still not recognized and another <code>UnknownCommand</code> is returned and "ad" is also saved.
 Steps 3-5 occurs continuously as long as an unknown command is being supplied or until the user cancels the operation by typing in "cancel".</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="images/customRepeat.png" alt="customRepeat" width="800">
-</div>
+<div class="paragraph">
+<p>Step 6. The user inputs a valid command. <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> now finds the valid command in the TreeMap. With the latest <code>prevUnknownCommand</code> retrieved from the stack, the unknown command and action of the valid command is added as a key-value pair to the TreeMap and a <code>NewCommand</code> object is returned and executed to store this new command mapping with the help of <code>Model</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 6. The user inputs a valid command. <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> now finds the valid command in the TreeMap. With the latest <code>prevUnknownCommand</code> retrieved from the stack, the unknown command and action of the valid command is added as a key-value pair to the TreeMap and a <code>NewCommand</code> object is returned and executed to store this new mapping with the help of <code>Model</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/customEnd.png" alt="customEnd" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 7. <code>NewCommand</code> has a <code>CommandResult</code> with an "unknown" value of false. This will trigger <code>MainWindow#setUnknownFalse()</code> and TutorAid goes back to normal mode. Normal commands can then be performed as <code>TutorAidParser#parseCommand(String userInput)</code> will now be called again instead of <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code>.</p>
+<p>Step 7. <code>NewCommand</code> has a <code>CommandResult</code> with an <code>isUnknown</code> value of <code>false</code>. This will trigger TutorAid back to normal mode. Normal commands can then be performed as <code>TutorAidParser#parseCommand(String userInput)</code> will now be called again instead of <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code>.</p>
 </div>
 <div class="paragraph">
 <p>The following sequence diagrams shows how the learn custom command operation works:</p>
@@ -909,7 +877,7 @@ The lifeline for <code>UnknownCommand</code> should end at the destroy marker (X
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/LearnCustomCommandsActivityDiagram.png" alt="LearnCustomCommandsActivityDiagram">
+<img src="images/LearnCustomCommandsActivityDiagram.png" alt="LearnCustomCommandsActivityDiagram" width="800">
 </div>
 </div>
 </div>
@@ -1661,4 +1629,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-08 15:21:39 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-09 09:43:58 UTC</div></div></div></body></html>
