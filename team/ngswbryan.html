@@ -15,7 +15,7 @@
 <p>Hi! My name is Bryan. I&#8217;m currently a second year SoC (School of Computing) student in NUS majoring in Computer Science.</p>
 </div>
 <div class="paragraph">
-<p>This portfolio page aims to document the contributions I have made in the development of TutorAid, which is a project that my team of 4 Computer Science students and I completed for the module CS2103T. This project has definitely been greatly beneficial to my own learning and self-development in becoming a more competent software engineer.</p>
+<p>This portfolio page aims to document the contributions I have made in the development of TutorAid, which is a project that my team of 4 other Computer Science students and I completed for the module CS2103T. This project has definitely been greatly beneficial to my own learning and self-development in becoming a more competent software engineer.</p>
 </div>
 </div>
 </div>
@@ -54,7 +54,7 @@ The custom commands feature required handling command words that are not recogni
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below is a brief write-up of my implemented features and other helpful contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below is a brief write-up of my biggest implemented feature and other helpful contributions to the project.</em></p></td>
 </tr>
 </tbody>
 </table>
@@ -68,26 +68,10 @@ The custom commands feature required handling command words that are not recogni
 <p>What it does: It gives the user the ability to learn commands which they have typed wrongly into TutorAid as a basic command. These custom commands will be saved and pop up as suggestions in the future.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because TutorAid has many different features with 37 commands currently and is still growing. It is extremely difficult for the user to remember all these command words without constantly referring to the user guide. They are highly likely to end up keying in command words wrongly based on their own typing habits. Learning these typing habits will help to improve their efficiency in using TutorAid.</p>
+<p>Justification: This feature improves the product significantly because TutorAid has many features with 43 different commands currently and is still growing. It is extremely difficult for the user to remember all these command words without constantly referring to the user guide. They are highly likely to end up keying in command words wrongly based on their own typing habits. Learning these typing habits will help to improve their efficiency in using TutorAid.</p>
 </li>
 <li>
-<p>Implementation: This enhancement alters the flow of command execution in TutorAid. Executing an unknown command that TutorAid does not recognize changes the command execution pathway and sets TutorAid into "learner mode". This is facilitated by the use of a TreeMap in the parser which stores a list of all available commands and their actions as key-value pairs (basic commands and previous custom commands loaded from .json file). TutorAid will check against this TreeMap to see if the command word exists. If it does not, this command word is saved onto a Stack in the Model component to be retrieved in the next command. If the next command is still unknown, the next command is also added to the Stack. When a valid command that exists in entered, the last unknown command is retrieved from the top on the Stack and is mapped to the action of the aforementioned valid command. This key-value pair is then added to the TreeMap and saved into our .json file. TutorAid is then set back into normal mode. The TreeMap is also used to generate command suggestions based on the user&#8217;s input.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Minor enhancement</strong>: Added <strong>the Student Profile feature</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>What it does: It allows the user to add students along with the vital information required about them to a list for easy viewing and management.</p>
-</li>
-<li>
-<p>Justification: TAs have too many things to remember about individual students like their participation, attendance and results. Having an organized bird&#8217;s eye view of everything in one place helps to reduce the time wasted in retrieving information from many different places.</p>
-</li>
-<li>
-<p>Implementation: This feature was implemented by refactoring and enhancing the existing Person class with additional functionality such as setting a picture to a student profile.</p>
+<p>Implementation: This enhancement alters the flow of command execution in TutorAid. Executing an unknown command that TutorAid does not recognize changes the command execution pathway and sets TutorAid into "learner mode". Command parsing is now facilitated by the use of a TreeMap which stores a list of all available commands and their actions as key-value pairs. During execution, TutorAid will check against this TreeMap to see if the input command word exists. If it does not, this input command word is saved onto a Stack in the Model component to be retrieved in the next command. If the next command is still unknown, it is also added to the Stack. When a valid command that exists is entered, the last unknown command is retrieved from the top on the Stack and is mapped to the action of the aforementioned valid command. This key-value pair is then added to the TreeMap and saved into our .json file. TutorAid is then set back into normal mode. The TreeMap is also used to generate command suggestions based on the user&#8217;s input.</p>
 </li>
 </ul>
 </div>
@@ -212,7 +196,7 @@ This feature helps you map <code>plus</code> to <code>add</code> so you no longe
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-You can also choose to discard the wrong command at this stage and carry on with normal operations. If you do not want to map <code>plus</code> to <code>add</code>. Just type <code>cancel</code>.
+You can also choose to discard the wrong command at this stage and carry on with normal operations if you do not want to map <code>plus</code> to <code>add</code>. Just type <code>cancel</code>.
 </td>
 </tr>
 </table>
@@ -346,17 +330,17 @@ the help of <code>JsonAdaptedCommand</code> and the fact that commands are now m
 </div>
 <div class="paragraph">
 <p>Step 1. The user launches the application for the first time. The <code>TutorAidParser</code> will be initialized and all basic
-commands and previous existing custom commands will be added to its TreeMap via <code>TutorAidParser#initialiseBasicCommands</code>.</p>
+commands and previous existing custom commands will be added to its TreeMap via <code>TutorAidParser#initialiseBasicCommands()</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user enters "plus" instead of "add". <code>TutorAidParser</code> does a lookup in its TreeMap in the <code>TutorAidParser#parseCommand(String userInput)</code> method and returns a new <code>UnknownCommand</code> since
-the TreeMap does not contain the keyword "plus".</p>
+<p>Step 2. The user enters <code>plus</code> instead of <code>add</code>. <code>TutorAidParser</code> does a lookup in its TreeMap in the <code>TutorAidParser#parseCommand(String userInput)</code> method and returns a new <code>UnknownCommand</code> since
+the TreeMap does not contain the keyword <code>plus</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 3. The <code>UnknownCommand</code> is executed by <code>Logic</code> and "plus" is saved on <code>savedCommand</code> in the <code>Model</code> component. Subsequently, the <code>CommandResult</code> is passed to <code>MainWindow</code> to display the corresponding text on the GUI. This <code>CommandResult</code> triggers TutorAid into "learner" mode via the earlier explained implementation.</p>
+<p>Step 3. The <code>UnknownCommand</code> is executed by <code>Logic</code> and <code>plus</code> is saved on the <code>savedCommand</code> Stack in the <code>Model</code> component. Subsequently, the <code>CommandResult</code> is passed to <code>MainWindow</code> to display the corresponding text on the GUI. This <code>CommandResult</code> triggers TutorAid into "learner" mode via the earlier explained implementation.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. TutorAid prompts the user to type in a valid command to map the unknown command to. The user types in another wrong command that is not recognised. This time, he enters "ad" instead of "add". Since TutorAid is in "learner" mode, the method <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> is now called instead of <code>TutorAidParser#parseCommand(String userInput)</code>. Note that <code>prevUnknownCommand</code> is the last saved command retrieved from the <code>savedCommand</code> stack.</p>
+<p>Step 4. TutorAid prompts the user to type in a valid command to map the unknown command to. The user types in another wrong command that is not recognised. This time, he enters <code>ad</code> instead of <code>add</code>. Since TutorAid is in "learner" mode, the method <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> is now called instead of <code>TutorAidParser#parseCommand(String userInput)</code>. Note that <code>prevUnknownCommand</code> is the last saved command retrieved from the <code>savedCommand</code> Stack.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -371,11 +355,11 @@ Logic#execute(String userInput) has been changed to Logic#execute(String userInp
 </table>
 </div>
 <div class="paragraph">
-<p>Step 5. In <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code>, the command is still not recognized and another <code>UnknownCommand</code> is returned and "ad" is also saved.
-Steps 3-5 occurs continuously as long as an unknown command is being supplied or until the user cancels the operation by typing in "cancel".</p>
+<p>Step 5. In <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code>, the command is still not recognized and another <code>UnknownCommand</code> is returned and <code>ad</code> is also saved.
+Steps 3-5 occurs continuously as long as an unknown command is being supplied or until the user cancels the operation by typing in <code>cancel</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 6. The user inputs a valid command. <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> now finds the valid command in the TreeMap. With the latest <code>prevUnknownCommand</code> retrieved from the stack, the unknown command and action of the valid command is added as a key-value pair to the TreeMap and a <code>NewCommand</code> object is returned and executed to store this new command mapping with the help of <code>Model</code>.</p>
+<p>Step 6. The user inputs a valid command. <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> now finds the valid command in the TreeMap. With the latest <code>prevUnknownCommand</code> retrieved from the Stack, the unknown command and action of the valid command is added as a key-value pair to the TreeMap and a <code>NewCommand</code> object is returned and executed to store this new command mapping with the help of <code>Model</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 7. <code>NewCommand</code> has a <code>CommandResult</code> with an <code>isUnknown</code> value of <code>false</code>. This will trigger TutorAid back to normal mode. Normal commands can then be performed as <code>TutorAidParser#parseCommand(String userInput)</code> will now be called again instead of <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code>.</p>
@@ -427,7 +411,7 @@ The lifeline for <code>UnknownCommand</code> should end at the destroy marker (X
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Add all CommandObject objects in the ObservableList&lt;CommandObject&gt; into a TreeMap.</p>
+<p><strong>Alternative 1 (current choice):</strong> Add all <code>CommandObject</code> objects in the <code>ObservableList&lt;CommandObject&gt;</code> into a TreeMap.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -440,7 +424,7 @@ The lifeline for <code>UnknownCommand</code> should end at the destroy marker (X
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Iterate through the ObservableList&lt;CommandObject&gt; to check if the command exists.</p>
+<p><strong>Alternative 2:</strong> Iterate through the <code>ObservableList&lt;CommandObject&gt;</code> to check if the command exists.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -459,4 +443,4 @@ do not need to waste time populating a TreeMap.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 16:12:43 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 16:41:18 UTC</div></div></div></body></html>

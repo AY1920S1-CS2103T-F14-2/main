@@ -1085,17 +1085,17 @@ the help of <code>JsonAdaptedCommand</code> and the fact that commands are now m
 </div>
 <div class="paragraph">
 <p>Step 1. The user launches the application for the first time. The <code>TutorAidParser</code> will be initialized and all basic
-commands and previous existing custom commands will be added to its TreeMap via <code>TutorAidParser#initialiseBasicCommands</code>.</p>
+commands and previous existing custom commands will be added to its TreeMap via <code>TutorAidParser#initialiseBasicCommands()</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 2. The user enters "plus" instead of "add". <code>TutorAidParser</code> does a lookup in its TreeMap in the <code>TutorAidParser#parseCommand(String userInput)</code> method and returns a new <code>UnknownCommand</code> since
-the TreeMap does not contain the keyword "plus".</p>
+<p>Step 2. The user enters <code>plus</code> instead of <code>add</code>. <code>TutorAidParser</code> does a lookup in its TreeMap in the <code>TutorAidParser#parseCommand(String userInput)</code> method and returns a new <code>UnknownCommand</code> since
+the TreeMap does not contain the keyword <code>plus</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 3. The <code>UnknownCommand</code> is executed by <code>Logic</code> and "plus" is saved on <code>savedCommand</code> in the <code>Model</code> component. Subsequently, the <code>CommandResult</code> is passed to <code>MainWindow</code> to display the corresponding text on the GUI. This <code>CommandResult</code> triggers TutorAid into "learner" mode via the earlier explained implementation.</p>
+<p>Step 3. The <code>UnknownCommand</code> is executed by <code>Logic</code> and <code>plus</code> is saved on the <code>savedCommand</code> Stack in the <code>Model</code> component. Subsequently, the <code>CommandResult</code> is passed to <code>MainWindow</code> to display the corresponding text on the GUI. This <code>CommandResult</code> triggers TutorAid into "learner" mode via the earlier explained implementation.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. TutorAid prompts the user to type in a valid command to map the unknown command to. The user types in another wrong command that is not recognised. This time, he enters "ad" instead of "add". Since TutorAid is in "learner" mode, the method <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> is now called instead of <code>TutorAidParser#parseCommand(String userInput)</code>. Note that <code>prevUnknownCommand</code> is the last saved command retrieved from the <code>savedCommand</code> stack.</p>
+<p>Step 4. TutorAid prompts the user to type in a valid command to map the unknown command to. The user types in another wrong command that is not recognised. This time, he enters <code>ad</code> instead of <code>add</code>. Since TutorAid is in "learner" mode, the method <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> is now called instead of <code>TutorAidParser#parseCommand(String userInput)</code>. Note that <code>prevUnknownCommand</code> is the last saved command retrieved from the <code>savedCommand</code> Stack.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1110,11 +1110,11 @@ Logic#execute(String userInput) has been changed to Logic#execute(String userInp
 </table>
 </div>
 <div class="paragraph">
-<p>Step 5. In <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code>, the command is still not recognized and another <code>UnknownCommand</code> is returned and "ad" is also saved.
-Steps 3-5 occurs continuously as long as an unknown command is being supplied or until the user cancels the operation by typing in "cancel".</p>
+<p>Step 5. In <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code>, the command is still not recognized and another <code>UnknownCommand</code> is returned and <code>ad</code> is also saved.
+Steps 3-5 occurs continuously as long as an unknown command is being supplied or until the user cancels the operation by typing in <code>cancel</code>.</p>
 </div>
 <div class="paragraph">
-<p>Step 6. The user inputs a valid command. <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> now finds the valid command in the TreeMap. With the latest <code>prevUnknownCommand</code> retrieved from the stack, the unknown command and action of the valid command is added as a key-value pair to the TreeMap and a <code>NewCommand</code> object is returned and executed to store this new command mapping with the help of <code>Model</code>.</p>
+<p>Step 6. The user inputs a valid command. <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code> now finds the valid command in the TreeMap. With the latest <code>prevUnknownCommand</code> retrieved from the Stack, the unknown command and action of the valid command is added as a key-value pair to the TreeMap and a <code>NewCommand</code> object is returned and executed to store this new command mapping with the help of <code>Model</code>.</p>
 </div>
 <div class="paragraph">
 <p>Step 7. <code>NewCommand</code> has a <code>CommandResult</code> with an <code>isUnknown</code> value of <code>false</code>. This will trigger TutorAid back to normal mode. Normal commands can then be performed as <code>TutorAidParser#parseCommand(String userInput)</code> will now be called again instead of <code>TutorAidParser#checkCommand(String userInput, String prevUnknownCommand)</code>.</p>
@@ -1166,7 +1166,7 @@ The lifeline for <code>UnknownCommand</code> should end at the destroy marker (X
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Add all CommandObject objects in the ObservableList&lt;CommandObject&gt; into a TreeMap.</p>
+<p><strong>Alternative 1 (current choice):</strong> Add all <code>CommandObject</code> objects in the <code>ObservableList&lt;CommandObject&gt;</code> into a TreeMap.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1179,7 +1179,7 @@ The lifeline for <code>UnknownCommand</code> should end at the destroy marker (X
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Iterate through the ObservableList&lt;CommandObject&gt; to check if the command exists.</p>
+<p><strong>Alternative 2:</strong> Iterate through the <code>ObservableList&lt;CommandObject&gt;</code> to check if the command exists.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1874,4 +1874,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 16:12:43 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 16:41:18 UTC</div></div></div></body></html>
