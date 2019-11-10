@@ -174,51 +174,6 @@ check if the Earnings in the ArrayList has more than a <code>Count</code> of 0. 
 </tr>
 </tbody>
 </table>
-<div class="sect2">
-<h3 id="register-code-register-code"><a class="link" href="#register-code-register-code">Register : <code>register</code></a></h3>
-<div class="paragraph">
-<p>Register an account with the application to start using it.<br>
-Format: <code>register user/USERNAME pass/PASSWORD</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>register user/Steve pass/Pa55w0rd!</code></p>
-</li>
-</ul>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Username and Password should not contain any spaces and username should have at least 5 characters.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="login-code-login-code"><a class="link" href="#login-code-login-code">Login : <code>login</code></a></h3>
-<div class="paragraph">
-<p>Login a registered account with the correct username and password.<br>
-Format: <code>login user/USERNAME pass/PASSWORD</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>login user/Steve pass/Pa55w0rd!</code></p>
-</li>
-</ul>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -330,165 +285,12 @@ check with the rest of the prior <code>Earnings</code> object, to ensure that th
 </li>
 <li>
 <p>Step 6: <code>AddEarningsCommand</code> would then return a <code>CommandResult</code> to <code>LogicManager</code>, which would show the user that the new <code>Earnings</code>
-object have been successfully added.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="delete-earnings"><a class="link" href="#delete-earnings">Delete Earnings</a></h4>
-<div class="paragraph">
-<p>This command allows the user to delete an earnings from the existing earnings list through
-its index.</p>
-</div>
-<div class="paragraph">
-<p>The delete earnings command is facilitated by the <code>DeleteEarningsCommand</code> and <code>DeleteEarningsCommandParser</code>.</p>
-</div>
-<div class="paragraph">
-<p>The delete earnings command is part of the logic component of our application. It interacts with the model component
-of or software application.</p>
-</div>
-<div class="paragraph">
-<p><strong>Overview</strong>
-The <code>DeleteEarningsCommandParser</code> implements <code>Parser</code> with the following operation:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>DeleteEarningsCommandParser#parse()</code> - This operation will take in an <code>int</code> input from the user, that the
-user wants to delete, which will correspond to the index shown on the earnings list on the application. This will delete
-the earnings in the earnings list. If an invalid format is entered or an invalid index is entered, there will be a prompt
-from the commmand parser.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Current Implementation</strong>
-The delete earnings command is executed by the <code>DeleteEarningsCommand</code>. Currently, the deletion of any earnings is done based
-on the <code>INDEX</code> of te earnings entry.</p>
-</div>
-<div class="paragraph">
-<p>During the design of our delete earnings function, we considered between two alternatives.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1: (Current Choice)</strong>
-Delete Earnings by Index.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Pros:</strong> Each earnings is already listed with a unique index, deletion by index is intuitive, less prone to bugs and
-easier to implement.</p>
-</li>
-<li>
-<p><strong>Cons:</strong>  If the user has added a long list of earnings, the user has to look through the whole list and scroll down
-to look for the index of the earnings that the user wants to delete.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong>
-Delete Earnings by Class Id or Date.</p>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Pros:</strong> User has no need to scroll through the list and can delete the earnings in mind easily by typing in the class id or
-the date.</p>
-</li>
-<li>
-<p><strong>Cons:</strong> Different Earnings might have similar class id and/or date, thus deleting by class id or date might
-cause many earnings to be deleted or the wrong ones to be deleted.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>We have decided to go with the first alternative as it reduces the number of potential bugs and the complexities involved
-when taking into accout the different cases and scenarios upon the second alternative. In addition, by using the first alternative,
-users can take advantage of the <code>find_earnings</code> command and then delete from that list.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="update-earnings"><a class="link" href="#update-earnings">Update Earnings</a></h4>
-<div class="paragraph">
-<p><strong>TutorAid</strong> allows the user to update any earnings by using a combination of its <code>INDEX</code> and any of the attributes of earnings.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>update_earnings 3 type/tutorials</code></p>
-</li>
-<li>
-<p><code>update_earnings 1 d/03/11/2019</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The above commands update the earnings type at index 3 on the list to type-tutorials and updates the earnings date at
-index 1 to date 03/11/2019.</p>
-</div>
-<div class="paragraph">
-<p><strong>Current Implementation</strong>
-The <code>UpdateEarningsCommandParser</code> implements <code>Parser</code> with the following operation:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>UpdateEarningsCommandParser#parse()</code> - This operation will take in an <code>int</code> input and any combination of the attributes
-of earnings that the user wants to update, namely: <code>DATE</code>, <code>TYPE</code>, <code>AMOUNT</code> and <code>CLASSID</code>. Attributes that are to be updated
-have to be preceded by their respective prefixes, <code>d/</code>, <code>type/</code>, <code>amt/</code> and <code>c/</code>. A validation check will be imposed upon updating of each
-object. Any checks that fails the verification will prompt the user on the failed attribute.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Here is a step-by-step process on how the update earnings command alters and updates the attribute of the earnings entry.</p>
-</div>
-<div class="paragraph">
-<p><strong>Example Scenario</strong></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Step 1: The user enters <code>update_earnings 3 c/CS1101S amt/50.00</code> to correct a mistake in entering the <code>CLASS_ID</code>
-for an earning for teaching classes. This updates the <code>Earnings</code> object at index 3 and changes the class id to
-CS11101S.</p>
-</li>
-<li>
-<p>Step 2: <code>LogicManager</code> would use <code>TutorAidParser#parse()</code> to parse input from the user.</p>
-</li>
-<li>
-<p>Step 3: <code>TutorAidParser</code> would match the command word given by the user with the correct command. In this example,
-the given command is <code>update_earnings</code>, thus, <code>UpdateEarningsCommandParser</code> object would be created with the user&#8217;s input.</p>
-</li>
-<li>
-<p>Step 4: <code>UpdateEarningsCommandParser</code> performs a validation check on each of the respective objects through
-<code>UpdateEarningsCommandParser#parse()</code>. In this case, it would use <code>ParserUtil#parseClassId()</code>.
-It would then return a <code>UpdateEarningsCommand</code> object with an <code>Index</code> object and an <code>EditEarningsDescriptor</code> object.</p>
-</li>
-<li>
-<p>Step 5: <code>LogicManager</code> would execute <code>UpdateEarningsCommand#execute</code>. In this particular method, another
-method <code>UpdateEarningsCommand#createEditedEarnings</code> would make use of the <code>EditEarningsDescriptor</code> object to
-create a new <code>Earnings</code> object. Afterwards, this <code>Earnings</code> object would be check with the rest of
-the prior <code>Earnings</code> object, to ensure that there is no duplicate <code>Earnings</code> object. If there are no similar
-<code>Earnings</code> object with the same parameters created previously, it would then be added into the earnings list.</p>
-</li>
-<li>
-<p>Step 6: <code>UpdateEarningsCommand</code> would then return a <code>CommandResult</code> to <code>LogicManager</code>, which would show the user that the new <code>Earnings</code>
-object have been successfully updated.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="weekly-earnings"><a class="link" href="#weekly-earnings">Weekly Earnings</a></h4>
-<div class="paragraph">
-<p>The <code>weekly_earnings</code> command allows users to add earnings into a list that adds earnings weekly automatically by invoking the <code>auto</code> command.
+object have been successfully added.
+==== Weekly Earnings
+The <code>weekly_earnings</code> command allows users to add earnings into a list that adds earnings weekly automatically by invoking the <code>auto</code> command.
 This helps to lessen the workload on the user as the user does not need to add a new earnings every week.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>The format for the <code>weekly_earnings</code> command is as follows:</p>
@@ -655,4 +457,4 @@ is that it can be a lot more secure.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 13:09:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 13:35:49 UTC</div></div></div></body></html>

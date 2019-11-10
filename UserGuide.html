@@ -18,20 +18,22 @@
 <li><a href="#Features">3. Features</a>
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#login-code-login-code">3.2. Login : <code>login</code></a></li>
-<li><a href="#calender">3.3. Calender</a></li>
-<li><a href="#earnings">3.4. Earnings</a></li>
-<li><a href="#notes">3.5. Notes</a></li>
-<li><a href="#student-list">3.6. Student List</a></li>
-<li><a href="#learn-wrong-commands">3.7. Learn wrong commands</a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.8. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.11. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.12. Saving the data</a></li>
-<li><a href="#logout-code-logout-code">3.13. Logout : <code>logout</code></a></li>
-<li><a href="#upcoming-features">3.14. Upcoming Features</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.15. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#register-code-register-code">3.2. Register : <code>register</code></a></li>
+<li><a href="#login-code-login-code">3.3. Login : <code>login</code></a></li>
+<li><a href="#change-tab-code-tab-code">3.4. Change tab : <code>tab</code></a></li>
+<li><a href="#calender">3.5. Calender</a></li>
+<li><a href="#earnings">3.6. Earnings</a></li>
+<li><a href="#notes">3.7. Notes</a></li>
+<li><a href="#student-list">3.8. Student List</a></li>
+<li><a href="#learn-wrong-commands">3.9. Learn wrong commands</a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.10. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">3.11. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.12. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">3.13. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.14. Saving the data</a></li>
+<li><a href="#logout-code-logout-code">3.15. Logout : <code>logout</code></a></li>
+<li><a href="#upcoming-features">3.16. Upcoming Features</a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.17. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -147,9 +149,11 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect2">
 <h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
 <div class="paragraph">
-<p>Format: <code>help</code>
-=== Register : <code>register</code></p>
+<p>Format: <code>help</code></p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="register-code-register-code"><a class="link" href="#register-code-register-code">3.2. Register : <code>register</code></a></h3>
 <div class="paragraph">
 <p>Register an account with the application to start using it.<br>
 Format: <code>register user/USERNAME pass/PASSWORD</code></p>
@@ -177,7 +181,7 @@ Format: <code>register user/USERNAME pass/PASSWORD</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="login-code-login-code"><a class="link" href="#login-code-login-code">3.2. Login : <code>login</code></a></h3>
+<h3 id="login-code-login-code"><a class="link" href="#login-code-login-code">3.3. Login : <code>login</code></a></h3>
 <div class="paragraph">
 <p>Login a registered account with the correct username and password.<br>
 Format: <code>login user/USERNAME pass/PASSWORD</code></p>
@@ -188,11 +192,13 @@ Format: <code>login user/USERNAME pass/PASSWORD</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>login user/Steve pass/Pa55w0rd!</code>
-=== Change tab : <code>tab</code></p>
+<p><code>login user/Steve pass/Pa55w0rd!</code></p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="change-tab-code-tab-code"><a class="link" href="#change-tab-code-tab-code">3.4. Change tab : <code>tab</code></a></h3>
 <div class="paragraph">
 <p>Change tab to any of the available ones.<br>
 Format: <code>change_tab tab/DESTINATION</code></p>
@@ -224,9 +230,9 @@ Format: <code>change_tab tab/DESTINATION</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="calender"><a class="link" href="#calender">3.3. Calender</a></h3>
+<h3 id="calender"><a class="link" href="#calender">3.5. Calender</a></h3>
 <div class="sect3">
-<h4 id="adding-task-code-add_task-code"><a class="link" href="#adding-task-code-add_task-code">3.3.1. Adding task: <code>add_task</code></a></h4>
+<h4 id="adding-task-code-add_task-code"><a class="link" href="#adding-task-code-add_task-code">3.5.1. Adding task: <code>add_task</code></a></h4>
 <div class="paragraph">
 <p>Adds a task to one or more time slots.<br>
 Format: <code>add_task c/MODULE mark/STATUS tt/TASK_TIME&#8230;&#8203;</code></p>
@@ -269,7 +275,7 @@ If there are multiple task times, they will be automatically sorted based on the
 </div>
 </div>
 <div class="sect3">
-<h4 id="editing-task-code-edit_task-code"><a class="link" href="#editing-task-code-edit_task-code">3.3.2. Editing task: <code>edit_task</code></a></h4>
+<h4 id="editing-task-code-edit_task-code"><a class="link" href="#editing-task-code-edit_task-code">3.5.2. Editing task: <code>edit_task</code></a></h4>
 <div class="paragraph">
 <p>Update task information.<br>
 Format: <code>edit_task INDEX [c/CLASSID] [mark/STATUS] [tt/TASK_TIME]</code></p>
@@ -310,7 +316,7 @@ At least one element inside task should be edited.
 </div>
 </div>
 <div class="sect3">
-<h4 id="deleting-task-code-delete_task-code"><a class="link" href="#deleting-task-code-delete_task-code">3.3.3. Deleting task: <code>delete_task</code></a></h4>
+<h4 id="deleting-task-code-delete_task-code"><a class="link" href="#deleting-task-code-delete_task-code">3.5.3. Deleting task: <code>delete_task</code></a></h4>
 <div class="paragraph">
 <p>Deletes selected task.<br>
 Format: <code>delete_task INDEX</code></p>
@@ -343,7 +349,7 @@ INDEX must be a positive integer.
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-tasks-based-on-module-code-find_task_by_module-code"><a class="link" href="#finding-tasks-based-on-module-code-find_task_by_module-code">3.3.4. Finding tasks based on Module : <code>find_task_by_module</code></a></h4>
+<h4 id="finding-tasks-based-on-module-code-find_task_by_module-code"><a class="link" href="#finding-tasks-based-on-module-code-find_task_by_module-code">3.5.4. Finding tasks based on Module : <code>find_task_by_module</code></a></h4>
 <div class="paragraph">
 <p>Find specific tasks by Module and list them.<br>
 Format: <code>find_task_by_module MODULE &#8230;&#8203;</code></p>
@@ -388,7 +394,7 @@ Format: <code>find_task_by_module MODULE &#8230;&#8203;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="finding-tasks-based-on-date-code-find_task_by_date-code"><a class="link" href="#finding-tasks-based-on-date-code-find_task_by_date-code">3.3.5. Finding tasks based on Date : <code>find_task_by_date</code></a></h4>
+<h4 id="finding-tasks-based-on-date-code-find_task_by_date-code"><a class="link" href="#finding-tasks-based-on-date-code-find_task_by_date-code">3.5.5. Finding tasks based on Date : <code>find_task_by_date</code></a></h4>
 <div class="paragraph">
 <p>Find specific tasks by Date and list them.<br>
 Format: <code>find_task_by_date DATE &#8230;&#8203;</code></p>
@@ -420,14 +426,14 @@ Format: <code>find_task_by_date DATE &#8230;&#8203;</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-all-tasks-code-list_task-code"><a class="link" href="#listing-all-tasks-code-list_task-code">3.3.6. Listing all tasks : <code>list_task</code></a></h4>
+<h4 id="listing-all-tasks-code-list_task-code"><a class="link" href="#listing-all-tasks-code-list_task-code">3.5.6. Listing all tasks : <code>list_task</code></a></h4>
 <div class="paragraph">
 <p>List all tasks.<br>
 Format: <code>list_task</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="setting-reminder-details-code-addreminder-code"><a class="link" href="#setting-reminder-details-code-addreminder-code">3.3.7. Setting Reminder Details  : <code>addReminder</code></a></h4>
+<h4 id="setting-reminder-details-code-addreminder-code"><a class="link" href="#setting-reminder-details-code-addreminder-code">3.5.7. Setting Reminder Details  : <code>addReminder</code></a></h4>
 <div class="sect4">
 <h5 id="add-reminder"><a class="link" href="#add-reminder">Add Reminder</a></h5>
 <div class="paragraph">
@@ -464,7 +470,7 @@ Format: <code>reminder INDEX INTEGER</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="user-interface"><a class="link" href="#user-interface">3.3.8. User Interface</a></h4>
+<h4 id="user-interface"><a class="link" href="#user-interface">3.5.8. User Interface</a></h4>
 <div class="paragraph">
 <p>View in calendar format.<br>
 Format: <code>change_tab tab/FORMAT</code></p>
@@ -485,9 +491,9 @@ Format: <code>change_tab tab/FORMAT</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="earnings"><a class="link" href="#earnings">3.4. Earnings</a></h3>
+<h3 id="earnings"><a class="link" href="#earnings">3.6. Earnings</a></h3>
 <div class="sect3">
-<h4 id="add-earnings-code-add_earnings-code"><a class="link" href="#add-earnings-code-add_earnings-code">3.4.1. Add Earnings: <code>add_earnings</code></a></h4>
+<h4 id="add-earnings-code-add_earnings-code"><a class="link" href="#add-earnings-code-add_earnings-code">3.6.1. Add Earnings: <code>add_earnings</code></a></h4>
 <div class="paragraph">
 <p>Adds Earnings to the list of earnings.<br>
 Format: <code>add_earnings d/DATE type/TYPE c/CLASSID amt/AMOUNT</code></p>
@@ -522,7 +528,7 @@ arguments are allowed for <code>TYPE</code>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="update-earnings-code-update_earnings-code"><a class="link" href="#update-earnings-code-update_earnings-code">3.4.2. Update Earnings: <code>update_earnings</code></a></h4>
+<h4 id="update-earnings-code-update_earnings-code"><a class="link" href="#update-earnings-code-update_earnings-code">3.6.2. Update Earnings: <code>update_earnings</code></a></h4>
 <div class="paragraph">
 <p>Update Earnings in the list of earnings by adding <strong>one</strong> of the parameters at least.<br>
 Format: <code>update_earnings INDEX d/DATE c/CLASSID amt/AMOUNT type/TYPE</code></p>
@@ -551,7 +557,7 @@ method.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-earnings-code-delete_earnings-code"><a class="link" href="#delete-earnings-code-delete_earnings-code">3.4.3. Delete Earnings: <code>delete_earnings</code></a></h4>
+<h4 id="delete-earnings-code-delete_earnings-code"><a class="link" href="#delete-earnings-code-delete_earnings-code">3.6.3. Delete Earnings: <code>delete_earnings</code></a></h4>
 <div class="paragraph">
 <p>Delete Earnings in the list of earnings.<br>
 Format: <code>delete_earnings INDEX</code></p>
@@ -562,13 +568,11 @@ Format: <code>delete_earnings INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete_earnings 2</code></p>
+<p><code>delete_earnings 2</code>
+==== Find Earnings: <code>find_earnings</code></p>
 </li>
 </ul>
 </div>
-</div>
-<div class="sect3">
-<h4 id="find-earnings-code-find_earnings-code"><a class="link" href="#find-earnings-code-find_earnings-code">3.4.4. Find Earnings: <code>find_earnings</code></a></h4>
 <div class="paragraph">
 <p>Find Earnings in the list of earnings.<br>
 Format: <code>find_earnings keywords &#8230;&#8203;</code></p>
@@ -600,7 +604,7 @@ match with apple, for example.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="claim-earnings-code-claim_earnings-code"><a class="link" href="#claim-earnings-code-claim_earnings-code">3.4.5. Claim Earnings: <code>claim_earnings</code></a></h4>
+<h4 id="claim-earnings-code-claim_earnings-code"><a class="link" href="#claim-earnings-code-claim_earnings-code">3.6.4. Claim Earnings: <code>claim_earnings</code></a></h4>
 <div class="paragraph">
 <p>Changes the user the earnings status in the list of earnings.<br>
 Format: <code>claim_earnings INDEX c/CLASSID</code></p>
@@ -631,7 +635,7 @@ Format: <code>claim_earnings INDEX c/CLASSID</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="auto-add-weekly-earnings-code-weekly_earnings-code"><a class="link" href="#auto-add-weekly-earnings-code-weekly_earnings-code">3.4.6. Auto Add Weekly Earnings: <code>weekly_earnings</code></a></h4>
+<h4 id="auto-add-weekly-earnings-code-weekly_earnings-code"><a class="link" href="#auto-add-weekly-earnings-code-weekly_earnings-code">3.6.5. Auto Add Weekly Earnings: <code>weekly_earnings</code></a></h4>
 <div class="paragraph">
 <p>Adds an earnings from the list of existing earnings to be added in the on the same
 day every week.<br>
@@ -674,7 +678,7 @@ than the date.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adds-weekly-earnings-code-auto-code"><a class="link" href="#adds-weekly-earnings-code-auto-code">3.4.7. Adds Weekly Earnings: <code>auto</code></a></h4>
+<h4 id="adds-weekly-earnings-code-auto-code"><a class="link" href="#adds-weekly-earnings-code-auto-code">3.6.6. Adds Weekly Earnings: <code>auto</code></a></h4>
 <div class="paragraph">
 <p>Adds all the earnings that were invoked by <code>weekly_earnings</code>.<br>
 Format: <code>auto</code></p>
@@ -711,9 +715,9 @@ of 09/02/2019, the earnings will not be added.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="notes"><a class="link" href="#notes">3.5. Notes</a></h3>
+<h3 id="notes"><a class="link" href="#notes">3.7. Notes</a></h3>
 <div class="sect3">
-<h4 id="add-note-code-addnote-code"><a class="link" href="#add-note-code-addnote-code">3.5.1. Add Note: <code>addnote</code></a></h4>
+<h4 id="add-note-code-addnote-code"><a class="link" href="#add-note-code-addnote-code">3.7.1. Add Note: <code>addnote</code></a></h4>
 <div class="paragraph">
 <p>Adds Note to the list of notes.<br>
 Format: <code>addnote mod/MODULE_CODE c/CONTENT</code></p>
@@ -730,7 +734,7 @@ Format: <code>addnote mod/MODULE_CODE c/CONTENT</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-note-code-editnote-code"><a class="link" href="#edit-note-code-editnote-code">3.5.2. Edit Note: <code>editnote</code></a></h4>
+<h4 id="edit-note-code-editnote-code"><a class="link" href="#edit-note-code-editnote-code">3.7.2. Edit Note: <code>editnote</code></a></h4>
 <div class="paragraph">
 <p>Update Note in the list of notes.<br>
 Format: <code>editnote INDEX mod/MODULE_CODE c/CONTENT</code></p>
@@ -753,7 +757,7 @@ Format: <code>editnote INDEX mod/MODULE_CODE c/CONTENT</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-note-code-deletenote-code"><a class="link" href="#delete-note-code-deletenote-code">3.5.3. Delete Note: <code>deletenote</code></a></h4>
+<h4 id="delete-note-code-deletenote-code"><a class="link" href="#delete-note-code-deletenote-code">3.7.3. Delete Note: <code>deletenote</code></a></h4>
 <div class="paragraph">
 <p>Delete Note in the list of notes.<br>
 Format: <code>deletenote INDEX</code></p>
@@ -770,7 +774,7 @@ Format: <code>deletenote INDEX</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="find-note-code-findnote-code"><a class="link" href="#find-note-code-findnote-code">3.5.4. Find Note: <code>findnote</code></a></h4>
+<h4 id="find-note-code-findnote-code"><a class="link" href="#find-note-code-findnote-code">3.7.4. Find Note: <code>findnote</code></a></h4>
 <div class="paragraph">
 <p>Delete Note in the list of notes.<br>
 Format: <code>findnote KEYWORD</code></p>
@@ -787,7 +791,7 @@ Format: <code>findnote KEYWORD</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="listing-all-note-code-listnote-code"><a class="link" href="#listing-all-note-code-listnote-code">3.5.5. Listing all note : <code>listnote</code></a></h4>
+<h4 id="listing-all-note-code-listnote-code"><a class="link" href="#listing-all-note-code-listnote-code">3.7.5. Listing all note : <code>listnote</code></a></h4>
 <div class="paragraph">
 <p>List all note.<br>
 Format: <code>listnote</code></p>
@@ -795,9 +799,9 @@ Format: <code>listnote</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="student-list"><a class="link" href="#student-list">3.6. Student List</a></h3>
+<h3 id="student-list"><a class="link" href="#student-list">3.8. Student List</a></h3>
 <div class="sect3">
-<h4 id="add-a-student-add"><a class="link" href="#add-a-student-add">3.6.1. Add a student: 'add'</a></h4>
+<h4 id="add-a-student-add"><a class="link" href="#add-a-student-add">3.8.1. Add a student: 'add'</a></h4>
 <div class="paragraph">
 <p>Adds a student to TutorAid.
 Format: <code>add n/NAME c/CLASSID</code></p>
@@ -840,7 +844,7 @@ first name in the class, please add their last name as well.
 </div>
 </div>
 <div class="sect3">
-<h4 id="delete-a-student-delete"><a class="link" href="#delete-a-student-delete">3.6.2. Delete a student: 'delete'</a></h4>
+<h4 id="delete-a-student-delete"><a class="link" href="#delete-a-student-delete">3.8.2. Delete a student: 'delete'</a></h4>
 <div class="paragraph">
 <p>Deletes a student from TutorAid.
 Format: <code>delete INDEX</code></p>
@@ -857,7 +861,7 @@ Format: <code>delete INDEX</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="find-a-student-find"><a class="link" href="#find-a-student-find">3.6.3. Find a student: 'find'</a></h4>
+<h4 id="find-a-student-find"><a class="link" href="#find-a-student-find">3.8.3. Find a student: 'find'</a></h4>
 <div class="paragraph">
 <p>Find a student matching the supplied name.
 Format: <code>find NAME</code></p>
@@ -874,7 +878,7 @@ Format: <code>find NAME</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="list-all-students-in-a-class-list_class"><a class="link" href="#list-all-students-in-a-class-list_class">3.6.4. List all students in a class: 'list_class'</a></h4>
+<h4 id="list-all-students-in-a-class-list_class"><a class="link" href="#list-all-students-in-a-class-list_class">3.8.4. List all students in a class: 'list_class'</a></h4>
 <div class="paragraph">
 <p>Lists all students in supplied class name.
 Format: <code>list_class CLASSID</code></p>
@@ -891,7 +895,7 @@ Format: <code>list_class CLASSID</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="mark-attendance-of-students-mark_attendance"><a class="link" href="#mark-attendance-of-students-mark_attendance">3.6.5. Mark attendance of students: 'mark_attendance'</a></h4>
+<h4 id="mark-attendance-of-students-mark_attendance"><a class="link" href="#mark-attendance-of-students-mark_attendance">3.8.5. Mark attendance of students: 'mark_attendance'</a></h4>
 <div class="paragraph">
 <p>Marks attendance of students currently displayed.
 Format: <code>mark_attendance INDEXES</code></p>
@@ -920,7 +924,7 @@ Format: <code>mark_attendance INDEXES</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="mark-participation-of-students-mark_participation"><a class="link" href="#mark-participation-of-students-mark_participation">3.6.6. Mark participation of students: 'mark_participation'</a></h4>
+<h4 id="mark-participation-of-students-mark_participation"><a class="link" href="#mark-participation-of-students-mark_participation">3.8.6. Mark participation of students: 'mark_participation'</a></h4>
 <div class="paragraph">
 <p>Marks participation of students currently displayed.
 Format: <code>mark_participation INDEXES</code></p>
@@ -949,7 +953,7 @@ Format: <code>mark_participation INDEXES</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="assign-students-to-a-class-assign_class"><a class="link" href="#assign-students-to-a-class-assign_class">3.6.7. Assign students to a class: 'assign_class'</a></h4>
+<h4 id="assign-students-to-a-class-assign_class"><a class="link" href="#assign-students-to-a-class-assign_class">3.8.7. Assign students to a class: 'assign_class'</a></h4>
 <div class="paragraph">
 <p>Assigns a class to a student or a group of students.
 Format: <code>assign_class INDEXES c/CLASSID</code></p>
@@ -966,7 +970,7 @@ Format: <code>assign_class INDEXES c/CLASSID</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="edit-a-student-edit"><a class="link" href="#edit-a-student-edit">3.6.8. Edit a student: 'edit'</a></h4>
+<h4 id="edit-a-student-edit"><a class="link" href="#edit-a-student-edit">3.8.8. Edit a student: 'edit'</a></h4>
 <div class="paragraph">
 <p>Edits a Student&#8217;s fields.
 Format: <code>edit INDEX n/NAME pic/PICTURE r/RESULT att/ATTENDANCE part/PARTICIPATION c/CLASS</code></p>
@@ -995,7 +999,7 @@ User does not have to edit all fields of a Student. He can just edit whatever ne
 </div>
 </div>
 <div class="sect3">
-<h4 id="list-students-list"><a class="link" href="#list-students-list">3.6.9. List students: 'list'</a></h4>
+<h4 id="list-students-list"><a class="link" href="#list-students-list">3.8.9. List students: 'list'</a></h4>
 <div class="paragraph">
 <p>List all students in TutorAid.
 Format: <code>list</code></p>
@@ -1019,7 +1023,7 @@ Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="add-a-picture-to-a-student-set_pic"><a class="link" href="#add-a-picture-to-a-student-set_pic">3.6.10. Add a picture to a student: 'set_pic'</a></h4>
+<h4 id="add-a-picture-to-a-student-set_pic"><a class="link" href="#add-a-picture-to-a-student-set_pic">3.8.10. Add a picture to a student: 'set_pic'</a></h4>
 <div class="paragraph">
 <p>Adds a picture to display next to the student card.
 Format: <code>set_pic INDEX pic/FILENAME</code></p>
@@ -1048,7 +1052,7 @@ The picture specified must be in either .jpg, .png or .bmp format. It must also 
 </div>
 </div>
 <div class="sect3">
-<h4 id="view-serial-absentees-with-defined-threshold-absentees-coming-in-v2-0"><a class="link" href="#view-serial-absentees-with-defined-threshold-absentees-coming-in-v2-0">3.6.11. View serial absentees with defined threshold: 'absentees' [Coming in v2.0]</a></h4>
+<h4 id="view-serial-absentees-with-defined-threshold-absentees-coming-in-v2-0"><a class="link" href="#view-serial-absentees-with-defined-threshold-absentees-coming-in-v2-0">3.8.11. View serial absentees with defined threshold: 'absentees' [Coming in v2.0]</a></h4>
 <div class="paragraph">
 <p>Displays list of all students who have not met the set threshold in terms of attendance.
 Format: <code>absentees THRESHOLD_PERCENTAGE</code></p>
@@ -1077,7 +1081,7 @@ Calculation will be done from start of semester to the current date.
 </div>
 </div>
 <div class="sect3">
-<h4 id="check-on-status-of-student-check_status-coming-in-v2-0"><a class="link" href="#check-on-status-of-student-check_status-coming-in-v2-0">3.6.12. Check on status of student: 'check_status' [Coming in v2.0]</a></h4>
+<h4 id="check-on-status-of-student-check_status-coming-in-v2-0"><a class="link" href="#check-on-status-of-student-check_status-coming-in-v2-0">3.8.12. Check on status of student: 'check_status' [Coming in v2.0]</a></h4>
 <div class="paragraph">
 <p>Checks on status of students currently displayed in the list by sending them an e-mail enquiring on their status.
 Format: <code>check_status</code></p>
@@ -1096,7 +1100,7 @@ To be used in conjunction with <code>absentees</code>. A preset generic email wi
 </div>
 </div>
 <div class="sect3">
-<h4 id="upload-a-picture-of-the-student-upload_pic-coming-in-v2-0"><a class="link" href="#upload-a-picture-of-the-student-upload_pic-coming-in-v2-0">3.6.13. Upload a picture of the student: 'upload_pic' [Coming in v2.0]</a></h4>
+<h4 id="upload-a-picture-of-the-student-upload_pic-coming-in-v2-0"><a class="link" href="#upload-a-picture-of-the-student-upload_pic-coming-in-v2-0">3.8.13. Upload a picture of the student: 'upload_pic' [Coming in v2.0]</a></h4>
 <div class="paragraph">
 <p>Launches a separate window where the user can either choose an image file on his computer or take a picture with his webcam.
 The picture will be assigned to the indicated student and be displayed in TutorAid.
@@ -1127,7 +1131,7 @@ Replaces current picture, if any.
 </div>
 </div>
 <div class="sect2">
-<h3 id="learn-wrong-commands"><a class="link" href="#learn-wrong-commands">3.7. Learn wrong commands</a></h3>
+<h3 id="learn-wrong-commands"><a class="link" href="#learn-wrong-commands">3.9. Learn wrong commands</a></h3>
 <div class="paragraph">
 <p>Accidentally typing in a wrong/unknown command laucnhes TutorAid into learner mode. You can choose to learn this wrong command to execute an existing
 command by typing in its command word. Alternatively, you can type <code>cancel</code> to revert back to normal operations.</p>
@@ -1161,7 +1165,7 @@ to use <code>ad</code> as an <code>add</code> command in the future.</p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="delete-a-custom-command-deletecustomcommand"><a class="link" href="#delete-a-custom-command-deletecustomcommand">3.7.1. Delete a custom command: 'deleteCustomCommand'</a></h4>
+<h4 id="delete-a-custom-command-deletecustomcommand"><a class="link" href="#delete-a-custom-command-deletecustomcommand">3.9.1. Delete a custom command: 'deleteCustomCommand'</a></h4>
 <div class="paragraph">
 <p>Deletes a custom command you previously added. This custom command will be forgotten by TutorAid and will not be able to be used anymore.
 Format: <code>deleteCustomCommand CUSTOMCOMMAND</code></p>
@@ -1179,14 +1183,14 @@ Format: <code>deleteCustomCommand CUSTOMCOMMAND</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.8. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.10. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.11. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the Tutor Aid to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -1241,7 +1245,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.12. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -1283,30 +1287,30 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.11. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.13. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.12. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.14. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logout-code-logout-code"><a class="link" href="#logout-code-logout-code">3.13. Logout : <code>logout</code></a></h3>
+<h3 id="logout-code-logout-code"><a class="link" href="#logout-code-logout-code">3.15. Logout : <code>logout</code></a></h3>
 <div class="paragraph">
 <p>Logs out of the account.<br>
 Format: <code>logout</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upcoming-features"><a class="link" href="#upcoming-features">3.14. Upcoming Features</a></h3>
+<h3 id="upcoming-features"><a class="link" href="#upcoming-features">3.16. Upcoming Features</a></h3>
 <div class="sect3">
-<h4 id="filter-earnings-code-filter_earnings-code"><a class="link" href="#filter-earnings-code-filter_earnings-code">3.14.1. Filter Earnings: <code>filter_earnings</code></a></h4>
+<h4 id="filter-earnings-code-filter_earnings-code"><a class="link" href="#filter-earnings-code-filter_earnings-code">3.16.1. Filter Earnings: <code>filter_earnings</code></a></h4>
 <div class="paragraph">
 <p>Filters Earnings in the list of earnings based on either classid/date/week/month.<br>
 Format: <code>filter_earnings variable</code></p>
@@ -1324,7 +1328,7 @@ Format: <code>filter_earnings variable</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.15. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.17. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p><em>{explain how the user can enable/disable data encryption}</em></p>
 </div>
@@ -1414,4 +1418,4 @@ Format: <code>filter_earnings variable</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 13:09:06 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 13:35:49 UTC</div></div></div></body></html>
