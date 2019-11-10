@@ -169,7 +169,9 @@ Format: <code>add_task c/MODULE mark/STATUS tt/TASK_TIME&#8230;&#8203;</code></p
 A task can have more than one time slots.<br>
 STATUS should only be Y or N.<br>
 <code>TASK_TIME</code> should be in the format "dd/MM/YYYY HH:mm, dd/MM/YYYY HH:mm".<br>
-If there are multiple task times, they will be automatically sorted based on their starting time.
+If there are multiple task times, they will be automatically sorted based on their starting time.<br>
+Mark indicates whether a Reminder will be created for this task.<br>
+The Reminder created will have the Task&#8217;s <code>MODULE</code> as its <code>DESCRIPTION</code> and the Task&#8217;s <code>TASK_TIME</code> as its <code>DATE</code>.
 </td>
 </tr>
 </table>
@@ -213,10 +215,11 @@ If there are multiple task times, they will be automatically sorted based on the
 <code>logout</code></p>
 </li>
 <li>
-<p><strong>Tab</strong> : <code>tab TAB_DESTINATION</code></p>
+<p><strong>Tab</strong> :<br>
+<code>change_tab tab/TAB_DESTINATION</code></p>
 </li>
 <li>
-<p><strong>Calendar:</strong><br>
+<p><strong>Task:</strong><br>
 <code>add_task c/MODULE mark/STATUS tt/TASK_TIME&#8230;&#8203;</code><br>
 <code>edit_task INDEX [mark/STATUS] [tt/TASK_TIME]</code><br>
 <code>delete_task 1</code><br>
@@ -225,7 +228,12 @@ If there are multiple task times, they will be automatically sorted based on the
 <code>list_task</code></p>
 </li>
 <li>
-<p><strong>Reminder</strong> : <code>reminder INDEX STATUS</code></p>
+<p><strong>Reminder</strong> :<br>
+<code>add_reminder rd/DESCRIPTION rt/REMINDER_TIME&#8230;&#8203;</code><br>
+<code>delete_reminder 1</code><br>
+<code>find_reminder_by_description DESCRIPTION &#8230;&#8203;</code><br>
+<code>find_reminder_by_date DATE &#8230;&#8203;</code><br>
+<code>list_reminder</code></p>
 </li>
 <li>
 <p><strong>Earnings</strong> :<br>
@@ -503,4 +511,4 @@ If the <code>currentStatePointer</code> is at index <code>tutorAidStateList.size
 </table>
 <hr>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 21:08:15 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 21:18:09 UTC</div></div></div></body></html>
