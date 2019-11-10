@@ -516,23 +516,20 @@ Format: <code>add_earnings d/DATE type/TYPE c/CLASSID amt/AMOUNT</code></p>
 </li>
 </ul>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Only <code>tutorials</code>/ <code>tut</code> / <code>lab</code> / <code>consultations</code> / <code>c</code> / <code>sectionals</code> / <code>s</code> / <code>preparation_time</code> / <code>p</code>
-arguments are allowed for <code>TYPE</code>.</p>
-</li>
-<li>
-<p><code>DATE</code> format must be done in <code>DD/MM/YYYY</code> or <code>DD-MM-YYYY</code> format.</p>
-</li>
-<li>
-<p><code>AMOUNT</code> has a max value of 1 000 000.00 and should not contain commas.</p>
-</li>
-</ul>
-</div>
-</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only <code>tutorials</code>/ <code>tut</code> / <code>lab</code> / <code>consultations</code> / <code>c</code> / <code>sectionals</code> / <code>s</code> / <code>preparation_time</code> / <code>p</code>
+arguments are allowed for <code>TYPE</code>.
+<code>DATE</code> format must be done in <code>DD/MM/YYYY</code> or <code>DD-MM-YYYY</code> format.
+ <code>AMOUNT</code> has a max value of 1 000 000.00 and should not contain commas.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -551,17 +548,18 @@ Format: <code>update_earnings INDEX d/DATE c/CLASSID amt/AMOUNT type/TYPE</code>
 </li>
 </ul>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Not allowed to update earnings claim status through <code>update_earnings</code> method. Only can use <code>claim_earnings</code>
-method.</p>
-</li>
-</ul>
-</div>
-</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Not allowed to update earnings claim status through <code>update_earnings</code> method. Only can use <code>claim_earnings</code>
+method.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -597,20 +595,19 @@ Format: <code>find_earnings keywords &#8230;&#8203;</code></p>
 </li>
 </ul>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>If more than one keyword is used, do not add commas between each keyword.</p>
-</li>
-<li>
-<p>Partial matching is allowed as well for this command. <code>find_earnings a</code> will
-match with apple, for example.</p>
-</li>
-</ul>
-</div>
-</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If more than one keyword is used, do not add commas between each keyword.
+Partial matching is allowed as well for this command. <code>find_earnings a</code> will
+ match with apple, for example.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -618,6 +615,12 @@ match with apple, for example.</p>
 <div class="paragraph">
 <p>Changes the user the earnings status in the list of earnings.<br>
 Format: <code>claim_earnings INDEX c/CLASSID</code></p>
+</div>
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="images/ClaimEarnings.png" alt="ClaimEarnings" width="500">
+</div>
+<div class="title">Figure 1. Claim Earnings Example</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -629,19 +632,18 @@ Format: <code>claim_earnings INDEX c/CLASSID</code></p>
 </li>
 </ul>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Only <code>approved</code>/<code>rejected</code>/<code>processing</code>/<code>pending submission</code> statuses are allowed.</p>
-</li>
-<li>
-<p>Only one status is allowed at a time.</p>
-</li>
-</ul>
-</div>
-</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Only <code>approved</code>/<code>rejected</code>/<code>processing</code>/<code>pending submission</code> statuses are allowed.
+Only one status is allowed at a time.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
@@ -1553,4 +1555,4 @@ However, we plan to upgrade this feature as soon as v1.5 or v1.6.</p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 19:11:16 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 20:34:58 UTC</div></div></div></body></html>
