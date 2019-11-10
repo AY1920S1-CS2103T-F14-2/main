@@ -105,7 +105,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>add_task</code></strong><code>c/CS2103T Lecture mark/Y tt/20/9/2019 16:00, 20/9/2019 18:00</code> : adds a classId named CS2103T that is on 20th September 2019 4pm.</p>
 </li>
 <li>
-<p><strong><code>claimed earnings</code></strong><code>02/07/2022 CS2100</code> : marks that you have claimed this earnings.</p>
+<p><strong><code>claim_earnings</code></strong><code>2 claim/approved</code> : marks that the claim for this earnings has been approved.</p>
 </li>
 <li>
 <p><strong><code>exit</code></strong> : exits the app</p>
@@ -195,6 +195,14 @@ Format: <code>login user/USERNAME pass/PASSWORD</code></p>
 <p><code>login user/Steve pass/Pa55w0rd!</code></p>
 </li>
 </ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>As of now, the login features allow multiple users to view the same data. This will be upgraded in later versions such
+that different accounts will see different data.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -568,11 +576,13 @@ Format: <code>delete_earnings INDEX</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>delete_earnings 2</code>
-==== Find Earnings: <code>find_earnings</code></p>
+<p><code>delete_earnings 2</code></p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect3">
+<h4 id="find-earnings-code-find_earnings-code"><a class="link" href="#find-earnings-code-find_earnings-code">3.6.4. Find Earnings: <code>find_earnings</code></a></h4>
 <div class="paragraph">
 <p>Find Earnings in the list of earnings.<br>
 Format: <code>find_earnings keywords &#8230;&#8203;</code></p>
@@ -604,7 +614,7 @@ match with apple, for example.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="claim-earnings-code-claim_earnings-code"><a class="link" href="#claim-earnings-code-claim_earnings-code">3.6.4. Claim Earnings: <code>claim_earnings</code></a></h4>
+<h4 id="claim-earnings-code-claim_earnings-code"><a class="link" href="#claim-earnings-code-claim_earnings-code">3.6.5. Claim Earnings: <code>claim_earnings</code></a></h4>
 <div class="paragraph">
 <p>Changes the user the earnings status in the list of earnings.<br>
 Format: <code>claim_earnings INDEX c/CLASSID</code></p>
@@ -635,7 +645,7 @@ Format: <code>claim_earnings INDEX c/CLASSID</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="auto-add-weekly-earnings-code-weekly_earnings-code"><a class="link" href="#auto-add-weekly-earnings-code-weekly_earnings-code">3.6.5. Auto Add Weekly Earnings: <code>weekly_earnings</code></a></h4>
+<h4 id="auto-add-weekly-earnings-code-weekly_earnings-code"><a class="link" href="#auto-add-weekly-earnings-code-weekly_earnings-code">3.6.6. Auto Add Weekly Earnings: <code>weekly_earnings</code></a></h4>
 <div class="paragraph">
 <p>Adds an earnings from the list of existing earnings to be added in the on the same
 day every week.<br>
@@ -678,7 +688,7 @@ than the date.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adds-weekly-earnings-code-auto-code"><a class="link" href="#adds-weekly-earnings-code-auto-code">3.6.6. Adds Weekly Earnings: <code>auto</code></a></h4>
+<h4 id="adds-weekly-earnings-code-auto-code"><a class="link" href="#adds-weekly-earnings-code-auto-code">3.6.7. Adds Weekly Earnings: <code>auto</code></a></h4>
 <div class="paragraph">
 <p>Adds all the earnings that were invoked by <code>weekly_earnings</code>.<br>
 Format: <code>auto</code></p>
@@ -1380,7 +1390,7 @@ Format: <code>logout</code></p>
 Format: <code>filter_earnings variable</code></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Example:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1388,6 +1398,67 @@ Format: <code>filter_earnings variable</code></p>
 <p><code>filter_earnings v/week</code></p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="list-of-auto-added-earnings-code-list_auto-code"><a class="link" href="#list-of-auto-added-earnings-code-list_auto-code">3.16.2. List of auto added earnings: <code>list_auto</code></a></h4>
+<div class="paragraph">
+<p>Renders a pop-up showing a list of earnings that are due to be added automatically to the earnings list.<br>
+Format: <code>list_auto</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list_auto</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="graph-earnings-code-graph-code"><a class="link" href="#graph-earnings-code-graph-code">3.16.3. Graph Earnings: <code>graph</code></a></h4>
+<div class="paragraph">
+<p>Gives you a graph of your earnings that is given with at start date and end date.<br>
+Format: <code>graph d/START_DATE d/END_DATE</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>graph d/02/02/2019 d/04/03/2019</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="pie-chart-earnings-code-piechart-code"><a class="link" href="#pie-chart-earnings-code-piechart-code">3.16.4. Pie Chart Earnings: <code>piechart</code></a></h4>
+<div class="paragraph">
+<p>Gives you a pie chart of your earnings based on either classid or type, in addition of the start date and end date.<br>
+Format: <code>piechart by/FACTOR d/START_DATE d/END_DATE</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>piechart by/classid d/02/02/2019 d/04/03/2019</code></p>
+</li>
+<li>
+<p><code>piechart by/type d/12/10/2016 d/24/03/2018</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="login-code-login-code-2"><a class="link" href="#login-code-login-code-2">3.16.5. Login: <code>login</code></a></h4>
+<div class="paragraph">
+<p>As of the current implementation, when the user logs in with different account, they will still see the same data.
+However, we plan to upgrade this feature as soon as v1.5 or v1.6.</p>
 </div>
 </div>
 </div>
@@ -1482,4 +1553,4 @@ Format: <code>filter_earnings variable</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 16:41:18 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 17:05:55 UTC</div></div></div></body></html>
