@@ -21,16 +21,20 @@
 </ul>
 </li>
 <li><a href="#implementation">3. Implementation</a>
-<ul class="sectlevel2">
-<li><a href="#earnings-feature">3.1. Earnings Feature</a></li>
-<li><a href="#calendar-feature">3.2. Calendar Feature</a></li>
-<li><a href="#notes-features">3.3. Notes Features</a></li>
-<li><a href="#reminder-features">3.4. Reminder Features</a></li>
-<li><a href="#learn-wrong-commands-as-custom-commands-feature">3.5. Learn wrong commands as custom commands feature</a></li>
-<li><a href="#undo-redo-feature">3.6. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.7. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.8. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
+<ul class="sectlevel3">
+<li><a href="#add-earnings">3.1. Add Earnings</a></li>
+<li><a href="#delete-earnings">3.2. Delete Earnings</a></li>
+<li><a href="#update-earnings">3.3. Update Earnings</a></li>
+<li><a href="#weekly-earnings">3.4. Weekly Earnings</a></li>
+<li><a href="#auto-add">3.5. Auto Add</a></li>
+<li><a href="#calendar-feature">3.6. Calendar Feature</a></li>
+<li><a href="#notes-features">3.7. Notes Features</a></li>
+<li><a href="#reminder-features">3.8. Reminder Features</a></li>
+<li><a href="#learn-wrong-commands-as-custom-commands-feature">3.9. Learn wrong commands as custom commands feature</a></li>
+<li><a href="#undo-redo-feature">3.10. Undo/Redo feature</a></li>
+<li><a href="#proposed-data-encryption">3.11. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.12. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.13. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -301,7 +305,61 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <p>can save <code>UserPref</code> objects in json format and read it back.</p>
 </li>
 <li>
-<p>can save the Address Book data in json format and read it back.</p>
+<p>can save the Address Book data in json format and read it back.
+==== Account Storage
+All accounts are stored in a JSON file called accountslist.json. This file is generated once you register an account. The username
+and password is stored inside the the JSON file with salt hashing thus, the account details cannot be seen by everyone.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Design Considerations</strong>
+We realised that storing the accounts by itself would allow anyone to see the username and passwords. Hence, we decided to
+use a password authentication method and salt hashing to cover the passwords of the accounts.</p>
+</div>
+<div class="paragraph">
+<p>In addition, we decided to go with using a JSON file instead of XML file due to these considerations:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Account File Storage function alternatives</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Design Consideration</th>
+<th class="tableblock halign-left valign-top">Pros and Cons</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XML File</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong> : Easy transfer of data between seperate systems. Good at storing data that will be readby 3rd parties.</p>
+<p class="tableblock">                                        <strong>Cons</strong> : Not familiar with it and we would require more time to learn how to use it.</p></td>
+</tr>
+</tfoot>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON File (Current Choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong> : More familiarity with JSON files. More compact and can be easily loaded. Flexible</p>
+<p class="tableblock">                                        <strong>Cons</strong> : Bad Schema support and namespace support</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Security Considerations</strong>
+As of now, only password hashing is done to protect the accounts from being seen by unwanted eyes. We have planned ahead of time and decided
+to implement better security options for v2.0.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Store accounts on a backend server:</strong> The project restricts us and as of now, it is not implemented. The advantages of storing the accounts in  database
+is that it can be a lot more secure.</p>
+</li>
+<li>
+<p><strong>Encrypt the Account JSON file:</strong> This will prevent other users from easily clicking into the data file and make it more secure.</p>
 </li>
 </ul>
 </div>
@@ -318,12 +376,11 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <h2 id="implementation"><a class="link" href="#implementation">3. Implementation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This section describes some noteworthy details on how certain features are implemented.</p>
+<p>This section describes some noteworthy details on how certain features are implemented.
+=== Earnings Feature</p>
 </div>
-<div class="sect2">
-<h3 id="earnings-feature"><a class="link" href="#earnings-feature">3.1. Earnings Feature</a></h3>
 <div class="sect3">
-<h4 id="add-earnings"><a class="link" href="#add-earnings">3.1.1. Add Earnings</a></h4>
+<h4 id="add-earnings"><a class="link" href="#add-earnings">3.1. Add Earnings</a></h4>
 <div class="paragraph">
 <p>The <code>add_earnings</code> command allows for tutors to add their earnings into TutorAid.</p>
 </div>
@@ -339,7 +396,7 @@ The lifeline for <code>DeleteCommandParser</code> should end at the destroy mark
 <p><strong>Overview</strong></p>
 </div>
 <div class="paragraph">
-<p>The add claim <code>add_earnings</code> mechanism is facilitated by <code>AddEarningsCommand</code> and <code>AddEarningsCommandParser</code>, taking in the
+<p>The <code>add_earnings</code> mechanism is facilitated by <code>AddEarningsCommand</code> and <code>AddEarningsCommandParser</code>, taking in the
 following input from the user: <code>Date</code>, <code>Type</code>, <code>ClassId</code>, <code>Amount</code>, which will construct <code>Earnings</code> objects.</p>
 </div>
 <div class="imageblock">
@@ -388,14 +445,6 @@ and <code>amount</code>.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/AddEarningsActivityDiagram.png" alt="AddEarningsActivityDiagram">
-</div>
-</div>
-<div class="paragraph">
 <p><strong>Example Scenerio</strong></p>
 </div>
 <div class="ulist">
@@ -429,11 +478,274 @@ object have been successfully added.</p>
 </ul>
 </div>
 </div>
+<div class="sect3">
+<h4 id="delete-earnings"><a class="link" href="#delete-earnings">3.2. Delete Earnings</a></h4>
+<div class="paragraph">
+<p>This command allows the user to delete an earnings from the existing earnings list through
+its index.</p>
+</div>
+<div class="paragraph">
+<p>The delete earnings command is facilitated by the <code>DeleteEarningsCommand</code> and <code>DeleteEarningsCommandParser</code>.</p>
+</div>
+<div class="paragraph">
+<p>The delete earnings command is part of the logic component of our application. It interacts with the model component
+of or software application.</p>
+</div>
+<div class="paragraph">
+<p><strong>Overview</strong>
+The <code>DeleteEarningsCommandParser</code> implements <code>Parser</code> with the following operation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DeleteEarningsCommandParser#parse()</code> - This operation will take in an <code>int</code> input from the user, that the
+user wants to delete, which will correspond to the index shown on the earnings list on the application. This will delete
+the earnings in the earnings list. If an invalid format is entered or an invalid index is entered, there will be a prompt
+from the commmand parser.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Current Implementation</strong>
+The delete earnings command is executed by the <code>DeleteEarningsCommand</code>. Currently, the deletion of any earnings is done based
+on the <code>INDEX</code> of te earnings entry.</p>
+</div>
+<div class="paragraph">
+<p>During the design of our delete earnings function, we considered between two alternatives.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1: (Current Choice)</strong>
+Delete Earnings by Index.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pros:</strong> Each earnings is already listed with a unique index, deletion by index is intuitive, less prone to bugs and
+easier to implement.</p>
+</li>
+<li>
+<p><strong>Cons:</strong>  If the user has added a long list of earnings, the user has to look through the whole list and scroll down
+to look for the index of the earnings that the user wants to delete.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong>
+Delete Earnings by Class Id or Date.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Pros:</strong> User has no need to scroll through the list and can delete the earnings in mind easily by typing in the class id or
+the date.</p>
+</li>
+<li>
+<p><strong>Cons:</strong> Different Earnings might have similar class id and/or date, thus deleting by class id or date might
+cause many earnings to be deleted or the wrong ones to be deleted.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We have decided to go with the first alternative as it reduces the number of potential bugs and the complexities involved
+when taking into accout the different cases and scenarios upon the second alternative. In addition, by using the first alternative,
+users can take advantage of the <code>find_earnings</code> command and then delete from that list.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="update-earnings"><a class="link" href="#update-earnings">3.3. Update Earnings</a></h4>
+<div class="paragraph">
+<p><strong>TutorAid</strong> allows the user to update any earnings by using a combination of its <code>INDEX</code> and any of the attributes of earnings.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>update_earnings 3 type/tutorials</code></p>
+</li>
+<li>
+<p><code>update_earnings 1 d/03/11/2019</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The above commands update the earnings type at index 3 on the list to type-tutorials and updates the earnings date at
+index 1 to date 03/11/2019.</p>
+</div>
+<div class="paragraph">
+<p><strong>Current Implementation</strong>
+The <code>UpdateEarningsCommandParser</code> implements <code>Parser</code> with the following operation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>UpdateEarningsCommandParser#parse()</code> - This operation will take in an <code>int</code> input and any combination of the attributes
+of earnings that the user wants to update, namely: <code>DATE</code>, <code>TYPE</code>, <code>AMOUNT</code> and <code>CLASSID</code>. Attributes that are to be updated
+have to be preceded by their respective prefixes, <code>d/</code>, <code>type/</code>, <code>amt/</code> and <code>c/</code>. A validation check will be imposed upon updating of each
+object. Any checks that fails the verification will prompt the user on the failed attribute.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Here is a step-by-step process on how the update earnings command alters and updates the attribute of the earnings entry.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example Scenario</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: The user enters <code>update_earnings 3 c/CS1101S amt/50.00</code> to correct a mistake in entering the <code>CLASS_ID</code>
+for an earning for teaching classes. This updates the <code>Earnings</code> object at index 3 and changes the class id to
+CS11101S.</p>
+</li>
+<li>
+<p>Step 2: <code>LogicManager</code> would use <code>TutorAidParser#parse()</code> to parse input from the user.</p>
+</li>
+<li>
+<p>Step 3: <code>TutorAidParser</code> would match the command word given by the user with the correct command. In this example,
+the given command is <code>update_earnings</code>, thus, <code>UpdateEarningsCommandParser</code> object would be created with the user&#8217;s input.</p>
+</li>
+<li>
+<p>Step 4: <code>UpdateEarningsCommandParser</code> performs a validation check on each of the respective objects through
+<code>UpdateEarningsCommandParser#parse()</code>. In this case, it would use <code>ParserUtil#parseClassId()</code>.
+It would then return a <code>UpdateEarningsCommand</code> object with an <code>Index</code> object and an <code>EditEarningsDescriptor</code> object.</p>
+</li>
+<li>
+<p>Step 5: <code>LogicManager</code> would execute <code>UpdateEarningsCommand#execute</code>. In this particular method, another
+method <code>UpdateEarningsCommand#createEditedEarnings</code> would make use of the <code>EditEarningsDescriptor</code> object to
+create a new <code>Earnings</code> object. Afterwards, this <code>Earnings</code> object would be check with the rest of
+the prior <code>Earnings</code> object, to ensure that there is no duplicate <code>Earnings</code> object. If there are no similar
+<code>Earnings</code> object with the same parameters created previously, it would then be added into the earnings list.</p>
+</li>
+<li>
+<p>Step 6: <code>UpdateEarningsCommand</code> would then return a <code>CommandResult</code> to <code>LogicManager</code>, which would show the user that the new <code>Earnings</code>
+object have been successfully updated.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="weekly-earnings"><a class="link" href="#weekly-earnings">3.4. Weekly Earnings</a></h4>
+<div class="paragraph">
+<p>The <code>weekly_earnings</code> command allows users to add earnings into a list that adds earnings weekly automatically by invoking the <code>auto</code> command.
+This helps to lessen the workload on the user as the user does not need to add a new earnings every week.</p>
+</div>
+<div class="paragraph">
+<p>The format for the <code>weekly_earnings</code> command is as follows:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>weekly_earnings INDEX count/&lt;NUM_OF_WEEKS&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Overview</strong></p>
+</div>
+<div class="paragraph">
+<p>The <code>weekly_earnings</code> mechanism is facilitated by <code>AutoAddEarningsCommand</code> and <code>AutoAddEarningsCommandParser</code>, taking in the
+following input from the user: <code>Index</code> and <code>Count</code>, which would be associated with the  <code>Earnings</code> object that is
+referenced from the <code>Index</code>. The <code>Count</code> object represents the number of weeks the earnings are to be added to the list.</p>
+</div>
+<div class="paragraph">
+<div class="title">Weekly Earnings Command Sequence Diagram</div>
+<p>The <code>AutoAddEarningsCommand</code> implements <code>Parser</code> with the following operation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>AutoAddEarningsCommandParser#parse()</code> - This operation will take in an <code>int</code> input from the user, followed by a
+ <code>String</code> input from the user and create individual objects based on the prefix <code>count/</code>. The <code>String</code> value after the prefix
+will create a <code>Count</code> object. A validation check will be done to ensure that the string that is entered
+by the user is entered correctly. If the string entered are invalid, an error will be shown to the user to
+enter the correct format of the <code>Count</code> object.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>index</code> would use <code>ParserUtil#parseIndex()</code> to ensure that the index typed in by the user is in the correct format and is valid.</p>
+</li>
+<li>
+<p><code>count</code> would use <code>ParserUtil#parseCount()</code> to ensure that the count typed by the user is in the correct format and
+between 0 - 13 (inclusive).</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>After validation of the individual objects, the particular <code>Earnings</code> object would have a <code>Count</code> object and be added to a list
+that is for automatically adding earnings to the list.</p>
+</li>
+<li>
+<p><code>AutoAddEarningsCommandParser</code> would then return a <code>AutoAddEarningsCommand</code> object with the parameters, <code>Index</code> and <code>Count</code> object.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Example Scenerio</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: The user enters <code>weekly_earnings 2 count/3</code> to add that indexed earnings to a list of earnings to be added on the
+same day of the week, every week. This particular earnings is then added to the list on the specified day for a total of 3 weeks.</p>
+</li>
+<li>
+<p>Step 2: <code>LogicManager</code> would use <code>TutorAidParser#parse()</code> to parse input from the user.</p>
+</li>
+<li>
+<p>Step 3: <code>TutorAidParser</code> would match the command word given by the user with the correct command. In this example,
+the given command is <code>weekly_earnings</code>, thus, <code>AutoAddEarningsCommandParser</code> object would be created with the user&#8217;s input.</p>
+</li>
+<li>
+<p>Step 4: <code>AutoAddEarningsCommandParser</code> performs a validation check on each of the respective objects through
+<code>AutoAddEarningsCommandParser#parse()</code>. In this case, it would use <code>ParserUtil#parseIndex()</code> and <code>ParserUtil#parseCount()</code>.
+It would then return a <code>AutoAddEarningsCommand</code> object with an <code>Index</code> and <code>Count</code> objects.</p>
+</li>
+<li>
+<p>Step 5: <code>LogicManager</code> would execute <code>AutoAddEarningsCommand#execute</code>. In this particular method, the <code>Earnings</code> object will be
+check with the rest of the prior <code>Earnings</code> object that has been added to the auto addition of earnings list,
+ to ensure that there is no duplicate <code>Earnings</code> object in the list. If there are no similar
+<code>Earnings</code> object with the same parameters created previously, it would then be added into the auto addition earnings list.</p>
+</li>
+<li>
+<p>Step 6: <code>AutoAddEarningsCommand</code> would then return a <code>CommandResult</code> to <code>LogicManager</code>, which would show the user that the new <code>Earnings</code>
+object have been successfully added to the list.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="auto-add"><a class="link" href="#auto-add">3.5. Auto Add</a></h4>
+<div class="paragraph">
+<p>This command, <code>auto</code>, allows the user to add all the earnings that has been previously added before and the command <code>weekly_earnings</code>
+ has been used on the particular earnings. You can refer to the example and activity diagram below to have a clearer understanding.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AutoActivityDiagram.png" alt="AutoActivityDiagram">
+</div>
+<div class="title">Figure 10. Auto Command Activity Diagram</div>
+</div>
+<div class="paragraph">
+<p><strong>Overview</strong>
+The auto command is facilitated by <code>AutoCommand</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>AutoCommand#execute</code> - This operation checks the current day of the week and checks against the <code>HashMap</code> of the earnings list.
+If there are <code>Earnings</code> object associated with the current day of the week and the <code>Earnings</code> object has a <code>Count</code> object associated
+with it that is more than 1. The earnings inside the <code>ArrayList</code> inside the <code>HashMap</code> would be added into the earnings list.</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
-<h3 id="calendar-feature"><a class="link" href="#calendar-feature">3.2. Calendar Feature</a></h3>
+<h3 id="calendar-feature"><a class="link" href="#calendar-feature">3.6. Calendar Feature</a></h3>
 <div class="sect3">
-<h4 id="add-tasks"><a class="link" href="#add-tasks">3.2.1. Add Tasks</a></h4>
+<h4 id="add-tasks"><a class="link" href="#add-tasks">3.6.1. Add Tasks</a></h4>
 <div class="paragraph">
 <p>The <code>add_task</code> command allows for tutors to add their tasks into TutorAid.</p>
 </div>
@@ -456,7 +768,7 @@ following input from the user: <code>ClassId</code>, <code>Marking</code>, <code
 <div class="content">
 <img src="images/AddTaskSequenceDiagram.png" alt="AddTaskSequenceDiagram">
 </div>
-<div class="title">Figure 10. Add Task Command Sequence Diagram</div>
+<div class="title">Figure 11. Add Task Command Sequence Diagram</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -549,9 +861,9 @@ object have been successfully added.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="notes-features"><a class="link" href="#notes-features">3.3. Notes Features</a></h3>
+<h3 id="notes-features"><a class="link" href="#notes-features">3.7. Notes Features</a></h3>
 <div class="sect3">
-<h4 id="add-notes"><a class="link" href="#add-notes">3.3.1. Add Notes</a></h4>
+<h4 id="add-notes"><a class="link" href="#add-notes">3.7.1. Add Notes</a></h4>
 <div class="paragraph">
 <p>The <code>addnote</code> command allows for tutors to add their notes into TutorAid.</p>
 </div>
@@ -574,7 +886,7 @@ following input from the user: <code>Module_Code</code>, <code>Content</code>, w
 <div class="content">
 <img src="images/AddNotesSequenceDiagram.png" alt="AddNotesSequenceDiagram">
 </div>
-<div class="title">Figure 11. Add Note Command Sequence Diagram</div>
+<div class="title">Figure 12. Add Note Command Sequence Diagram</div>
 </div>
 <div class="paragraph">
 <p>The <code>AddNotesCommand</code> implements <code>Parser</code> with the following operation:</p>
@@ -648,9 +960,9 @@ check with the rest of the prior <code>Notes</code> object, to ensure that there
 </div>
 </div>
 <div class="sect2">
-<h3 id="reminder-features"><a class="link" href="#reminder-features">3.4. Reminder Features</a></h3>
+<h3 id="reminder-features"><a class="link" href="#reminder-features">3.8. Reminder Features</a></h3>
 <div class="sect3">
-<h4 id="add-reminder"><a class="link" href="#add-reminder">3.4.1. Add Reminder</a></h4>
+<h4 id="add-reminder"><a class="link" href="#add-reminder">3.8.1. Add Reminder</a></h4>
 <div class="paragraph">
 <p>The <code>addReminder</code> command allows for tutors to add their reminders into TutorAid.</p>
 </div>
@@ -744,9 +1056,9 @@ check with the rest of the prior <code>Reminder</code> object, to ensure that th
 </div>
 </div>
 <div class="sect2">
-<h3 id="learn-wrong-commands-as-custom-commands-feature"><a class="link" href="#learn-wrong-commands-as-custom-commands-feature">3.5. Learn wrong commands as custom commands feature</a></h3>
+<h3 id="learn-wrong-commands-as-custom-commands-feature"><a class="link" href="#learn-wrong-commands-as-custom-commands-feature">3.9. Learn wrong commands as custom commands feature</a></h3>
 <div class="sect3">
-<h4 id="implementation-2"><a class="link" href="#implementation-2">3.5.1. Implementation</a></h4>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">3.9.1. Implementation</a></h4>
 <div class="paragraph">
 <p>The main point of this feature is to learn a user&#8217;s typing habits so as to give them a more seamless experience
 while using TutorAid by adapting to their typing style so that they do not have to memorize
@@ -760,13 +1072,13 @@ an unknown command. Using this, TutorAid shifts between "learner" mode and norma
 <div class="content">
 <img src="images/changeLearner.png" alt="changeLearner" width="800">
 </div>
-<div class="title">Figure 12. How TutorAid goes from normal to "learner" mode</div>
+<div class="title">Figure 13. How TutorAid goes from normal to "learner" mode</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/changeNormal.png" alt="changeNormal" width="800">
 </div>
-<div class="title">Figure 13. How TutorAid goes from "learner" to normal mode</div>
+<div class="title">Figure 14. How TutorAid goes from "learner" to normal mode</div>
 </div>
 <div class="paragraph">
 <p>The effect of being in "learner" mode results in the <code>TutorAidParser</code> using different methods to parse the command. This will be elaborated on in the sample use scenario below.</p>
@@ -883,7 +1195,7 @@ The lifeline for <code>UnknownCommand</code> should end at the destroy marker (X
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">3.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">3.9.2. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-data-structure-to-support-the-learning-of-custom-commands"><a class="link" href="#aspect-data-structure-to-support-the-learning-of-custom-commands">Aspect: Data structure to support the learning of custom commands</a></h5>
 <div class="ulist">
@@ -921,7 +1233,7 @@ do not need to waste time populating a TreeMap.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.6. Undo/Redo feature</a></h3>
+<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">3.10. Undo/Redo feature</a></h3>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedTutorAid</code>.
 It extends <code>TutorAid</code> with an undo/redo history, stored internally as an <code>tutorAidStateList</code> and <code>currentStatePointer</code>.
@@ -1062,7 +1374,7 @@ If the <code>currentStatePointer</code> is at index <code>tutorAidStateList.size
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.6.1. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.10.1. Design Considerations</a></h4>
 <div class="sect4">
 <h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
 <div class="ulist">
@@ -1099,20 +1411,20 @@ If the <code>currentStatePointer</code> is at index <code>tutorAidStateList.size
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.7. [Proposed] Data Encryption</a></h3>
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.11. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.12. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.13, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1143,7 +1455,7 @@ If the <code>currentStatePointer</code> is at index <code>tutorAidStateList.size
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.13. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1597,4 +1909,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 11:12:12 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 13:09:06 UTC</div></div></div></body></html>
