@@ -518,29 +518,30 @@ and <code>taskTime</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Step 1: The user enters <code>add_earnings d/04/08/2019 c/CS1231 amt/50.00</code> to add an earning for teaching classes.
-This adds an <code>Earnings</code> object that the user has earned by teaching a CS1231 class on 4th August 2019. The user has
-earned $50.00.</p>
+<p>Step 1: The user enters <code>add_task c/CS2103T Lecture  mark/Y tt/20/9/2019 13:00, 21/9/2019 16:00 tt/21/9/2019 13:00, 21/9/2019 15:00</code>
+to add an task into the calendar.
+This adds an <code>Task</code> object, which is a module CS2103T that the user need to attempt at 1pm of 20th and 21st September 2019.
+The task is marked so that it would be reminded.</p>
 </li>
 <li>
-<p>Step 2: <code>LogicManager</code> would use <code>TutorAidParser#parse()</code> to parse input from the user.</p>
+<p>Step 2: <code>LogicManager</code> would use <code>AddressBookParser#parse()</code> to parse input from the user.</p>
 </li>
 <li>
-<p>Step 3: <code>TutorAidParser</code> would match the command word given by the user with the correct command. In this example,
-the given command is <code>add_earnings</code>, thus, <code>AddEarningsCommandParser</code> object would be created with the user&#8217;s input.</p>
+<p>Step 3: <code>AddressBookParser</code> would match the command word given by the user with the correct command. In this example,
+the given command is <code>add_task</code>, thus, <code>AddTaskCommandParser</code> object would be created with the user&#8217;s input.</p>
 </li>
 <li>
-<p>Step 4: <code>AddEarningsCommandParser</code> performs a validation check on each of the respective objects through
-<code>AddEarningsCommandParser#parse()</code>. In this case, it would use <code>ParserUtil#parseDate()</code>, <code>ParserUtil#parseClassId()</code> and
-<code>ParserUtil#parseAmount()</code>. It would then return a <code>AddEarningsCommand</code> object with an <code>Earnings</code> object.</p>
+<p>Step 4: <code>AddTaskCommandParser</code> performs a validation check on each of the respective objects through
+<code>AddTaskCommandParser#parse()</code>. In this case, it would use <code>ParserUtil#parseClassId()</code>, <code>ParserUtil#parseMarking()</code>, and
+<code>ParserUtil#parseTaskTimes()</code>. It would then return a <code>AddTaskCommand</code> object with an <code>Task</code> object.</p>
 </li>
 <li>
-<p>Step 5: <code>LogicManager</code> would execute <code>AddEarningsCommand#execute</code>. In this particular method, the <code>Earnings</code> object will be
-check with the rest of the prior <code>Earnings</code> object, to ensure that there is no duplicate <code>Earnings</code> object. If there are no similar
-<code>Earnings</code> object with the same parameters created previously, it would then be added into the earnings list.</p>
+<p>Step 5: <code>LogicManager</code> would execute <code>AddTaskCommand#execute</code>. In this particular method, the <code>Task</code> object will be
+check with the rest of the prior <code>Task</code> object, to ensure that there is no duplicate <code>Task</code> object. If there are no similar
+<code>Task</code> object with the same parameters created previously, it would then be added into the task list.</p>
 </li>
 <li>
-<p>Step 6: <code>AddEarningsCommand</code> would then return a <code>CommandResult</code> to <code>LogicManager</code>, which would show the user that the new <code>Earnings</code>
+<p>Step 6: <code>AddTaskCommand</code> would then return a <code>CommandResult</code> to <code>LogicManager</code>, which would show the user that the new <code>Task</code>
 object have been successfully added.</p>
 </li>
 </ul>
@@ -1095,39 +1096,6 @@ If the <code>currentStatePointer</code> is at index <code>tutorAidStateList.size
 </ul>
 </div>
 </div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of tutor aid states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedTutorAid</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separaifferent things.tion of Concerns as <code>HistoryManager</code> now needs to do two d</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -1376,7 +1344,7 @@ If the <code>currentStatePointer</code> is at index <code>tutorAidStateList.size
 <li>
 <p>3a1. TutorAid shows an error message.</p>
 <div class="paragraph">
-<p>Use case resumes at step 2.</p>
+<p>Use case resumes at step 2.<br></p>
 </div>
 </li>
 </ul>
@@ -1629,4 +1597,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 07:06:54 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-10 07:07:40 UTC</div></div></div></body></html>
