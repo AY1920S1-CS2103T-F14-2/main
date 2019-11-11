@@ -32,19 +32,20 @@ to be a more competent and knowledgeable software engineer.</p>
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>TutorAid is an easy-to-use Command Line Interface (CLI) based application with a Graphical User Interface (GUI) that helps to makes the lives of tutors easier
-by organizing their workflow and make tutors more efficient. With a myriad of features such as student profile tracking,
-earnings, reminders, notes and tasks all in application, tutors no longer have to search through their notes one-by-one excruciatingly.</p>
+<p>TutorAid is an easy-to-use Command Line Interface (CLI) [i.e issue commands to the program by typing in text inputs ] based application with a
+Graphical User Interface (GUI) [i.e. allows users to interact with the application through visual and graphical elements] that helps to makes the lives of tutors easier
+by organizing their workflow and making tutors more efficient. With a myriad of features such as student profile tracking,
+earnings, reminders, notes and tasks all in one application, tutors no longer have to search through their notes one-by-one excruciatingly.</p>
 </div>
 <div class="paragraph">
 <p>The features of TutorAid has been well-thought out, keeping in mind the necessities and wants of tutors alike. To meet the
 exact needs of our target audience, we have conducted several surveys to ask current tutors what they would like in an
-application and thus, TutorAid was created. All of TutorAid&#8217;s features and implementations are well documented
+application and thus, TutorAid was created. All of TutorAid&#8217;s features and implementations are well documented with proper visualization
 in guides for users and developers respectively.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/Ui.png" alt="Ui" width="500">
+<img src="../images/EarningsUi.png" alt="EarningsUi" width="500">
 </div>
 <div class="title">Figure 1. A view of TutorAid</div>
 </div>
@@ -57,7 +58,8 @@ in guides for users and developers respectively.</p>
 <p>My main role was to prototype and develop the Login feature and the Earnings Tracker feature.
 The login command required me to think of how to put up a login window that only shows the main window when the user
 has logged in successfully. It also required me to think of how to encrypt the passwords stored and how to check whether they
- are valid as well. I also did the Earning feature where it tracks what earnings you have earned throughout the weeks. It has a claim status that
+ are valid as well. I also did the Earning feature where it tracks what earnings you have earned throughout the weeks. Developing it further, I decided to
+add a automated earnings addition to save the users time. It has a claim status that
 allows you to see if you have claimed your earnings from your respective faculties.</p>
 </div>
 </div>
@@ -72,7 +74,7 @@ allows you to see if you have claimed your earnings from your respective faculti
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: It allows the user to auto add all of the earnings of the day (provided that the earnings is a routine), into the earnings list with only one short <code>auto</code> command.</p>
+<p>What it does: It allows the user to auto add all of the earnings of the day (provided that the earnings is a weekly routine), into the earnings list with only one short <code>auto</code> command.</p>
 </li>
 <li>
 <p>Justification: This feature improves the product significantly because as a Tutor, it is normal to have tutorials or labs or consultations to give
@@ -85,7 +87,7 @@ number of times to add into the list. Afterwards, the tutor just has to invoke t
 ease the use of earnings tracking for the users. This is facilitated by the use of a HashMap in the Earnings list. This HashMap only has at most 7 keys as these keys are
 determined by the name of the days in a week. Inside the HashMap, there are ArrayList mapped as the values of the HashMap. This feature consists of 2 main commands. The first command is <code>weekly_earnings INDEX count/COUNT</code> and the second command is <code>auto</code>. Users have to add the earnings that they want to repeat over the weeks manually first. After they have added the earnings, they can invoke the <code>weekly_earnings</code> command to auto add the earnings for the next few weeks depending on the number of counts they have inputted. The <code>weekly_earnings</code> command add the key-value pair to a HashMap in <code>Earnings</code> class. Once the user invokes the <code>auto</code> command, the parser will check the current day of the week and
 get the value of the HashMap that is associated with the key value (that is the day of the week). If there exists an ArrayList, the parser will check through the entire list and
-check if the Earnings in the ArrayList has more than a <code>Count</code> of 0. If the <code>Count</code> is more than zero, then the parser adds the <code>Earnings</code> object into the current list. If the <code>Count</code> is zero, the `Earnings object would be removed from the ArrayList.</p>
+check if the Earnings in the ArrayList has more than a <code>Count</code> of 0. If the <code>Count</code> is more than zero, then the parser adds the <code>Earnings</code> object into the current list. If the <code>Count</code> is zero, the <code>Earnings</code> object would be removed from the ArrayList.</p>
 </li>
 </ul>
 </div>
@@ -152,7 +154,7 @@ I created a Login Window as well so that the users can have a visual cue when th
 <div class="ulist">
 <ul>
 <li>
-<p>Added detailed implementation documentation for the account storage and earnings feature in Developer Guide, including diagrams</p>
+<p>Added detailed implementation documentation for the account storage and earnings feature in Developer Guide, including diagrams (<a href="https://github.com/AY1920S1-CS2103T-F14-2/main/pull/201">#201</a>, <a href="https://github.com/AY1920S1-CS2103T-F14-2/main/pull/203">#203</a>)</p>
 </li>
 <li>
 <p>Customized and updated ReadMe for TutorAid</p>
@@ -287,6 +289,7 @@ of 09/02/2019, the earnings will not be added.</p>
 </div>
 </div>
 </div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
@@ -336,7 +339,7 @@ following input from the user: <code>Date</code>, <code>Type</code>, <code>Class
 <ul>
 <li>
 <p><code>AddEarningsCommandParser#parse()</code> - This operation will take in a <code>String</code> input from the user and create
- individual objects based on the prefixes <code>d/</code>, <code>c/</code> and <code>amt/</code>. The <code>String</code> value after the respective prefixes
+ individual objects based on the prefixes <code>d/</code>, <code>c/</code>, <code>type/</code> and <code>amt/</code>. The <code>String</code> value after the respective prefixes
  will create the respective objects. A validation check will be done to ensure that the strings that are entered
 by the user is entered correctly. If any of the strings entered are invalid, an error will be shown to the user to
 enter the correct format of the respectives objects.</p>
@@ -375,8 +378,7 @@ and <code>amount</code>.</p>
 <ul>
 <li>
 <p>Step 1: The user enters <code>add_earnings d/04/08/2019 type/tut c/CS1231 amt/50.00</code> to add an earning for teaching classes.
-This adds an <code>Earnings</code> object that the user has earned by teaching a CS1231 tutorial class on 4th August 2019. The user has
-earned $50.00.</p>
+In this example, it adds an <code>Earnings</code> object that the user has earned $50.00 by teaching a CS1231 tutorial class on 4th August 2019.</p>
 </li>
 <li>
 <p>Step 2: <code>LogicManager</code> would use <code>TutorAidParser#parse()</code> to parse input from the user.</p>
@@ -405,7 +407,7 @@ object have been successfully added.</p>
 <div class="sect3">
 <h4 id="weekly-earnings"><a class="link" href="#weekly-earnings">Weekly Earnings</a></h4>
 <div class="paragraph">
-<p>The <code>weekly_earnings</code> command allows users to add earnings into a list that adds earnings weekly automatically by invoking the <code>auto</code> command.
+<p>The <code>weekly_earnings</code> command allows users to add earnings into a list. This list adds earnings weekly by invoking the <code>auto</code> command automatically.
 This helps to lessen the workload on the user as the user does not need to add a new earnings every week.</p>
 </div>
 <div class="paragraph">
@@ -433,7 +435,7 @@ referenced from the <code>Index</code>. The <code>Count</code> object represents
 <p><code>AutoAddEarningsCommandParser#parse()</code> - This operation will take in an <code>int</code> input from the user, followed by a
  <code>String</code> input from the user and create individual objects based on the prefix <code>count/</code>. The <code>String</code> value after the prefix
 will create a <code>Count</code> object. A validation check will be done to ensure that the string that is entered
-by the user is entered correctly. If the string entered are invalid, an error will be shown to the user to
+by the user is entered correctly. If the string entered is invalid, an error will be shown to the user to
 enter the correct format of the <code>Count</code> object.</p>
 <div class="ulist">
 <ul>
@@ -449,7 +451,7 @@ between 0 - 13 (inclusive).</p>
 </li>
 <li>
 <p>After validation of the individual objects, the particular <code>Earnings</code> object would have a <code>Count</code> object and be added to a list
-that is for automatically adding earnings to the list.</p>
+that is ready to be added automatically.</p>
 </li>
 <li>
 <p><code>AutoAddEarningsCommandParser</code> would then return a <code>AutoAddEarningsCommand</code> object with the parameters, <code>Index</code> and <code>Count</code> object.</p>
@@ -463,7 +465,8 @@ that is for automatically adding earnings to the list.</p>
 <ul>
 <li>
 <p>Step 1: The user enters <code>weekly_earnings 2 count/3</code> to add that indexed earnings to a list of earnings to be added on the
-same day of the week, every week. This particular earnings is then added to the list on the specified day for a total of 3 weeks.</p>
+same day of the week, every week. For example, if the referenced earnings has a date of <code>01/11/2019</code>, which is a Friday,
+that particular earnings will be added on every Friday for a total of 3 weeks.</p>
 </li>
 <li>
 <p>Step 2: <code>LogicManager</code> would use <code>TutorAidParser#parse()</code> to parse input from the user.</p>
@@ -498,7 +501,7 @@ object have been successfully added to the list.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/AutoActivityDiagram.png" alt="AutoActivityDiagram" width="700">
+<img src="../images/AutoActivityDiagram.png" alt="AutoActivityDiagram" width="600">
 </div>
 <div class="title">Figure 4. Auto Command Activity Diagram</div>
 </div>
@@ -515,6 +518,91 @@ with it that is more than 1. The earnings inside the <code>ArrayList</code> insi
 </li>
 </ul>
 </div>
+<div class="paragraph">
+<p><strong>Example Scenario</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: The user enters <code>auto</code> to add all his days earnings into the earnings list.</p>
+</li>
+<li>
+<p>Step 2: <code>LogicManager</code> would use <code>TutorAidParser#parse()</code> to parse input from the user.</p>
+</li>
+<li>
+<p>Step 3: <code>TutorAidParser</code> would match the command word given by the user with the correct command. In this example,
+the given command is <code>auto</code>, thus, <code>AutoCommand</code> object would be created with the user&#8217;s input.</p>
+</li>
+<li>
+<p>Step 4: <code>LogicManager</code> would execute <code>AutoCommand#execute</code>. In this particular method, the <code>execute</code> command would check the day of the week.
+It would then check with the <code>HashMap</code> to check if there is any <code>ArrayList</code> of <code>Earnings</code> object to be added in. If there is no <code>ArrayList</code> available, no earnings would be added.
+ If there is an <code>ArrayList</code> mapped to the day of the week, the method would then check through every <code>Earnings</code> object in the <code>ArrayList</code>. In each <code>Earnings</code> object, there is a <code>Count</code> object associated to it.
+If the <code>Count</code> object has a more than 1, the <code>Earnings</code> object would be added into the current earnings list. If the <code>Count</code> object has a value of 0, the <code>Earnings</code> object would be removed from the <code>ArrayList</code>.</p>
+</li>
+<li>
+<p>Step 6: <code>AutoCommand</code> would then return a <code>CommandResult</code> to <code>LogicManager</code>, which would show the user that the new <code>Earnings</code>
+object have been successfully added to the list.</p>
+</li>
+</ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:10:41 UTC</div></div></div></body></html>
+<div class="sect3">
+<h4 id="account-storage"><a class="link" href="#account-storage">Account Storage</a></h4>
+<div class="paragraph">
+<p>All accounts are stored in a JSON file called accountslist.json. This file is generated once you register an account. The username
+and password is stored inside the the JSON file with salt hashing thus, the account details cannot be seen by everyone.</p>
+</div>
+<div class="paragraph">
+<p><strong>Design Considerations</strong>
+We realised that storing the accounts by itself would allow anyone to see the username and passwords. Hence, we decided to
+use a password authentication method and salt hashing to cover the passwords of the accounts.</p>
+</div>
+<div class="paragraph">
+<p>In addition, we decided to go with using a JSON file instead of XML file due to these considerations:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Account File Storage function alternatives</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Design Consideration</th>
+<th class="tableblock halign-left valign-top">Pros and Cons</th>
+</tr>
+</thead>
+<tfoot>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XML File</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong> : Easy transfer of data between seperate systems. Good at storing data that will be readby 3rd parties.</p>
+<p class="tableblock">                                        <strong>Cons</strong> : Not familiar with it and we would require more time to learn how to use it.</p></td>
+</tr>
+</tfoot>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON File (Current Choice)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong> : More familiarity with JSON files. More compact and can be easily loaded. Flexible</p>
+<p class="tableblock">                                        <strong>Cons</strong> : Bad Schema support and namespace support</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Security Considerations</strong>
+As of now, only password hashing is done to protect the accounts from being seen by unwanted eyes. We have planned ahead of time and decided
+to implement better security options for v2.0.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Store accounts on a backend server:</strong> The project restricts us and as of now, it is not implemented. The advantages of storing the accounts in  database
+is that it can be a lot more secure.</p>
+</li>
+<li>
+<p><strong>Encrypt the Account JSON file:</strong> This will prevent other users from easily clicking into the data file and make it more secure.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:15:57 UTC</div></div></div></body></html>

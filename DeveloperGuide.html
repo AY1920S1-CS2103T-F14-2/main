@@ -413,7 +413,7 @@ following input from the user: <code>Date</code>, <code>Type</code>, <code>Class
 <ul>
 <li>
 <p><code>AddEarningsCommandParser#parse()</code> - This operation will take in a <code>String</code> input from the user and create
- individual objects based on the prefixes <code>d/</code>, <code>c/</code> and <code>amt/</code>. The <code>String</code> value after the respective prefixes
+ individual objects based on the prefixes <code>d/</code>, <code>c/</code>, <code>type/</code> and <code>amt/</code>. The <code>String</code> value after the respective prefixes
  will create the respective objects. A validation check will be done to ensure that the strings that are entered
 by the user is entered correctly. If any of the strings entered are invalid, an error will be shown to the user to
 enter the correct format of the respectives objects.</p>
@@ -452,8 +452,7 @@ and <code>amount</code>.</p>
 <ul>
 <li>
 <p>Step 1: The user enters <code>add_earnings d/04/08/2019 type/tut c/CS1231 amt/50.00</code> to add an earning for teaching classes.
-This adds an <code>Earnings</code> object that the user has earned by teaching a CS1231 tutorial class on 4th August 2019. The user has
-earned $50.00.</p>
+In this example, it adds an <code>Earnings</code> object that the user has earned $50.00 by teaching a CS1231 tutorial class on 4th August 2019.</p>
 </li>
 <li>
 <p>Step 2: <code>LogicManager</code> would use <code>TutorAidParser#parse()</code> to parse input from the user.</p>
@@ -637,7 +636,7 @@ object have been successfully updated.</p>
 <div class="sect3">
 <h4 id="weekly-earnings"><a class="link" href="#weekly-earnings">3.1.4. Weekly Earnings</a></h4>
 <div class="paragraph">
-<p>The <code>weekly_earnings</code> command allows users to add earnings into a list that adds earnings weekly automatically by invoking the <code>auto</code> command.
+<p>The <code>weekly_earnings</code> command allows users to add earnings into a list. This list adds earnings weekly by invoking the <code>auto</code> command automatically.
 This helps to lessen the workload on the user as the user does not need to add a new earnings every week.</p>
 </div>
 <div class="paragraph">
@@ -665,7 +664,7 @@ referenced from the <code>Index</code>. The <code>Count</code> object represents
 <p><code>AutoAddEarningsCommandParser#parse()</code> - This operation will take in an <code>int</code> input from the user, followed by a
  <code>String</code> input from the user and create individual objects based on the prefix <code>count/</code>. The <code>String</code> value after the prefix
 will create a <code>Count</code> object. A validation check will be done to ensure that the string that is entered
-by the user is entered correctly. If the string entered are invalid, an error will be shown to the user to
+by the user is entered correctly. If the string entered is invalid, an error will be shown to the user to
 enter the correct format of the <code>Count</code> object.</p>
 <div class="ulist">
 <ul>
@@ -681,7 +680,7 @@ between 0 - 13 (inclusive).</p>
 </li>
 <li>
 <p>After validation of the individual objects, the particular <code>Earnings</code> object would have a <code>Count</code> object and be added to a list
-that is for automatically adding earnings to the list.</p>
+that is ready to be added automatically.</p>
 </li>
 <li>
 <p><code>AutoAddEarningsCommandParser</code> would then return a <code>AutoAddEarningsCommand</code> object with the parameters, <code>Index</code> and <code>Count</code> object.</p>
@@ -695,7 +694,8 @@ that is for automatically adding earnings to the list.</p>
 <ul>
 <li>
 <p>Step 1: The user enters <code>weekly_earnings 2 count/3</code> to add that indexed earnings to a list of earnings to be added on the
-same day of the week, every week. This particular earnings is then added to the list on the specified day for a total of 3 weeks.</p>
+same day of the week, every week. For example, if the referenced earnings has a date of <code>01/11/2019</code>, which is a Friday,
+that particular earnings will be added on every Friday for a total of 3 weeks.</p>
 </li>
 <li>
 <p>Step 2: <code>LogicManager</code> would use <code>TutorAidParser#parse()</code> to parse input from the user.</p>
@@ -730,7 +730,7 @@ object have been successfully added to the list.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="images/AutoActivityDiagram.png" alt="AutoActivityDiagram" width="700">
+<img src="images/AutoActivityDiagram.png" alt="AutoActivityDiagram" width="600">
 </div>
 <div class="title">Figure 10. Auto Command Activity Diagram</div>
 </div>
@@ -744,6 +744,33 @@ The auto command is facilitated by <code>AutoCommand</code>.</p>
 <p><code>AutoCommand#execute</code> - This operation checks the current day of the week and checks against the <code>HashMap</code> of the earnings list.
 If there are <code>Earnings</code> object associated with the current day of the week and the <code>Earnings</code> object has a <code>Count</code> object associated
 with it that is more than 1. The earnings inside the <code>ArrayList</code> inside the <code>HashMap</code> would be added into the earnings list.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Example Scenario</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: The user enters <code>auto</code> to add all his days earnings into the earnings list.</p>
+</li>
+<li>
+<p>Step 2: <code>LogicManager</code> would use <code>TutorAidParser#parse()</code> to parse input from the user.</p>
+</li>
+<li>
+<p>Step 3: <code>TutorAidParser</code> would match the command word given by the user with the correct command. In this example,
+the given command is <code>auto</code>, thus, <code>AutoCommand</code> object would be created with the user&#8217;s input.</p>
+</li>
+<li>
+<p>Step 4: <code>LogicManager</code> would execute <code>AutoCommand#execute</code>. In this particular method, the <code>execute</code> command would check the day of the week.
+It would then check with the <code>HashMap</code> to check if there is any <code>ArrayList</code> of <code>Earnings</code> object to be added in. If there is no <code>ArrayList</code> available, no earnings would be added.
+ If there is an <code>ArrayList</code> mapped to the day of the week, the method would then check through every <code>Earnings</code> object in the <code>ArrayList</code>. In each <code>Earnings</code> object, there is a <code>Count</code> object associated to it.
+If the <code>Count</code> object has a more than 1, the <code>Earnings</code> object would be added into the current earnings list. If the <code>Count</code> object has a value of 0, the <code>Earnings</code> object would be removed from the <code>ArrayList</code>.</p>
+</li>
+<li>
+<p>Step 6: <code>AutoCommand</code> would then return a <code>CommandResult</code> to <code>LogicManager</code>, which would show the user that the new <code>Earnings</code>
+object have been successfully added to the list.</p>
 </li>
 </ul>
 </div>
@@ -1895,4 +1922,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:10:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:15:57 UTC</div></div></div></body></html>

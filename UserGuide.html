@@ -33,8 +33,7 @@
 <li><a href="#exiting-the-program-code-exit-code">3.14. Exiting the program : <code>exit</code></a></li>
 <li><a href="#saving-the-data">3.15. Saving the data</a></li>
 <li><a href="#logout-code-logout-code">3.16. Logout : <code>logout</code></a></li>
-<li><a href="#upcoming-features">3.17. Upcoming Features</a></li>
-<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.18. Encrypting data files <code>[coming in v2.0]</code></a></li>
+<li><a href="#encrypting-data-files-code-coming-in-v2-0-code">3.17. Encrypting data files <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -218,9 +217,13 @@ Format: <code>login user/USERNAME pass/PASSWORD</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
-<div class="paragraph">
+<div class="ulist">
+<ul>
+<li>
 <p>As of now, the login features allow multiple users to view the same data. This will be upgraded in later versions such
 that different accounts will see different data.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -760,20 +763,23 @@ Format: <code>add_earnings d/DATE type/TYPE c/CLASSID amt/AMOUNT</code></p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Only <code>tutorials</code>/ <code>tut</code> / <code>lab</code> / <code>consultations</code> / <code>c</code> / <code>sectionals</code> / <code>s</code> / <code>preparation_time</code> / <code>p</code>
-arguments are allowed for <code>TYPE</code>.
-<code>DATE</code> format must be done in <code>DD/MM/YYYY</code> or <code>DD-MM-YYYY</code> format.
- <code>AMOUNT</code> has a max value of 1 000 000.00 and should not contain commas.
-</td>
-</tr>
-</table>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Only <code>tutorials</code>/ <code>tut</code> / <code>lab</code> / <code>consultations</code> / <code>c</code> / <code>sectionals</code> / <code>s</code> / <code>preparation_time</code> / <code>p</code>
+arguments are allowed for <code>TYPE</code>.</p>
+</li>
+<li>
+<p><code>DATE</code> format must be done in <code>DD/MM/YYYY</code> or <code>DD-MM-YYYY</code> format and has a lower limit of Year 1600.</p>
+</li>
+<li>
+<p><code>AMOUNT</code> has a max value of 999 999.99 and should not contain commas.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -824,7 +830,24 @@ Format: <code>delete_earnings INDEX</code></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="find-earnings-code-find_earnings-code"><a class="link" href="#find-earnings-code-find_earnings-code">3.7.4. Find Earnings: <code>find_earnings</code></a></h4>
+<h4 id="total-earnings-code-total_earnings-code"><a class="link" href="#total-earnings-code-total_earnings-code">3.7.4. Total Earnings: <code>total_earnings</code></a></h4>
+<div class="paragraph">
+<p>Gives the user the total earnings earned by the user.<br>
+Format: <code>total_earnings</code></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>total_earnings</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="find-earnings-code-find_earnings-code"><a class="link" href="#find-earnings-code-find_earnings-code">3.7.5. Find Earnings: <code>find_earnings</code></a></h4>
 <div class="paragraph">
 <p>Find Earnings in the list of earnings.<br>
 Format: <code>find_earnings keywords &#8230;&#8203;</code></p>
@@ -855,7 +878,7 @@ Partial matching is allowed as well for this command. <code>find_earnings a</cod
 </div>
 </div>
 <div class="sect3">
-<h4 id="claim-earnings-code-claim_earnings-code"><a class="link" href="#claim-earnings-code-claim_earnings-code">3.7.5. Claim Earnings: <code>claim_earnings</code></a></h4>
+<h4 id="claim-earnings-code-claim_earnings-code"><a class="link" href="#claim-earnings-code-claim_earnings-code">3.7.6. Claim Earnings: <code>claim_earnings</code></a></h4>
 <div class="paragraph">
 <p>Changes the user the earnings status in the list of earnings.<br>
 Format: <code>claim_earnings INDEX c/CLASSID</code></p>
@@ -891,7 +914,7 @@ Only one status is allowed at a time.
 </div>
 </div>
 <div class="sect3">
-<h4 id="auto-add-weekly-earnings-code-weekly_earnings-code"><a class="link" href="#auto-add-weekly-earnings-code-weekly_earnings-code">3.7.6. Auto Add Weekly Earnings: <code>weekly_earnings</code></a></h4>
+<h4 id="auto-add-weekly-earnings-code-weekly_earnings-code"><a class="link" href="#auto-add-weekly-earnings-code-weekly_earnings-code">3.7.7. Auto Add Weekly Earnings: <code>weekly_earnings</code></a></h4>
 <div class="paragraph">
 <p>Adds an earnings from the list of existing earnings to be added in the on the same
 day every week.<br>
@@ -940,7 +963,7 @@ than the date.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="adds-weekly-earnings-code-auto-code"><a class="link" href="#adds-weekly-earnings-code-auto-code">3.7.7. Adds Weekly Earnings: <code>auto</code></a></h4>
+<h4 id="adds-weekly-earnings-code-auto-code"><a class="link" href="#adds-weekly-earnings-code-auto-code">3.7.8. Adds Weekly Earnings: <code>auto</code></a></h4>
 <div class="paragraph">
 <p>Adds all the earnings that were invoked by <code>weekly_earnings</code>.<br>
 Format: <code>auto</code></p>
@@ -1695,88 +1718,7 @@ Format: <code>logout</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="upcoming-features"><a class="link" href="#upcoming-features">3.17. Upcoming Features</a></h3>
-<div class="sect3">
-<h4 id="filter-earnings-code-filter_earnings-code"><a class="link" href="#filter-earnings-code-filter_earnings-code">3.17.1. Filter Earnings: <code>filter_earnings</code></a></h4>
-<div class="paragraph">
-<p>Filters Earnings in the list of earnings based on either classid/date/week/month.<br>
-Format: <code>filter_earnings variable</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>filter_earnings v/week</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="list-of-auto-added-earnings-code-list_auto-code"><a class="link" href="#list-of-auto-added-earnings-code-list_auto-code">3.17.2. List of auto added earnings: <code>list_auto</code></a></h4>
-<div class="paragraph">
-<p>Renders a pop-up showing a list of earnings that are due to be added automatically to the earnings list.<br>
-Format: <code>list_auto</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list_auto</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="graph-earnings-code-graph-code"><a class="link" href="#graph-earnings-code-graph-code">3.17.3. Graph Earnings: <code>graph</code></a></h4>
-<div class="paragraph">
-<p>Gives you a graph of your earnings that is given with at start date and end date.<br>
-Format: <code>graph d/START_DATE d/END_DATE</code></p>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>graph d/02/02/2019 d/04/03/2019</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="pie-chart-earnings-code-piechart-code"><a class="link" href="#pie-chart-earnings-code-piechart-code">3.17.4. Pie Chart Earnings: <code>piechart</code></a></h4>
-<div class="paragraph">
-<p>Gives you a pie chart of your earnings based on either classid or type, in addition of the start date and end date.<br>
-Format: <code>piechart by/FACTOR d/START_DATE d/END_DATE</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>piechart by/classid d/02/02/2019 d/04/03/2019</code></p>
-</li>
-<li>
-<p><code>piechart by/type d/12/10/2016 d/24/03/2018</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="login-code-login-code-2"><a class="link" href="#login-code-login-code-2">3.17.5. Login: <code>login</code></a></h4>
-<div class="paragraph">
-<p>As of the current implementation, when the user logs in with different account, they will still see the same data.
-However, we plan to upgrade this feature as soon as v1.5 or v1.6.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.18. Encrypting data files <code>[coming in v2.0]</code></a></h3>
+<h3 id="encrypting-data-files-code-coming-in-v2-0-code"><a class="link" href="#encrypting-data-files-code-coming-in-v2-0-code">3.17. Encrypting data files <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>As of the current implementation, hashing is implemented in the account password. With this encryption, malicious user will not be able to view the content despite they have the access to the computer.
 However, we plan to provide a better encryption with SHA256 for our password hashing and AES128 for all the data save in the TutorAid as soon as v1.5 to provide a better security protection.</p>
@@ -1873,4 +1815,4 @@ However, we plan to provide a better encryption with SHA256 for our password has
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:10:41 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:15:57 UTC</div></div></div></body></html>
