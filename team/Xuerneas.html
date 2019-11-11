@@ -599,7 +599,7 @@ Tab change function is implemented in using both CLI and GUI. User can execute t
 </ul>
 </div>
 <div class="paragraph">
-<p><strong>Value proposition</strong>: manage calendar and track earnings faster than a typical mouse/GUI driven app</p>
+<p><strong>Value proposition</strong>: manage students, tasks, notes, earnings and reminders faster than a typical mouse/GUI driven app. Helps to improve workflow by organizing all teaching-related information in one common place and hence saves time.</p>
 </div>
 </div>
 </div>
@@ -634,6 +634,12 @@ Tab change function is implemented in using both CLI and GUI. User can execute t
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">track all the information about my students</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remember key info about them easily when I need it</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add a new class</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">check the details of the task when I want</p></td>
 </tr>
@@ -660,6 +666,12 @@ Tab change function is implemented in using both CLI and GUI. User can execute t
 <td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">check the information of my classes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">know more about my students' situation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see who&#8217;s not coming for class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check up on them</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -825,9 +837,6 @@ Tab change function is implemented in using both CLI and GUI. User can execute t
 </li>
 </ol>
 </div>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -848,44 +857,7 @@ Tab change function is implemented in using both CLI and GUI. User can execute t
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix F: Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
@@ -903,7 +875,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">Launch and Shutdown</a></h3>
+<h3 id="launch"><a class="link" href="#launch">Launch</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -920,24 +892,7 @@ Expected: Shows the GUI with a set of sample contacts. The window size may not b
 </ol>
 </div>
 </li>
-<li>
-<p>Saving window preferences</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Resize the window to an optimum size. Move the window to a different location. Close the window.</p>
-</li>
-<li>
-<p>Re-launch the app by double-clicking the jar file.<br>
-Expected: The most recent window size and location is retained.</p>
-</li>
 </ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 <div class="sect2">
@@ -953,43 +908,20 @@ Expected: The most recent window size and location is retained.</p>
 </li>
 <li>
 <p>Test case: <code>delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+Expected: First person is deleted from the list. Details of the deleted person shown in the status message.</p>
 </li>
 <li>
 <p>Test case: <code>delete 0</code><br>
-Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
+Expected: No person is deleted. Error details shown in the status message.</p>
 </li>
 <li>
-<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size), <code>delete Tom</code><br>
 Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
 </li>
 </ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">Saving data</a></h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Dealing with missing/corrupted data files</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
-</li>
-</ol>
-</div>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p><em>{ more test cases &#8230;&#8203; }</em></p>
 </div>
 </div>
 <div class="sect2">
@@ -1145,6 +1077,208 @@ Expected: The previously deleted task reappeared in the list.</p>
 <li>
 <p>Test case: <code>delete_task 1</code> + <code>undo</code> + <code>redo</code><br>
 Expected: The recovered task was deleted again from the list.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-by-class"><a class="link" href="#listing-by-class">Listing by class</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>List out all students in the class.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>list_class CS2030</code><br>
+Expected: All students in class CS2030 are shown.</p>
+</li>
+<li>
+<p>Test case: <code>list_class CS2030 CS2040</code><br>
+Expected: All students in class CS2030 and CS2040 are shown.</p>
+</li>
+<li>
+<p>Test case: <code>list_class RANDOM STRING</code><br>
+Expected: No students are shown.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mass-assigning-class"><a class="link" href="#mass-assigning-class">Mass Assigning Class</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Assigns the class to all students indicated.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>assign_class 1,2,3 c/CS2030</code><br>
+Expected: Students at index 1,2 and 3 are assigned to class CS2030. (assuming the list size is at least 3)</p>
+</li>
+<li>
+<p>Test case: <code>assign_class 1,2,3 c/CS2030</code><br>
+Expected: Nobody is assigned to class CS2030. (assuming the list size is less than 3)</p>
+</li>
+<li>
+<p>Test case: <code>assign_class 1,2,100 c/CS2030</code><br>
+Expected: Nobody is assigned to class CS2030. (assuming the list size is 5)</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mass-marking-attendance"><a class="link" href="#mass-marking-attendance">Mass Marking Attendance</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Increases the attendance of indicated students by one.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>mark_attendance 1,2,3</code><br>
+Expected: Students at index 1,2 and 3 have their attendance increased (assuming the list size is at least 3)</p>
+</li>
+<li>
+<p>Test case: <code>mark_attendance 1,2,3</code><br>
+Expected: Nobody has their attendance increased (assuming the list size is less than 3)</p>
+</li>
+<li>
+<p>Test case: <code>mark_attendance 1,2,100</code><br>
+Expected: Nobody has their attendance increased  (assuming the list size is 5)</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mass-marking-participation"><a class="link" href="#mass-marking-participation">Mass Marking Participation</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Increases the participation of indicated students by one.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>mark_participation 1,2,3</code><br>
+Expected: Students at index 1,2 and 3 have their participation increased (assuming the list size is at least 3)</p>
+</li>
+<li>
+<p>Test case: <code>mark_participation 1,2,3</code><br>
+Expected: Nobody has their participation increased (assuming the list size is less than 3)</p>
+</li>
+<li>
+<p>Test case: <code>mark_participation 1,2,100</code><br>
+Expected: Nobody has their participation increased  (assuming the list size is 5)</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setting-picture"><a class="link" href="#setting-picture">Setting picture</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Sets the profile picture of the indicated student</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>set_pic 1 pic/test.jpg</code><br>
+Expected: Student at index 1 is given test.jpg as his profile picture. (assuming test.jpg is in the same directory as TutorAid)</p>
+</li>
+<li>
+<p>Test case: <code>set_pic 1 pic/test.docx</code><br>
+Expected: Error occurs. Only .jpg/.png/.gif/.bmp is supported.</p>
+</li>
+<li>
+<p>Test case: <code>set_pic 1 pic/test.jpg</code><br>
+Expected: Error occurs. TutorAid can&#8217;t find the picture. (assuming test.jpg is not in the same directory as TutorAid)</p>
+</li>
+<li>
+<p>Test case: <code>set_pic 100 pic/test.jpg</code><br>
+Expected: Error occurs. Index is invalid. (assuming a list size of 10 and test.jpg is in the same directory as TutorAid)</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="unknown-wrong-command"><a class="link" href="#unknown-wrong-command">Unknown wrong command</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Learns a wrong command the user typed in as a basic command.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>gibberish</code><br>
+Expected: TutorAid prompts the user for the command word they intended to execute. (assuming gibberish is not yet learned)</p>
+</li>
+<li>
+<p>Test case: <code>ad n/Caesar c/CS1000</code><br>
+Expected:  TutorAid prompts the user for the command word they intended to execute. (assuming ad is not yet learned)</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Test case: <code>cancel</code><br>
+Expected: The unknown command is discarded and normal operations can resume.</p>
+</li>
+<li>
+<p>Test case: <code>gibberish</code><br>
+Expected: TutorAid prompts the user for the command word they intended to execute. (assuming gibberish is not yet learned)</p>
+</li>
+<li>
+<p>Test case: <code>add n/Caesar c/CS2100</code><br>
+Expected: TutorAid can&#8217;t learn full commands. Prompts the user which command word they want to map the last unknown command to again.</p>
+</li>
+<li>
+<p>Test case: <code>add</code><br>
+Expected: TutorAid learns the last unknown command as <code>add</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete-custom-command"><a class="link" href="#delete-custom-command">Delete Custom Command</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deletes a wrong custom command previously learnt.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>deleteCustomCommand VALIDCUSTOMCOMMAND</code><br>
+Expected: The custom command is deleted.</p>
+</li>
+<li>
+<p>Test case: <code>deleteCustomCommand INVALIDCUSTOMCOMMAND</code><br>
+Expected: Error. Invalid command, TutorAid can&#8217;t find such a command to delete.</p>
+</li>
+<li>
+<p>Test case: <code>deleteCustomCommand BASICCOMMAND</code><br>
+Expected: Error. You can&#8217;t delete a basic built-in command.</p>
 <div class="paragraph">
 <p>== User Stories</p>
 </div>
@@ -1182,6 +1316,12 @@ Expected: The recovered task was deleted again from the list.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">track all the information about my students</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remember key info about them easily when I need it</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">add a new class</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">check the details of the task when I want</p></td>
 </tr>
@@ -1208,6 +1348,12 @@ Expected: The recovered task was deleted again from the list.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">check the information of my classes</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">know more about my students' situation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see who&#8217;s not coming for class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check up on them</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
@@ -1285,4 +1431,4 @@ Expected: No task is changed. Error details and correct format shown in the stat
 <hr>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:54:47 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:21:17 UTC</div></div></div></body></html>
