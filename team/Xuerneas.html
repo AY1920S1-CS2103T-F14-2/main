@@ -1472,8 +1472,10 @@ Expected: No earnings are added. Error details shown in the status message. Stat
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Test case: <code>add_task c/CS2103T mark/Y tt/13/09/2019 13:00, 20/09/2019 16:00</code><br>
-Expected: A marked task with Class Id "CS2103T" and Task Time "13/09/2019 13:00 to 16:00" was added to the task list. Details of the added task shown in the status message. Task list shown in Main window.</p>
+<p>Test case: <code>add_task c/CS2103T mark/Y tt/13/09/2019 13:00, 13/09/2019 16:00</code><br>
+   Expected: A marked task with Class Id "CS2103T" and Task Time "13/09/2019 13:00 to 16:00" was added to the task list. Details of the added task shown in the status message. Task list shown in Main window.<br>
+Reminder with Description "CS2103T" and Time "13/09/2019 13:00, 20/09/2019 16:00" will be created as well.<br>
+A Task will be shown on that date in the Calendar view as well.</p>
 </li>
 <li>
 <p>Test case: <code>add_task</code><br>
@@ -1616,6 +1618,138 @@ Expected: The previously deleted task reappeared in the list.</p>
 <li>
 <p>Test case: <code>delete_task 1</code> + <code>undo</code> + <code>redo</code><br>
 Expected: The recovered task was deleted again from the list.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-reminder"><a class="link" href="#adding-a-reminder">Adding a reminder</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add a reminder and list all reminders out with the added reminder.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>add_reminder rd/CS2103T rt/13/09/2019 13:00, 20/09/2019 16:00</code><br>
+Expected: A Reminder with Class Id "CS2103T" and Task Time "13/09/2019 13:00, 20/09/2019 16:00" was added to the reminder list. Details of the added reminder shown in the status message. Reminder list shown in Main window.</p>
+</li>
+<li>
+<p>Test case: <code>add_reminder</code><br>
+Expected: No reminder is added. Error details and correct format shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect command format to try: <code>add_reminder reminder</code>, <code>add_reminder rd/error rt/20/9/2019 13:00, 21/9/2019 15:00</code></p>
+</li>
+<li>
+<p>Reminder: Reminders with duplicate <code>description</code> cannot be created.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-reminder"><a class="link" href="#deleting-a-reminder">Deleting a reminder</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Delete a reminder and list all reminders out without the deleted reminder.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>delete_reminder 1</code><br>
+Expected: The first reminder in the reminder list was deleted. Details of the deleted reminder shown in the status message. Reminder list shown in Main window.</p>
+</li>
+<li>
+<p>Test case: <code>delete_reminder</code><br>
+Expected: No reminder is deleted. Error details and correct format shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect command format to try: <code>delete_reminder 0</code> <code>delete_reminder 1 rd/</code></p>
+</li>
+<li>
+<p>Reminder: Make sure the index of the reminder is not larger than the total number of reminder in reminder list.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="finding-a-reminder"><a class="link" href="#finding-a-reminder">Finding a reminder</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Find reminders by their Description or its Reminder Time.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>find_reminder_by_description cs2100</code><br>
+Expected: All reminders that description contains "cs2100" (regardless case of the letters) were shown in the MainWindow. Number of reminders found were stated in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>find_reminder_by_date 20/10/2019</code><br>
+Expected: All reminders that Reminder Time contains "20/10/2019" were shown in the MainWindow. Number of reminder found were stated in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>find_reminder_by_description</code><br>
+Expected: Error details and correct format shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect command format to try: <code>find_reminder_by_date</code>, <code>find_reminder_by_date 13/10/2019 15/10/2019</code></p>
+</li>
+<li>
+<p>Reminder: Reminder can be found by multiple numbers of Description but only one Date.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-all-reminders"><a class="link" href="#listing-all-reminders">Listing all reminders</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>List out all reminders.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>list_reminder</code><br>
+Expected: All reminders were listed in Main Window.</p>
+</li>
+<li>
+<p>Test case: <code>list reminders</code><br>
+Expected: Error details shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tab-change"><a class="link" href="#tab-change">Tab Change</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Change Tab.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>change_tab tab/earnings</code><br>
+Expected: All earnings were listed in Main Window.</p>
+</li>
+<li>
+<p>Test case: <code>changetab tasks</code><br>
+Expected: Error details shown in the status message.</p>
 </li>
 </ol>
 </div>
@@ -1818,15 +1952,18 @@ Expected: Error. Invalid command, TutorAid can&#8217;t find such a command to de
 <li>
 <p>Test case: <code>deleteCustomCommand BASICCOMMAND</code><br>
 Expected: Error. You can&#8217;t delete a basic built-in command.</p>
-<div class="paragraph">
-<p>== User Stories</p>
-</div>
 </li>
 </ol>
 </div>
 </li>
 </ol>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-stories-2"><a class="link" href="#user-stories-2">Appendix G: User Stories</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
 <p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
 </div>
@@ -1914,7 +2051,6 @@ Expected: Error. You can&#8217;t delete a basic built-in command.</p>
 </tr>
 </tbody>
 </table>
-</div>
 <div class="sect2">
 <h3 id="adding-a-task-2"><a class="link" href="#adding-a-task-2">Adding a task</a></h3>
 <div class="olist arabic">
@@ -1924,8 +2060,10 @@ Expected: Error. You can&#8217;t delete a basic built-in command.</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Test case: <code>add_task c/CS2103T mark/Y tt/13/09/2019 13:00, 20/09/2019 16:00</code><br>
-Expected: A marked task with Class Id "CS2103T" and Task Time "13/09/2019 13:00 to 16:00" was added to the task list. Details of the added task shown in the status message. Task list shown in Main window.</p>
+<p>Test case: <code>add_task c/CS2103T mark/Y tt/13/09/2019 13:00, 13/09/2019 16:00</code><br>
+   Expected: A marked task with Class Id "CS2103T" and Task Time "13/09/2019 13:00 to 16:00" was added to the task list. Details of the added task shown in the status message. Task list shown in Main window.<br>
+Reminder with Description "CS2103T" and Time "13/09/2019 13:00, 20/09/2019 16:00" will be created as well.<br>
+A Task will be shown on that date in the Calendar view as well.</p>
 </li>
 <li>
 <p>Test case: <code>add_task</code><br>
@@ -1970,4 +2108,4 @@ Expected: No task is changed. Error details and correct format shown in the stat
 <hr>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:40:26 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:54:43 UTC</div></div></div></body></html>

@@ -686,5 +686,339 @@ of that index will be deleted from the current unique filtered reminder list.</p
 Tab change function is implemented in using both CLI and GUI. User can execute tab change by typing command in the command box or by interaction with the GUI component (Menu Bar)</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="adding-a-reminder"><a class="link" href="#adding-a-reminder">Adding a reminder</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add a reminder and list all reminders out with the added reminder.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>add_reminder rd/CS2103T rt/13/09/2019 13:00, 20/09/2019 16:00</code><br>
+Expected: A Reminder with Class Id "CS2103T" and Task Time "13/09/2019 13:00, 20/09/2019 16:00" was added to the reminder list. Details of the added reminder shown in the status message. Reminder list shown in Main window.</p>
+</li>
+<li>
+<p>Test case: <code>add_reminder</code><br>
+Expected: No reminder is added. Error details and correct format shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect command format to try: <code>add_reminder reminder</code>, <code>add_reminder rd/error rt/20/9/2019 13:00, 21/9/2019 15:00</code></p>
+</li>
+<li>
+<p>Reminder: Reminders with duplicate <code>description</code> cannot be created.</p>
+</li>
+</ol>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:40:26 UTC</div></div></div></body></html>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-reminder"><a class="link" href="#deleting-a-reminder">Deleting a reminder</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Delete a reminder and list all reminders out without the deleted reminder.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>delete_reminder 1</code><br>
+Expected: The first reminder in the reminder list was deleted. Details of the deleted reminder shown in the status message. Reminder list shown in Main window.</p>
+</li>
+<li>
+<p>Test case: <code>delete_reminder</code><br>
+Expected: No reminder is deleted. Error details and correct format shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect command format to try: <code>delete_reminder 0</code> <code>delete_reminder 1 rd/</code></p>
+</li>
+<li>
+<p>Reminder: Make sure the index of the reminder is not larger than the total number of reminder in reminder list.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="finding-a-reminder"><a class="link" href="#finding-a-reminder">Finding a reminder</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Find reminders by their Description or its Reminder Time.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>find_reminder_by_description cs2100</code><br>
+Expected: All reminders that description contains "cs2100" (regardless case of the letters) were shown in the MainWindow. Number of reminders found were stated in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>find_reminder_by_date 20/10/2019</code><br>
+Expected: All reminders that Reminder Time contains "20/10/2019" were shown in the MainWindow. Number of reminder found were stated in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>find_reminder_by_description</code><br>
+Expected: Error details and correct format shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect command format to try: <code>find_reminder_by_date</code>, <code>find_reminder_by_date 13/10/2019 15/10/2019</code></p>
+</li>
+<li>
+<p>Reminder: Reminder can be found by multiple numbers of Description but only one Date.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-all-reminders"><a class="link" href="#listing-all-reminders">Listing all reminders</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>List out all reminders.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>list_reminder</code><br>
+Expected: All reminders were listed in Main Window.</p>
+</li>
+<li>
+<p>Test case: <code>list reminders</code><br>
+Expected: Error details shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tab-change"><a class="link" href="#tab-change">Tab Change</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Change Tab.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>change_tab tab/earnings</code><br>
+Expected: All earnings were listed in Main Window.</p>
+</li>
+<li>
+<p>Test case: <code>changetab tasks</code><br>
+Expected: Error details shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-by-class"><a class="link" href="#listing-by-class">Listing by class</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>List out all students in the class.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>list_class CS2030</code><br>
+Expected: All students in class CS2030 are shown.</p>
+</li>
+<li>
+<p>Test case: <code>list_class CS2030 CS2040</code><br>
+Expected: All students in class CS2030 and CS2040 are shown.</p>
+</li>
+<li>
+<p>Test case: <code>list_class RANDOM STRING</code><br>
+Expected: No students are shown.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mass-assigning-class"><a class="link" href="#mass-assigning-class">Mass Assigning Class</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Assigns the class to all students indicated.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>assign_class 1,2,3 c/CS2030</code><br>
+Expected: Students at index 1,2 and 3 are assigned to class CS2030. (assuming the list size is at least 3)</p>
+</li>
+<li>
+<p>Test case: <code>assign_class 1,2,3 c/CS2030</code><br>
+Expected: Nobody is assigned to class CS2030. (assuming the list size is less than 3)</p>
+</li>
+<li>
+<p>Test case: <code>assign_class 1,2,100 c/CS2030</code><br>
+Expected: Nobody is assigned to class CS2030. (assuming the list size is 5)</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mass-marking-attendance"><a class="link" href="#mass-marking-attendance">Mass Marking Attendance</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Increases the attendance of indicated students by one.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>mark_attendance 1,2,3</code><br>
+Expected: Students at index 1,2 and 3 have their attendance increased (assuming the list size is at least 3)</p>
+</li>
+<li>
+<p>Test case: <code>mark_attendance 1,2,3</code><br>
+Expected: Nobody has their attendance increased (assuming the list size is less than 3)</p>
+</li>
+<li>
+<p>Test case: <code>mark_attendance 1,2,100</code><br>
+Expected: Nobody has their attendance increased  (assuming the list size is 5)</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mass-marking-participation"><a class="link" href="#mass-marking-participation">Mass Marking Participation</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Increases the participation of indicated students by one.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>mark_participation 1,2,3</code><br>
+Expected: Students at index 1,2 and 3 have their participation increased (assuming the list size is at least 3)</p>
+</li>
+<li>
+<p>Test case: <code>mark_participation 1,2,3</code><br>
+Expected: Nobody has their participation increased (assuming the list size is less than 3)</p>
+</li>
+<li>
+<p>Test case: <code>mark_participation 1,2,100</code><br>
+Expected: Nobody has their participation increased  (assuming the list size is 5)</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="setting-picture"><a class="link" href="#setting-picture">Setting picture</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Sets the profile picture of the indicated student</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>set_pic 1 pic/test.jpg</code><br>
+Expected: Student at index 1 is given test.jpg as his profile picture. (assuming test.jpg is in the same directory as TutorAid)</p>
+</li>
+<li>
+<p>Test case: <code>set_pic 1 pic/test.docx</code><br>
+Expected: Error occurs. Only .jpg/.png/.gif/.bmp is supported.</p>
+</li>
+<li>
+<p>Test case: <code>set_pic 1 pic/test.jpg</code><br>
+Expected: Error occurs. TutorAid can&#8217;t find the picture. (assuming test.jpg is not in the same directory as TutorAid)</p>
+</li>
+<li>
+<p>Test case: <code>set_pic 100 pic/test.jpg</code><br>
+Expected: Error occurs. Index is invalid. (assuming a list size of 10 and test.jpg is in the same directory as TutorAid)</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="unknown-wrong-command"><a class="link" href="#unknown-wrong-command">Unknown wrong command</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Learns a wrong command the user typed in as a basic command.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>gibberish</code><br>
+Expected: TutorAid prompts the user for the command word they intended to execute. (assuming gibberish is not yet learned)</p>
+</li>
+<li>
+<p>Test case: <code>ad n/Caesar c/CS1000</code><br>
+Expected:  TutorAid prompts the user for the command word they intended to execute. (assuming ad is not yet learned)</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Test case: <code>cancel</code><br>
+Expected: The unknown command is discarded and normal operations can resume.</p>
+</li>
+<li>
+<p>Test case: <code>gibberish</code><br>
+Expected: TutorAid prompts the user for the command word they intended to execute. (assuming gibberish is not yet learned)</p>
+</li>
+<li>
+<p>Test case: <code>add n/Caesar c/CS2100</code><br>
+Expected: TutorAid can&#8217;t learn full commands. Prompts the user which command word they want to map the last unknown command to again.</p>
+</li>
+<li>
+<p>Test case: <code>add</code><br>
+Expected: TutorAid learns the last unknown command as <code>add</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete-custom-command"><a class="link" href="#delete-custom-command">Delete Custom Command</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deletes a wrong custom command previously learnt.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>deleteCustomCommand VALIDCUSTOMCOMMAND</code><br>
+Expected: The custom command is deleted.</p>
+</li>
+<li>
+<p>Test case: <code>deleteCustomCommand INVALIDCUSTOMCOMMAND</code><br>
+Expected: Error. Invalid command, TutorAid can&#8217;t find such a command to delete.</p>
+</li>
+<li>
+<p>Test case: <code>deleteCustomCommand BASICCOMMAND</code><br>
+Expected: Error. You can&#8217;t delete a basic built-in command.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:54:43 UTC</div></div></div></body></html>
