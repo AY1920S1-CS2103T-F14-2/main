@@ -879,7 +879,7 @@ object have been successfully added.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>addnote mod/&lt;MODULE_CODE&gt; c/&lt;CONTENT&gt;</pre>
+<pre>addnote c/&lt;MODULE_CODE&gt; type/&lt;CLASS_TYPE&gt; note/&lt;NOTE_CONTENT&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -887,7 +887,7 @@ object have been successfully added.</p>
 </div>
 <div class="paragraph">
 <p>The add claim <code>addnotes</code> mechanism is facilitated by <code>AddNotesCommand</code> and <code>AddNotesCommandParser</code>, taking in the
-following input from the user: <code>Module_Code</code>, <code>Content</code>, which will construct <code>Notes</code> objects.</p>
+following input from the user: <code>Module_Code</code>, <code>Class_Type</code> and <code>Note_Content</code>, which will construct <code>Notes</code> objects.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -902,24 +902,28 @@ following input from the user: <code>Module_Code</code>, <code>Content</code>, w
 <ul>
 <li>
 <p><code>AddNotesCommandParser#parse()</code> - This operation will take in a <code>String</code> input from the user and create
-individual objects based on the prefixes <code>mod/</code> and <code>c/</code>. The <code>String</code> value after the respective prefixes
+individual objects based on the prefixes <code>c/</code>, <code>type/</code> and <code>note/</code>. The <code>String</code> value after the respective prefixes
 will create the respective objects. A validation check will be done to ensure that the strings that are entered
 by the user is entered correctly. If any of the strings entered are invalid, an error will be shown to the user to
-enter the correct format of the respectives objects.</p>
+enter the correct format of the respective objects.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>code</code> would use <code>ParserUtil#parseModuleCode()</code> to ensure that the module code typed by the user is in the correct format of
+<p><code>c</code> would use <code>ParserUtil#parseClassId()</code> to ensure that the module code entered by the user is in the correct format of
 CSXXXX.</p>
 </li>
 <li>
-<p><code>content</code> would use <code>ParserUtil#parseContent()</code> to ensure that the content typed in by the user is in not empty.</p>
+<p><code>type</code> would use <code>ParserUtil#parseClassType()</code> to ensure that the class typed input by the user is in the correct format of
+CSXXXX.</p>
+</li>
+<li>
+<p><code>note</code> would use <code>ParserUtil#parseContent()</code> to ensure that the content typed in by the user is in not empty.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>After validation of the individual objects, a <code>Notes</code> object would be created with the parameters <code>code</code> and <code>content</code>.</p>
+<p>After validation of the individual objects, a <code>Notes</code> object would be created with the parameters <code>code</code>, <code>type</code> and <code>content</code>.</p>
 </li>
 <li>
 <p><code>AddNotesCommandParser</code> would then return a <code>AddNotesCommand</code> object with the parameter, <code>Notes</code> object.</p>
@@ -929,8 +933,10 @@ CSXXXX.</p>
 <div class="paragraph">
 <p>The following activity diagram summarizes what happens when a user executes a new command.</p>
 </div>
-<div class="paragraph">
-<p>##diagram to be added</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddNotesActivityDiagram.png" alt="AddNotesActivityDiagram" width="200">
+</div>
 </div>
 <div class="paragraph">
 <p><strong>Example Scenerio</strong></p>
@@ -938,7 +944,7 @@ CSXXXX.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Step 1: The user enters <code>addnote mod/CS2103T c/Update Project</code> to add a note for teaching classes.
+<p>Step 1: The user enters <code>addnote c/CS2103T type/tut note/Update Project</code> to add a note for teaching classes.
 This adds a <code>Notes</code> object that the user has added to record what needs to be done for the class.</p>
 </li>
 <li>
@@ -950,7 +956,7 @@ the given command is <code>addnote</code>, thus, <code>AddNotesCommandParser</co
 </li>
 <li>
 <p>Step 4: <code>AddNotesCommandParser</code> performs a validation check on each of the respective objects through
-<code>AddNotesCommandParser#parse()</code>. In this case, it would use <code>ParserUtil#parseModuleCode()</code> and <code>ParserUtil#parseContent()</code>.
+<code>AddNotesCommandParser#parse()</code>. In this case, it would use <code>ParserUtil#parseClassId()</code>, <code>ParserUtil#parserClassType()</code> and <code>ParserUtil#parseContent()</code>.
 It would then return a <code>AddNotesCommand</code> object with an <code>Notes</code> object.</p>
 </li>
 <li>
@@ -1891,4 +1897,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 08:08:26 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 08:11:09 UTC</div></div></div></body></html>
