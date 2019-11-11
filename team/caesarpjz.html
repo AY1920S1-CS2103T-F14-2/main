@@ -18,7 +18,7 @@
 <p>This portfolio page aims to document the contributions I have made in the development of TutorAid, which is a
 project that my team and I completed for the module CS2103T. This project has definitely taught me many skills that
 are extremely relevant in the real world and in the future. It has allowed me
-to be a more competent and knowledgable software engineer.</p>
+to be a more competent and knowledgeable software engineer.</p>
 </div>
 </div>
 </div>
@@ -32,10 +32,9 @@ to be a more competent and knowledgable software engineer.</p>
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>TutorAid is an easy-to-use Command Line Interface (CLI) based application that helps to makes the lives of tutors easier
-by organizing their workflow and all their related tasks into one location. It is extremely beneficial to Computing
-tutors as they are already highly adept at typing on CLI interface and TutorAid also provides a Graphical User Interface (GUI) interface for users to easily view and interact
-with TutorAid.</p>
+<p>TutorAid is an easy-to-use Command Line Interface (CLI) based application with a Graphical User Interface (GUI) that helps to makes the lives of tutors easier
+by organizing their workflow and make tutors more efficient. With a myriad of features such as student profile tracking,
+earnings, reminders, notes and tasks all in application, tutors no longer have to search through their notes one-by-one excruciatingly.</p>
 </div>
 <div class="paragraph">
 <p>The features of TutorAid has been well-thought out, keeping in mind the necessities and wants of tutors alike. To meet the
@@ -205,47 +204,17 @@ I created a Login Window as well so that the users can have a visual cue when th
 </tbody>
 </table>
 <div class="sect3">
-<h4 id="claim-earnings-code-claim_earnings-code"><a class="link" href="#claim-earnings-code-claim_earnings-code">Claim Earnings: <code>claim_earnings</code></a></h4>
-<div class="paragraph">
-<p>Changes the user the earnings status in the list of earnings.<br>
-Format: <code>claim_earnings INDEX c/CLASSID</code></p>
-</div>
-<div class="imageblock" style="text-align: left">
-<div class="content">
-<img src="../images/ClaimEarnings.png" alt="ClaimEarnings" width="400">
-</div>
-<div class="title">Figure 2. Claim Earnings Example</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>claim_earnings 2 claim/rejected</code></p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Only <code>approved</code>/<code>rejected</code>/<code>processing</code>/<code>pending submission</code> statuses are allowed.
-Only one status is allowed at a time.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
 <h4 id="auto-add-weekly-earnings-code-weekly_earnings-code"><a class="link" href="#auto-add-weekly-earnings-code-weekly_earnings-code">Auto Add Weekly Earnings: <code>weekly_earnings</code></a></h4>
 <div class="paragraph">
 <p>Adds an earnings from the list of existing earnings to be added in the on the same
 day every week.<br>
 Format: `weekly_earnings INDEX count/NUMBER_OF_WEEKS</p>
+</div>
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="../images/WeeklyEarnings.png" alt="WeeklyEarnings" width="400">
+</div>
+<div class="title">Figure 2. Weekly Earnings Example</div>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -549,64 +518,6 @@ with it that is more than 1. The earnings inside the <code>ArrayList</code> insi
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="account-storage"><a class="link" href="#account-storage">Account Storage</a></h4>
-<div class="paragraph">
-<p>All accounts are stored in a JSON file called accountslist.json. This file is generated once you register an account. The username
-and password is stored inside the the JSON file with salt hashing thus, the account details cannot be seen by everyone.</p>
-</div>
-<div class="paragraph">
-<p><strong>Design Considerations</strong>
-We realised that storing the accounts by itself would allow anyone to see the username and passwords. Hence, we decided to
-use a password authentication method and salt hashing to cover the passwords of the accounts.</p>
-</div>
-<div class="paragraph">
-<p>In addition, we decided to go with using a JSON file instead of XML file due to these considerations:</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Table 1. Account File Storage function alternatives</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Design Consideration</th>
-<th class="tableblock halign-left valign-top">Pros and Cons</th>
-</tr>
-</thead>
-<tfoot>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">XML File</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong> : Easy transfer of data between seperate systems. Good at storing data that will be readby 3rd parties.</p>
-<p class="tableblock">                                        <strong>Cons</strong> : Not familiar with it and we would require more time to learn how to use it.</p></td>
-</tr>
-</tfoot>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">JSON File (Current Choice)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Pros</strong> : More familiarity with JSON files. More compact and can be easily loaded. Flexible</p>
-<p class="tableblock">                                        <strong>Cons</strong> : Bad Schema support and namespace support</p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p><strong>Security Considerations</strong>
-As of now, only password hashing is done to protect the accounts from being seen by unwanted eyes. We have planned ahead of time and decided
-to implement better security options for v2.0.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Store accounts on a backend server:</strong> The project restricts us and as of now, it is not implemented. The advantages of storing the accounts in  database
-is that it can be a lot more secure.</p>
-</li>
-<li>
-<p><strong>Encrypt the Account JSON file:</strong> This will prevent other users from easily clicking into the data file and make it more secure.</p>
-</li>
-</ul>
 </div>
 </div>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 06:15:00 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 07:11:54 UTC</div></div></div></body></html>
