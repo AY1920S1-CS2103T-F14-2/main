@@ -495,12 +495,6 @@ Tab change function is implemented in using both CLI and GUI. User can execute t
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
-</div>
-</div>
-<div class="sect2">
 <h3 id="logging"><a class="link" href="#logging">Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
@@ -816,6 +810,317 @@ Tab change function is implemented in using both CLI and GUI. User can execute t
 </li>
 </ul>
 </div>
+<h3 id="use-case-add-earnings" class="discrete">Use case: Add Earnings</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User adds an earnings by specifying its details</p>
+</li>
+<li>
+<p>TutorAid shows a success message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. The arguments provided are invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. TutorAid shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. The mandatory arguments are not provided.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. TutorAid shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-earnings" class="discrete">Use case: Delete Earnings</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to change tab to earnings</p>
+</li>
+<li>
+<p>TutorAid shows a list of earnings</p>
+</li>
+<li>
+<p>User requests to delete a specific earnings in the list</p>
+</li>
+<li>
+<p>TutorAid deletes the earnings</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a1. TutorAid shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-find-earnings" class="discrete">Use case: Find Earnings</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find earnings with specified keyword(s)</p>
+</li>
+<li>
+<p>TutorAid shows a success message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. The mandatory arguments are not provided.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. TutorAid shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2a. The arguments provided have no match.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. TutorAid shows an empty list.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-claim-earnings" class="discrete">Use case: Claim Earnings</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to claim earnings with specified arguments</p>
+</li>
+<li>
+<p>TutorAid shows a success message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. The mandatory arguments are not provided.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. TutorAid shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>1b. The arguments provided are invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1b1. TutorAid shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-automate-earnings" class="discrete">Use case: Automate Earnings</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to change tab to earnings</p>
+</li>
+<li>
+<p>TutorAid shows a list of earnings</p>
+</li>
+<li>
+<p>User requests to automate a specific earnings in the list</p>
+</li>
+<li>
+<p>TutorAid add the earnings into a list.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>2a. The list is empty.</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+<li>
+<p>3a. The mandatory arguments are not provided.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3a1. TutorAid shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3b. The arguments provided are invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3b1. TutorAid shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3c. The given index is invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3c1. TutorAid shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-add-automated-earnings" class="discrete">Use case: Add Automated Earnings</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add automated earnings</p>
+</li>
+<li>
+<p>TutorAid shows a success message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>1a. No new earnings are added.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. TutorAid shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <div class="paragraph">
 <p><em>{More to be added}</em></p>
 </div>
@@ -892,6 +1197,72 @@ Expected: Shows the GUI with a set of sample contacts. The window size may not b
 </ol>
 </div>
 </li>
+<li>
+<p>Saving window preferences</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Resize the window to an optimum size. Move the window to a different location. Close the window.</p>
+</li>
+<li>
+<p>Re-launch the app by double-clicking the jar file.<br>
+Expected: The most recent window size and location is retained.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="registering-an-account"><a class="link" href="#registering-an-account">Registering an account</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Registering an account</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>register user/bryan pass/Pa55w0rd</code><br>
+Expected: Success message shown in status bar.</p>
+</li>
+<li>
+<p>Test case: <code>register user/abc pass/hello</code><br>
+Expected: No account created. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect register commands to try: <code>register</code>, <code>register bryan Pa55w0rd</code><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging-in"><a class="link" href="#logging-in">Logging In</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Logging into TutorAid with personal account</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>login user/bryan pass/Pa55w0rd</code><br>
+Expected: Login Window closes and Main Window pops up.</p>
+</li>
+<li>
+<p>Test case: <code>login user/wad efsf pass/hello</code><br>
+Expected: Not logged in. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect login commands to try: <code>login</code>, <code>login bryan Pa55w0rd</code><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
 </ol>
 </div>
 </div>
@@ -923,6 +1294,174 @@ Expected: Similar to previous.</p>
 </li>
 </ol>
 </div>
+</div>
+<div class="sect2">
+<h3 id="adding-an-earning"><a class="link" href="#adding-an-earning">Adding an earning</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adding earnings to TutorAid</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: Arguments are valid and mandatory parameters are provided.</p>
+</li>
+<li>
+<p>Test case: <code>add_earnings d/11/10/2014 type/lab c/CS1101S amt/90.30</code><br>
+Expected: Adds an earnings of $90.30 of a CS1101S Lab lesson to TutorAid on 11/10/2014</p>
+</li>
+<li>
+<p>Test case: <code>add_earnings d/10/03/2019 type/tut</code><br>
+Expected: No earnings is added Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect add earnings commands to try: <code>add_earnings</code>, <code>add_earnings d/today type/c</code> and <code>add_earnings 2</code><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-an-earning"><a class="link" href="#deleting-an-earning">Deleting an earning</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting earnings while all earnings are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all earnings either using tab button on application or <code>change_tab tab/earnings</code> command. Multiple earnings in the list.</p>
+</li>
+<li>
+<p>Test case: <code>delete_earnings 1</code><br>
+Expected: First earnings is deleted from the list. Details of the deleted earnings shown in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>delete_earnings 0</code><br>
+Expected: No earnings is deleted. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect delete earnings command to try: <code>delete_earnings</code>, <code>delete_earnings x</code> (where x is larger than the list size).<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="finding-an-earning"><a class="link" href="#finding-an-earning">Finding an earning</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Finding earnings</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>find_earnings CS</code><br>
+Expected: All earnings that contains "CS" (regardless case of the letters)
+will show in TutorAid. Partial match of "CS" will be shown as well. Number of earnings found were stated in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>find_earnings</code><br>
+Expected: No earnings will be shown. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="claiming-an-earning"><a class="link" href="#claiming-an-earning">Claiming an earning</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Change the Claim status of an earning</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all earnings either using tab button on application or <code>change_tab tab/earnings</code> command. Multiple earnings in the list.</p>
+</li>
+<li>
+<p>Test case: <code>claim_earnings 1 claim/processing</code><br>
+Expected: First earnings will change claim status to <code>processing</code>.</p>
+</li>
+<li>
+<p>Test case: <code>claim_earnings 1</code><br>
+Expected: No change in claim status of the first earnings. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect claim earnings command to try: <code>claim_earnings 1 claim/done</code>, <code>claim_earnings</code><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="automating-earnings"><a class="link" href="#automating-earnings">Automating earnings</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Automate the addition of earnings</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all earnings either using tab button on application or <code>change_tab tab/earnings</code> command. Multiple earnings in the list.</p>
+</li>
+<li>
+<p>Test case: <code>weekly_earnings 1 count/2</code><br>
+Expected: Success message shows up. No change in earnings list. First earnings will be automatically added in the next 2 weeks on the same day of the week, after invoking the <code>auto</code> command.</p>
+</li>
+<li>
+<p>Test case: <code>weekly_earnings 0 count/4</code><br>
+Expected: No earnings will be automatically added. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect weekly earnings command to try: <code>weekly_earnings</code>, <code>weekly_earnings 3 count/15</code>, <code>weekly_earnings x count/8</code> (where x is larger than the list size).<br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-automated-earnings"><a class="link" href="#adding-automated-earnings">Adding automated earnings</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Adds automated earnings to list.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: There must have been a few pre-existing earnings that were invoked by the <code>weekly_earnings</code> command.</p>
+</li>
+<li>
+<p>Test case: <code>auto</code><br>
+Expected: Depending on the number of earnings that were invoked by <code>weekly_earnings</code> command and the day of the week, earnings will be automatically added to the list.</p>
+</li>
+<li>
+<p>Test case: <code>auto 5</code><br>
+Expected: No earnings are added. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">Saving data</a></h3>
+
 </div>
 <div class="sect2">
 <h3 id="adding-a-task"><a class="link" href="#adding-a-task">Adding a task</a></h3>
@@ -1431,4 +1970,4 @@ Expected: No task is changed. Error details and correct format shown in the stat
 <hr>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:21:17 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 14:40:26 UTC</div></div></div></body></html>
