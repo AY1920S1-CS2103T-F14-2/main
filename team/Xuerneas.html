@@ -190,7 +190,10 @@ The Reminder created will have the Task&#8217;s <code>MODULE</code> as its <code
 <div class="ulist">
 <ul>
 <li>
-<p><code>add_task c/CS2103T mark/Y tt/13/09/2019 13:00, 20/09/2019 16:00 tt/21/09/2019 13:00, 21/09/2019 15:00</code><br></p>
+<p><code>add_task c/CS2103T mark/Y tt/13/09/2019 13:00, 20/09/2019 16:00 tt/21/09/2019 13:00, 21/09/2019 15:00</code></p>
+</li>
+<li>
+<p><code>add_task c/MA1521 Tutorial mark/N tt/02/11/2020 14:00, 02/11/2020 15:00</code></p>
 </li>
 </ul>
 </div>
@@ -198,12 +201,16 @@ The Reminder created will have the Task&#8217;s <code>MODULE</code> as its <code
 <p><span class="image"><img src="../images/UserGuide/add_task.png" alt="add task" width="500"></span>
 <span class="image"><img src="../images/UserGuide/add_task_2.png" alt="add task 2" width="500"></span></p>
 </div>
+<div class="sidebarblock">
+<div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>add_task c/MA1521 Tutorial mark/N tt/02/11/2020 14:00, 02/11/2020 15:00</code></p>
+<p>The Reminder created will have the Task&#8217;s <code>MODULE</code> as its <code>DESCRIPTION</code> and the Task&#8217;s <code>TASK_TIME</code> as its <code>DATE</code>.</p>
 </li>
 </ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -431,11 +438,173 @@ If the <code>currentStatePointer</code> is at index <code>tutorAidStateList.size
 <div class="paragraph">
 <p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitTutorAid()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>tutorAidStateList</code>, all tutor aid states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add_task c/CS2103T &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
 </div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Saves the entire tutor aid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Easy to implement.</p>
+</li>
+<li>
+<p>Cons: May have performance issues in terms of memory usage.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).</p>
+</li>
+<li>
+<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="tab-change-feature"><a class="link" href="#tab-change-feature">Tab Change feature</a></h3>
+<div class="paragraph">
+<p>Tab Change feature is a type of Command that allows users to change to respective windows for using different features in the system.
+Tab change function is implemented in using both CLI and GUI. User can execute tab change by typing command in the command box or by interaction with the GUI component (Menu Bar)</p>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="../images/reminders/tabchange.png" alt="tabchange">
+</div>
+<div class="title">Figure 1. Activity Diagram</div>
+</div>
+<div class="paragraph">
+<p>User will execute <code>change_tab</code> command with the parameters of <code>tab/TAB</code>. Using this, TutorAid will display the list and the view that the user wishes to see, effectively changing tabs.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
+<div class="paragraph">
+<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">Logging</a></h3>
+<div class="paragraph">
+<p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Configuration</a>)</p>
+</li>
+<li>
+<p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
+</li>
+<li>
+<p>Currently log messages are output through: <code>Console</code> and to a <code>.log</code> file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Logging Levels</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the application</p>
+</li>
+<li>
+<p><code>WARNING</code> : Can continue, but with caution</p>
+</li>
+<li>
+<p><code>INFO</code> : Information showing the noteworthy actions by the App</p>
+</li>
+<li>
+<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of just its size</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">Configuration</a></h3>
+<div class="paragraph">
+<p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="user-stories"><a class="link" href="#user-stories">Appendix A: User Stories</a></h2>
+<h2 id="documentation"><a class="link" href="#documentation">Documentation</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Refer to the guide <a href="Documentation.html">here</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="testing"><a class="link" href="#testing">Testing</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Refer to the guide <a href="Testing.html">here</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dev-ops"><a class="link" href="#dev-ops">Dev Ops</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Refer to the guide <a href="DevOps.html">here</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="product-scope"><a class="link" href="#product-scope">Appendix A: Product Scope</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Target user profile</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>has a need to manage classes and related tasks</p>
+</li>
+<li>
+<p>has a need to track earnings</p>
+</li>
+<li>
+<p>prefer desktop apps over other types</p>
+</li>
+<li>
+<p>can type fast</p>
+</li>
+<li>
+<p>prefers typing over mouse input</p>
+</li>
+<li>
+<p>is reasonably comfortable using CLI apps</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Value proposition</strong>: manage calendar and track earnings faster than a typical mouse/GUI driven app</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-stories"><a class="link" href="#user-stories">Appendix B: User Stories</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
@@ -512,6 +681,317 @@ If the <code>currentStatePointer</code> is at index <code>tutorAidStateList.size
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p><em>{More to be added}</em></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="use-cases"><a class="link" href="#use-cases">Appendix C: Use Cases</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>(For all use cases below, the <strong>System</strong> is the <code>TutorAid</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
+</div>
+<h3 id="use-case-delete-task" class="discrete">Use case: Delete task</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list tasks</p>
+</li>
+<li>
+<p>TutorAid shows a list of tasks</p>
+</li>
+<li>
+<p>User requests to delete a specific task in the list</p>
+</li>
+<li>
+<p>TutorAid deletes the person</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. TutorAid tells user that there is no task.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. TutorAid shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.<br></p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-delete-reminder" class="discrete">Use case: Delete Reminder</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list reminders</p>
+</li>
+<li>
+<p>TutorAid shows a list of reminders</p>
+</li>
+<li>
+<p>User requests to delete a specific reminder in the list</p>
+</li>
+<li>
+<p>TutorAid deletes the reminder</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The list is empty.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. TutorAid tells user that there are no reminders.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. The given index is invalid.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. TutorAid shows an error message.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>{More to be added}</em></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="non-functional-requirements"><a class="link" href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Should work on any <a href="#mainstream-os">mainstream OS</a> as long as it has Java <code>11</code> or above installed.</p>
+</li>
+<li>
+<p>Should be able to hold up to 1000 tasks without a noticeable sluggishness in performance for typical usage.</p>
+</li>
+<li>
+<p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>{More to be added}</em></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a id="mainstream-os"></a> Mainstream OS</dt>
+<dd>
+<p>Windows, Linux, Unix, OS-X</p>
+</dd>
+<dt class="hdlist1"><a id="private-contact-detail"></a> Private contact detail</dt>
+<dd>
+<p>A contact detail that is not meant to be shared with others</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Product Name</strong></p>
+</div>
+<div class="paragraph">
+<p>Author: &#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>Pros:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Cons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Given below are instructions to test the app manually.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+These instructions only provide a starting point for testers to work on; testers are expected to do more <em>exploratory</em> testing.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">Launch and Shutdown</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Initial launch</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Download the jar file and copy into an empty folder</p>
+</li>
+<li>
+<p>Double-click the jar file<br>
+Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Saving window preferences</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Resize the window to an optimum size. Move the window to a different location. Close the window.</p>
+</li>
+<li>
+<p>Re-launch the app by double-clicking the jar file.<br>
+Expected: The most recent window size and location is retained.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-person"><a class="link" href="#deleting-a-person">Deleting a person</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Deleting a person while all persons are listed</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites: List all persons using the <code>list</code> command. Multiple persons in the list.</p>
+</li>
+<li>
+<p>Test case: <code>delete 1</code><br>
+Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+</li>
+<li>
+<p>Test case: <code>delete 0</code><br>
+Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
+</li>
+<li>
+<p>Other incorrect delete commands to try: <code>delete</code>, <code>delete x</code> (where x is larger than the list size) <em>{give more}</em><br>
+Expected: Similar to previous.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="saving-data"><a class="link" href="#saving-data">Saving data</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Dealing with missing/corrupted data files</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p><em>{explain how to simulate a missing/corrupted file and the expected behavior}</em></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><em>{ more test cases &#8230;&#8203; }</em></p>
+</div>
+</div>
 <div class="sect2">
 <h3 id="adding-a-task"><a class="link" href="#adding-a-task">Adding a task</a></h3>
 <div class="olist arabic">
@@ -564,7 +1044,245 @@ Expected: No task is changed. Error details and correct format shown in the stat
 </li>
 </ol>
 </div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-task"><a class="link" href="#deleting-a-task">Deleting a task</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Delete a task and list all tasks out without the deleted task.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>delete_task 1</code><br>
+Expected: The first task in the task list was deleted. Details of the deleted task shown in the status message. Task list shown in Main window.</p>
+</li>
+<li>
+<p>Test case: <code>delete_task</code><br>
+Expected: No task is deleted. Error details and correct format shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect command format to try: <code>delete_task 0</code> <code>delete_task 1 c/</code></p>
+</li>
+<li>
+<p>Reminder: Make sure the index of the task is not larger than the total number of tasks in task list.</p>
+</li>
+<li>
+<p>Reminder: If you add a marked task then delete it, remember to delete it in Reminder also so that you can add another marked task with same Class Id.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="finding-a-task"><a class="link" href="#finding-a-task">Finding a task</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Find tasks by their Class Id or its Task Time.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>find_task_by_module cs2100</code><br>
+Expected: All tasks that Class Id contains "cs2100" (regardless case of the letters) were shown in the MainWindow. Number of tasks found were stated in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>find_task_by_date 20/10/2019</code><br>
+Expected: All tasks that Task Time contains "20/10/2019" were shown in the MainWindow. Number of tasks found were stated in the status message.</p>
+</li>
+<li>
+<p>Test case: <code>find_task_by_module</code><br>
+Expected: Error details and correct format shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect command format to try: <code>find_task_by_date</code>, <code>find_task_by_date 13/10/2019 15/10/2019</code></p>
+</li>
+<li>
+<p>Reminder: Tasks can be found by multiple numbers of Class Ids but only one Date.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-all-tasks"><a class="link" href="#listing-all-tasks">Listing all tasks</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>List out all tasks.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>list_task</code><br>
+Expected: All tasks were listed in Main Window.</p>
+</li>
+<li>
+<p>Test case: <code>list tasks</code><br>
+Expected: Error details shown in the status message.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="undoing-redoing-commands"><a class="link" href="#undoing-redoing-commands">Undoing/Redoing commands</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Undo or redo previous commands.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>delete_task 1</code> + <code>undo</code><br>
+Expected: The previously deleted task reappeared in the list.</p>
+</li>
+<li>
+<p>Test case: <code>delete_task 1</code> + <code>undo</code> + <code>redo</code><br>
+Expected: The recovered task was deleted again from the list.</p>
+<div class="paragraph">
+<p>== User Stories</p>
+</div>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 59%;">
+<colgroup>
+<col style="width: 22%;">
+<col style="width: 23%;">
+<col style="width: 25%;">
+<col style="width: 30%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Priority</th>
+<th class="tableblock halign-left valign-top">As a &#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">I want to &#8230;&#8203;</th>
+<th class="tableblock halign-left valign-top">So that I can&#8230;&#8203;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">new user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see usage instructions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">refer to instructions when I forget how to use the App</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a new class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check the details of the task when I want</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">edit an existing task</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update task information when I need</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add my earnings</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check my earnings when I want to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check my existing classes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">attend the classes in time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check the information of my classes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know more about my students' situation</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know what&#8217;s the command format</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">key in the correct command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">forgetful tutor user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be reminded before my tutorials</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">go for the tutorials on time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">caring tutor user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">check the upcoming events</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remind my students</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="adding-a-task-2"><a class="link" href="#adding-a-task-2">Adding a task</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Add a task and list all tasks out with the added task.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>add_task c/CS2103T mark/Y tt/13/09/2019 13:00, 20/09/2019 16:00</code><br>
+Expected: A marked task with Class Id "CS2103T" and Task Time "13/09/2019 13:00 to 16:00" was added to the task list. Details of the added task shown in the status message. Task list shown in Main window.</p>
+</li>
+<li>
+<p>Test case: <code>add_task</code><br>
+Expected: No task is added. Error details and correct format shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect command format to try: <code>add_task task</code>, <code>add_task c/ mark/ tt/</code></p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="editing-a-task-2"><a class="link" href="#editing-a-task-2">Editing a task</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Edit a task and list all tasks out with the edited task.</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Test case: <code>edit_task 1 c/CS2103</code><br>
+Expected: The first task in the task list&#8217;s Class Id changed to CS2103. Details of the edited task shown in the status message. Task list shown in Main window.</p>
+</li>
+<li>
+<p>Test case: <code>edit_task c/cs2103</code><br>
+Expected: No task is changed. Error details and correct format shown in the status message.</p>
+</li>
+<li>
+<p>Other incorrect command format to try: <code>edit_task</code> <code>edit_task 1 c/</code></p>
+</li>
+<li>
+<p>Reminder: Make sure the index of the task is not larger than the total number of tasks in task list.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
 <hr>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:50:42 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:54:47 UTC</div></div></div></body></html>

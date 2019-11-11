@@ -28,9 +28,10 @@
 <li><a href="#reminder-features">3.4. Reminder Features</a></li>
 <li><a href="#learn-wrong-commands-as-custom-commands-feature">3.5. Learn wrong commands as custom commands feature</a></li>
 <li><a href="#undo-redo-feature">3.6. Undo/Redo feature</a></li>
-<li><a href="#proposed-data-encryption">3.7. [Proposed] Data Encryption</a></li>
-<li><a href="#logging">3.8. Logging</a></li>
-<li><a href="#Implementation-Configuration">3.9. Configuration</a></li>
+<li><a href="#tab-change-feature">3.7. Tab Change feature</a></li>
+<li><a href="#proposed-data-encryption">3.8. [Proposed] Data Encryption</a></li>
+<li><a href="#logging">3.9. Logging</a></li>
+<li><a href="#Implementation-Configuration">3.10. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a></li>
@@ -1027,9 +1028,23 @@ check with the rest of the prior <code>Notes</code> object, to ensure that there
 <p>The add claim <code>add_reminder</code> mechanism is facilitated by <code>addReminderCommand</code> and <code>addReminderParser</code>, taking in the
 following input from the user: <code>Description</code>, <code>Time</code>, which will construct <code>Reminder</code> objects.</p>
 </div>
-<div class="paragraph">
-<div class="title">Add Reminder Command Sequence Diagram</div>
-<p>##diagram to be added</p>
+<div class="imageblock">
+<div class="content">
+<img src="images/reminders/AddReminderSequenceDiagram.png" alt="AddReminderSequenceDiagram">
+</div>
+<div class="title">Figure 13. Add Reminder Command Sequence Diagram</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The lifeline for <code>AddReminderParser</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>The <code>addReminderCommand</code> implements <code>Parser</code> with the following operation:</p>
@@ -1041,7 +1056,7 @@ following input from the user: <code>Description</code>, <code>Time</code>, whic
 individual objects based on the prefixes <code>rd/</code> and <code>rt/</code>. The <code>String</code> value after the respective prefixes
 will create the respective objects. A validation check will be done to ensure that the strings that are entered
 by the user is entered correctly. If any of the strings entered are invalid, an error will be shown to the user to
-enter the correct format of the respectives objects.</p>
+enter the correct format of the respective objects.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1062,19 +1077,14 @@ enter the correct format of the respectives objects.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command.</p>
-</div>
-<div class="paragraph">
-<p>##diagram to be added</p>
-</div>
-<div class="paragraph">
-<p><strong>Example Scenerio</strong></p>
+<p>The following activity diagram summarizes what happens when a user executes a new command.
+image::reminders/AddReminderActivityDiagram.png[]
+<strong>Example Scenerio</strong></p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Step 1: The user enters <code>add_reminder rd/teach rt/23/01/2019</code> to add a reminder for teaching classes.
-This adds an <code>Notes</code> object that the user has added to record what needs to be done for the class.</p>
+<p>Step 1: The user enters <code>add_reminder rd/teach rt/23/01/2019 13:00, 23/01/2019 15:00</code> to add a reminder for teaching classes.</p>
 </li>
 <li>
 <p>Step 2: <code>LogicManager</code> would use <code>TutorAidParser#parse()</code> to parse input from the user.</p>
@@ -1100,6 +1110,78 @@ check with the rest of the prior <code>Reminder</code> object, to ensure that th
 </ul>
 </div>
 </div>
+<div class="sect3">
+<h4 id="delete-reminders"><a class="link" href="#delete-reminders">3.4.2. Delete Reminders</a></h4>
+<div class="paragraph">
+<p>This command allows the user to delete reminders from the existing reminders list through its index.</p>
+</div>
+<div class="paragraph">
+<p>The delete reminders command is facilitated by the <code>DeleteReminderCommand</code> and <code>DeleteReminderParser</code>.</p>
+</div>
+<div class="paragraph">
+<p>The delete reminder command is part of the logic component of our application. It interacts with the model component of our software application.</p>
+</div>
+<div class="paragraph">
+<p><strong>Overview</strong></p>
+</div>
+<div class="paragraph">
+<p>The <code>DeleteReminderParser</code> implements <code>Parser</code> with the following operation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>DeleteReminderParser#parse()</code> - This operation will take in an <code>int</code> input from the user, that the
+user wants to delete, which will correspond to the index shown on the reminders list on the application. This will delete
+the reminders in the reminders list. If an invalid format is entered or an invalid index is entered, there will be a prompt
+from the commmand parser.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Current Implementation</strong></p>
+</div>
+<div class="paragraph">
+<p>The delete earnings command is executed by the <code>DeleteReminderCommand</code>. Currently, the deletion of any earnings is done based
+on the <code>INDEX</code> of the reminders entry.</p>
+</div>
+<div class="paragraph">
+<p>During the design of our delete reminders function, we considered between two alternatives.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/reminders/DeleteReminderSequenceDiagram.png" alt="DeleteReminderSequenceDiagram">
+</div>
+<div class="title">Figure 14. Delete Reminder Sequence Diagram</div>
+</div>
+<div class="paragraph">
+<p><strong>Example Scenerio</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Step 1: The user enters <code>delete_reminder 1</code> to delete a reminder with index 1.</p>
+</li>
+<li>
+<p>Step 2: <code>LogicManager</code> would use <code>TutorAidParser#parse()</code> to parse input from the user.</p>
+</li>
+<li>
+<p>Step 3: <code>TutorAidParser</code> would match the command word given by the user with the correct command. In this example,
+the given command is <code>delete_reminder</code>, thus, <code>deleteReminderParser</code> object would be created with the user&#8217;s input.</p>
+</li>
+<li>
+<p>Step 4: <code>deleteReminderParser</code> performs a validation check on each of the respective objects through
+<code>deleteReminderParser#parse()</code>.</p>
+</li>
+<li>
+<p>Step 5: <code>LogicManager</code> would execute <code>deleteReminderCommand#execute</code>. In this particular method, the <code>Reminder</code> object will be
+of that index will be deleted from the current unique filtered reminder list.</p>
+</li>
+<li>
+<p>Step 6: <code>deleteReminderCommand</code> would then return a <code>CommandResult</code> to <code>LogicManager</code>, which would show the user that the new reminder list.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="learn-wrong-commands-as-custom-commands-feature"><a class="link" href="#learn-wrong-commands-as-custom-commands-feature">3.5. Learn wrong commands as custom commands feature</a></h3>
@@ -1118,13 +1200,13 @@ an unknown command. Using this, TutorAid shifts between "learner" mode and norma
 <div class="content">
 <img src="images/changeLearner.png" alt="changeLearner" width="800">
 </div>
-<div class="title">Figure 13. How TutorAid goes from normal to "learner" mode</div>
+<div class="title">Figure 15. How TutorAid goes from normal to "learner" mode</div>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/changeNormal.png" alt="changeNormal" width="800">
 </div>
-<div class="title">Figure 14. How TutorAid goes from "learner" to normal mode</div>
+<div class="title">Figure 16. How TutorAid goes from "learner" to normal mode</div>
 </div>
 <div class="paragraph">
 <p>The effect of being in "learner" mode results in the <code>TutorAidParser</code> using different methods to parse the command. This will be elaborated on in the sample use scenario below.</p>
@@ -1430,20 +1512,39 @@ If the <code>currentStatePointer</code> is at index <code>tutorAidStateList.size
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.7. [Proposed] Data Encryption</a></h3>
+<h3 id="tab-change-feature"><a class="link" href="#tab-change-feature">3.7. Tab Change feature</a></h3>
+<div class="paragraph">
+<p>Tab Change feature is a type of Command that allows users to change to respective windows for using different features in the system.
+Tab change function is implemented in using both CLI and GUI. User can execute tab change by typing command in the command box or by interaction with the GUI component (Menu Bar)</p>
+</div>
+<div class="sect3">
+<h4 id="implementation-3"><a class="link" href="#implementation-3">3.7.1. Implementation</a></h4>
+<div class="imageblock">
+<div class="content">
+<img src="images/reminders/tabchange.png" alt="tabchange">
+</div>
+<div class="title">Figure 17. Activity Diagram</div>
+</div>
+<div class="paragraph">
+<p>User will execute <code>change_tab</code> command with the parameters of <code>tab/TAB</code>. Using this, TutorAid will display the list and the view that the user wishes to see, effectively changing tabs.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">3.8. [Proposed] Data Encryption</a></h3>
 <div class="paragraph">
 <p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.8. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">3.9. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.9, &#8220;Configuration&#8221;</a>)</p>
+<p>The logging level can be controlled using the <code>logLevel</code> setting in the configuration file (See <a href="#Implementation-Configuration">Section 3.10, &#8220;Configuration&#8221;</a>)</p>
 </li>
 <li>
 <p>The <code>Logger</code> for a class can be obtained using <code>LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level</p>
@@ -1474,7 +1575,7 @@ If the <code>currentStatePointer</code> is at index <code>tutorAidStateList.size
 </div>
 </div>
 <div class="sect2">
-<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.9. Configuration</a></h3>
+<h3 id="Implementation-Configuration"><a class="link" href="#Implementation-Configuration">3.10. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g user prefs file location, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2088,4 +2189,4 @@ Expected: The recovered task was deleted again from the list.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:50:42 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:54:47 UTC</div></div></div></body></html>

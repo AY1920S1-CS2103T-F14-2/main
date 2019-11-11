@@ -326,7 +326,10 @@ The Reminder created will have the Task&#8217;s <code>MODULE</code> as its <code
 <div class="ulist">
 <ul>
 <li>
-<p><code>add_task c/CS2103T mark/Y tt/13/09/2019 13:00, 20/09/2019 16:00 tt/21/09/2019 13:00, 21/09/2019 15:00</code><br></p>
+<p><code>add_task c/CS2103T mark/Y tt/13/09/2019 13:00, 20/09/2019 16:00 tt/21/09/2019 13:00, 21/09/2019 15:00</code></p>
+</li>
+<li>
+<p><code>add_task c/MA1521 Tutorial mark/N tt/02/11/2020 14:00, 02/11/2020 15:00</code></p>
 </li>
 </ul>
 </div>
@@ -334,12 +337,16 @@ The Reminder created will have the Task&#8217;s <code>MODULE</code> as its <code
 <p><span class="image"><img src="images/UserGuide/add_task.png" alt="add task" width="500"></span>
 <span class="image"><img src="images/UserGuide/add_task_2.png" alt="add task 2" width="500"></span></p>
 </div>
+<div class="sidebarblock">
+<div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p><code>add_task c/MA1521 Tutorial mark/N tt/02/11/2020 14:00, 02/11/2020 15:00</code></p>
+<p>The Reminder created will have the Task&#8217;s <code>MODULE</code> as its <code>DESCRIPTION</code> and the Task&#8217;s <code>TASK_TIME</code> as its <code>DATE</code>.</p>
 </li>
 </ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -383,6 +390,20 @@ If key in a Task Time, it can be empty.
 </li>
 </ul>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>If the task <code>Mark</code> was originally N and the user edited it to Y, a Reminder for the Task <strong>WILL NOT</strong> be created. Reminders will only be created at the creation of the task.</p>
+</li>
+<li>
+<p>Likewise, editing the <code>Mark</code> from Y to N will not delete the Reminder that was created at the creation of said Task.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="deleting-task-code-delete_task-code"><a class="link" href="#deleting-task-code-delete_task-code">3.5.3. Deleting task: <code>delete_task</code></a></h4>
@@ -415,6 +436,26 @@ INDEX must be a positive integer.
 <div class="paragraph">
 <p><span class="image"><img src="images/UserGuide/delete_task.png" alt="delete task" width="500"></span>
 <span class="image"><img src="images/UserGuide/delete_task_2.png" alt="delete task 2" width="500"></span></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Deleting a task does not delete the Reminder associated with it.</p>
+</li>
+<li>
+<p>Senario: After creating a Task with <code>Mark</code>, Y, a Reminder will be created as well. User deleted said task with <code>delete_task</code> command. This removes the task but not the Reminder.</p>
+</li>
+<li>
+<p>If the user creates a new Task with the same description as a Reminder, and <code>Mark</code> Y, the program would create the Task, then attempt to create the Reminder and this would cause a <em>Duplicate Reminder Error</em> .</p>
+</li>
+<li>
+<p>To prevent this, remember to deleted associated Reminder as well.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -548,6 +589,7 @@ If there is a Task starting on that date, only the Task&#8217;s <code>DESCRIPTIO
 <h4 id="add-reminder"><a class="link" href="#add-reminder">3.6.1. Add Reminder</a></h4>
 <div class="paragraph">
 <p>Adds reminders.<br>
+Reminders must be unique and cannot have the same <code>DESCRIPTION</code><br>
 Format: <code>add_reminder rd/DESCRIPTION rt/START_TIME, END_TIME</code><br></p>
 </div>
 <div class="admonitionblock tip">
@@ -568,6 +610,9 @@ A Reminder can have more than one time slots.
 <ul>
 <li>
 <p><code>START_TIME</code> and <code>END_TIME</code> must be in the format "dd/MM/YYYY HH:mm, dd/MM/YYYY HH:mm".</p>
+</li>
+<li>
+<p>The <code>END_TIME</code> must be after the <code>START_TIME</code>.</p>
 </li>
 <li>
 <p>If there are multiple task times, they will be automatically sorted based on their <code>START_TIME</code>.</p>
@@ -667,6 +712,9 @@ Format: <code>find_reminder_by_description DESCRIPTION &#8230;&#8203;</code></p>
 <li>
 <p><code>find_reminder_by_description CS2103T</code></p>
 </li>
+<li>
+<p><code>find_reminder_by_description CS2103T, cs2100</code></p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -674,13 +722,6 @@ Format: <code>find_reminder_by_description DESCRIPTION &#8230;&#8203;</code></p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="images/reminders/find_reminder_2.png" alt="find reminder 2" width="500"></span></p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find_reminder_by_description CS2103T, cs2100</code></p>
-</li>
-</ul>
 </div>
 </div>
 <div class="sect3">
@@ -1404,7 +1445,35 @@ The picture specified must be in either .jpg, .png or .bmp format. It must also 
 </div>
 </div>
 <div class="sect3">
-<h4 id="view-serial-absentees-with-defined-threshold-absentees-coming-in-v2-0"><a class="link" href="#view-serial-absentees-with-defined-threshold-absentees-coming-in-v2-0">3.9.11. View serial absentees with defined threshold: 'absentees' [Coming in v2.0]</a></h4>
+<h4 id="reminders-feature-improvements-coming-in-v2-0"><a class="link" href="#reminders-feature-improvements-coming-in-v2-0">3.9.11. Reminders Feature Improvements [Coming in v2.0]</a></h4>
+<div class="paragraph">
+<p>Improvements on Reminders Feature such as increased integration with Tasks. To include real time notifications on upcoming Reminders. Add categories of Reminders eg. urgent, important.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Reminders to be more flexible such as allowing deletion of reminders associated with certain task.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>reminder_cat cat/Important</code> (Categorizes reminder as important)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="view-serial-absentees-with-defined-threshold-absentees-coming-in-v2-0"><a class="link" href="#view-serial-absentees-with-defined-threshold-absentees-coming-in-v2-0">3.9.12. View serial absentees with defined threshold: 'absentees' [Coming in v2.0]</a></h4>
 <div class="paragraph">
 <p>To display list of all students who have not met the set threshold in terms of attendance.
 Format: <code>absentees THRESHOLD_PERCENTAGE</code></p>
@@ -1433,7 +1502,7 @@ Calculation will be done from start of semester to the current date.
 </div>
 </div>
 <div class="sect3">
-<h4 id="check-on-status-of-student-check_status-coming-in-v2-0"><a class="link" href="#check-on-status-of-student-check_status-coming-in-v2-0">3.9.12. Check on status of student: 'check_status' [Coming in v2.0]</a></h4>
+<h4 id="check-on-status-of-student-check_status-coming-in-v2-0"><a class="link" href="#check-on-status-of-student-check_status-coming-in-v2-0">3.9.13. Check on status of student: 'check_status' [Coming in v2.0]</a></h4>
 <div class="paragraph">
 <p>To check on status of students currently displayed in the list by sending them an e-mail enquiring on their status.
 Format: <code>check_status</code></p>
@@ -1452,7 +1521,7 @@ To be used in conjunction with <code>absentees</code>. A preset generic email wi
 </div>
 </div>
 <div class="sect3">
-<h4 id="upload-a-picture-of-the-student-upload_pic-coming-in-v2-0"><a class="link" href="#upload-a-picture-of-the-student-upload_pic-coming-in-v2-0">3.9.13. Upload a picture of the student: 'upload_pic' [Coming in v2.0]</a></h4>
+<h4 id="upload-a-picture-of-the-student-upload_pic-coming-in-v2-0"><a class="link" href="#upload-a-picture-of-the-student-upload_pic-coming-in-v2-0">3.9.14. Upload a picture of the student: 'upload_pic' [Coming in v2.0]</a></h4>
 <div class="paragraph">
 <p>To launch a separate window where the user can either choose an image file on his computer or take a picture with his webcam.
 The picture will be assigned to the indicated student and be displayed in TutorAid.
@@ -1821,4 +1890,4 @@ However, we plan to provide a better encryption with SHA256 for our password has
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:50:42 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 13:54:47 UTC</div></div></div></body></html>
