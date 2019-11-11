@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>TutorAid - Developer Guide</title><link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">AddressBook-Level3</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/se-edu/addressbook-level3"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>TutorAid - Developer Guide</h1></div><div id="content"><div id="preamble">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="seedu-header"><nav class="navbar navbar-lg navbar-light bg-lighter"><div class="container"><a class="navbar-brand" href="https://se-edu.github.io/"><img src="images/SeEduLogo.png" alt="SE-EDU"></a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level1">AB-1</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level2">AB-2</a></li><li class="nav-item"><a class="nav-link active" href="index.html">AB-3</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/addressbook-level4">AB-4</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/collate">Collate</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/se-book">Book</a></li><li class="nav-item"><a class="nav-link" href="https://se-edu.github.io/learningresources">Resources</a></li></ul></div></nav></div><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="index.html">TutorAid</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link active" href="DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link" href="LearningOutcomes.html">LOs</a></li><li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/AY1920S1-CS2103T-F14-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>TutorAid - Developer Guide</h1></div><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>By: <code>Team F14-2</code>      Since: <code>Sept 2019</code>      Licence: <code>NUS</code></p>
@@ -971,21 +971,21 @@ check with the rest of the prior <code>Notes</code> object, to ensure that there
 <div class="sect3">
 <h4 id="add-reminder"><a class="link" href="#add-reminder">3.4.1. Add Reminder</a></h4>
 <div class="paragraph">
-<p>The <code>addReminder</code> command allows for tutors to add their reminders into TutorAid.</p>
+<p>The <code>add_reminder</code> command allows for tutors to add their reminders into TutorAid.</p>
 </div>
 <div class="paragraph">
-<p>The format for the <code>addReminder</code> command is as follows:</p>
+<p>The format for the <code>add_reminder</code> command is as follows:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>addReminder rd/&lt;DESCRIPTION rt/&lt;TIME&gt;</pre>
+<pre>add_reminder rd/&lt;DESCRIPTION rt/&lt;TIME&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
 <p><strong>Overview</strong></p>
 </div>
 <div class="paragraph">
-<p>The add claim <code>addReminder</code> mechanism is facilitated by <code>AddReminderCommand</code> and <code>AddReminderParser</code>, taking in the
+<p>The add claim <code>add_reminder</code> mechanism is facilitated by <code>addReminderCommand</code> and <code>addReminderParser</code>, taking in the
 following input from the user: <code>Description</code>, <code>Time</code>, which will construct <code>Reminder</code> objects.</p>
 </div>
 <div class="paragraph">
@@ -993,12 +993,12 @@ following input from the user: <code>Description</code>, <code>Time</code>, whic
 <p>##diagram to be added</p>
 </div>
 <div class="paragraph">
-<p>The <code>AddReminderCommand</code> implements <code>Parser</code> with the following operation:</p>
+<p>The <code>addReminderCommand</code> implements <code>Parser</code> with the following operation:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>AddReminderParser#parse()</code> - This operation will take in a <code>String</code> input from the user and create
+<p><code>addReminderParser#parse()</code> - This operation will take in a <code>String</code> input from the user and create
 individual objects based on the prefixes <code>rd/</code> and <code>rt/</code>. The <code>String</code> value after the respective prefixes
 will create the respective objects. A validation check will be done to ensure that the strings that are entered
 by the user is entered correctly. If any of the strings entered are invalid, an error will be shown to the user to
@@ -1018,7 +1018,7 @@ enter the correct format of the respectives objects.</p>
 <p>After validation of the individual objects, a <code>Reminder</code> object would be created with the parameters <code>description</code> and <code>time</code>.</p>
 </li>
 <li>
-<p><code>AddReminderParser</code> would then return a <code>AddReminderCommand</code> object with the parameter, <code>Reminder</code> object.</p>
+<p><code>addReminderParser</code> would then return a <code>addReminderCommand</code> object with the parameter, <code>Reminder</code> object.</p>
 </li>
 </ul>
 </div>
@@ -1034,7 +1034,7 @@ enter the correct format of the respectives objects.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Step 1: The user enters <code>addReminder rd/teach rt/23/01/2019</code> to add a reminder for teaching classes.
+<p>Step 1: The user enters <code>add_reminder rd/teach rt/23/01/2019</code> to add a reminder for teaching classes.
 This adds an <code>Notes</code> object that the user has added to record what needs to be done for the class.</p>
 </li>
 <li>
@@ -1042,20 +1042,20 @@ This adds an <code>Notes</code> object that the user has added to record what ne
 </li>
 <li>
 <p>Step 3: <code>TutorAidParser</code> would match the command word given by the user with the correct command. In this example,
-the given command is <code>addReminder</code>, thus, <code>AddReminderParser</code> object would be created with the user&#8217;s input.</p>
+the given command is <code>add_reminder</code>, thus, <code>addReminderParser</code> object would be created with the user&#8217;s input.</p>
 </li>
 <li>
-<p>Step 4: <code>AddReminderParser</code> performs a validation check on each of the respective objects through
-<code>AddReminderParser#parse()</code>. In this case, it would use <code>ParserUtil#parseReminderDescription()</code> and <code>ParserUtil#parseReminderTime()</code>.
-It would then return a <code>AddReminderCommand</code> object with a <code>Reminder</code> object.</p>
+<p>Step 4: <code>addReminderParser</code> performs a validation check on each of the respective objects through
+<code>addReminderParser#parse()</code>. In this case, it would use <code>ParserUtil#parseReminderDescription()</code> and <code>ParserUtil#parseReminderTime()</code>.
+It would then return a <code>addReminderCommand</code> object with a <code>Reminder</code> object.</p>
 </li>
 <li>
-<p>Step 5: <code>LogicManager</code> would execute <code>AddReminderCommand#execute</code>. In this particular method, the <code>Reminder</code> object will be
+<p>Step 5: <code>LogicManager</code> would execute <code>addReminderCommand#execute</code>. In this particular method, the <code>Reminder</code> object will be
 check with the rest of the prior <code>Reminder</code> object, to ensure that there is no duplicate <code>Reminder</code> object. If there are no similar
 <code>Reminder</code> object with the same parameters created previously, it would then be added into the reminder list.</p>
 </li>
 <li>
-<p>Step 6: <code>AddReminderCommand</code> would then return a <code>CommandResult</code> to <code>LogicManager</code>, which would show the user that the new
+<p>Step 6: <code>addReminderCommand</code> would then return a <code>CommandResult</code> to <code>LogicManager</code>, which would show the user that the new
 <code>Reminder</code> object have been successfully added.</p>
 </li>
 </ul>
@@ -1891,4 +1891,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 07:36:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-11-11 07:37:22 UTC</div></div></div></body></html>
